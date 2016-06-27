@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node ./bin/www"
   },
+  "keywords": [],
+  "author": "Saad Shams",
+  "license": "Creative Common License",
   "dependencies": {
   }
 }

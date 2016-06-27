@@ -2,12 +2,7 @@ describe('Authentication', function() {
 
     var assert = require('assert');
     var AEM = require("../../lib/aem");
-    var credentials = require('./credentials.json');
-    var aem;
-
-    before(function() {
-        aem = new AEM(credentials);
-    });
+    AEM.config.credentials = require('../lib/credentials.json');
 
     describe('#requestToken()', function () {
         it('should return a token', function (done) {
@@ -54,18 +49,19 @@ describe('Authentication', function() {
 
     describe('#badToken', function () {
         it('should return invalid auth', function (done) {
-            var AEM2 = new AEM({
+            AEM.config.credentials = {
                 clientId: "aemm-ext-par-mirumagency-entitlement",
                 clientSecret: "a72a9c19-f4a0-40d0-9090-2f68d58b35bb",
                 clientVersion: "1.0.0",
                 deviceId: "xyz",
                 deviceToken: "abc"
-            });
+            };
             AEM.authentication.requestToken().then(function(data){
                 //success is error
             }, function(error){
                 assert.ok(error);
                 assert.ok(error.error);
+                AEM.config.credentials = require('../lib/credentials.json');
                 done();
             });
         });
