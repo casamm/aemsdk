@@ -1,5 +1,5 @@
 {
-  "name": "aemmobile-sdk",
+  "name": "aem-sdk",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "keywords": [],
   "author": "Saad Shams",
-  "license": "Creative Common License",
+  "license": "Private",
   "dependencies": {
   }
 }

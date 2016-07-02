@@ -2,25 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34d157d0-58d8-4718-80a1-2a03dd177ecc" name="Default" comment="Second Commit">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/content/img/thumbnail.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/content/TestCollection.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/content/TestEntity.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/content/TestCollection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/content/TestEntity.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/content/TestArticle.js" afterPath="$PROJECT_DIR$/test/lib/content/TestArticle.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/content/TestLayout.js" afterPath="$PROJECT_DIR$/test/lib/content/TestLayout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/mocha.opts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Authentication.js" afterPath="$PROJECT_DIR$/lib/Authentication.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Authorization.js" afterPath="$PROJECT_DIR$/lib/Authorization.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/aem.js" afterPath="$PROJECT_DIR$/lib/aem.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/configuration/end-points.json" afterPath="$PROJECT_DIR$/lib/configuration/end-points.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/Article.js" afterPath="$PROJECT_DIR$/lib/content/Article.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/layout.js" afterPath="$PROJECT_DIR$/lib/content/layout.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/http/remote.js" afterPath="$PROJECT_DIR$/lib/http/remote.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/TestAEM.js" afterPath="$PROJECT_DIR$/test/lib/TestAEM.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/TestAuthentication.js" afterPath="$PROJECT_DIR$/test/lib/TestAuthentication.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/TestAuthorization.js" afterPath="$PROJECT_DIR$/test/lib/TestAuthorization.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestArticle.js" afterPath="$PROJECT_DIR$/test/lib/content/TestArticle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestCollection.js" afterPath="$PROJECT_DIR$/test/lib/content/TestCollection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestEntity.js" afterPath="$PROJECT_DIR$/test/lib/content/TestEntity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestLayout.js" afterPath="$PROJECT_DIR$/test/lib/content/TestLayout.js" />
     </list>
     <ignored path="aemmobile-sdk.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,11 +37,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="remote.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="authentication.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/authentication.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="authorization.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/authorization.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="10" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestAuthentication.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/lib/TestAuthentication.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="555">
+              <caret line="37" column="3" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="entity.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/content/entity.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="remote.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/http/remote.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="63" selection-start-line="33" selection-start-column="63" selection-end-line="33" selection-end-column="63" />
+            <state relative-caret-position="448">
+              <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -66,10 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/PDFTest.js" />
-        <option value="$PROJECT_DIR$/configuration/Endpoints.json" />
-        <option value="$PROJECT_DIR$/configuration/MimeTypes.json.js" />
-        <option value="$PROJECT_DIR$/configuration/mime-types.json" />
         <option value="$PROJECT_DIR$/test/contentService/EntityTest.js" />
         <option value="$PROJECT_DIR$/contentService/Article.js" />
         <option value="$PROJECT_DIR$/test/contentService/ArticleTest.js" />
@@ -90,33 +122,37 @@
         <option value="$PROJECT_DIR$/dynamo.js" />
         <option value="$PROJECT_DIR$/s3.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/test/lib/credentials.json" />
-        <option value="$PROJECT_DIR$/test/lib/TestAEM.js" />
         <option value="$PROJECT_DIR$/lib/configuration/end-points.json" />
         <option value="$PROJECT_DIR$/test/content/TestEntity.js" />
-        <option value="$PROJECT_DIR$/lib/authentication.js" />
         <option value="$PROJECT_DIR$/test/content/TestLayout.js" />
         <option value="$PROJECT_DIR$/test/content/TestArticle.js" />
         <option value="internal/module.js" />
         <option value="_http_outgoing.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/response.js" />
         <option value="$PROJECT_DIR$/response.json" />
-        <option value="$PROJECT_DIR$/test/lib/TestAuthentication.js" />
-        <option value="$PROJECT_DIR$/lib/authorization.js" />
         <option value="$PROJECT_DIR$/test/content/TestCollection.js" />
-        <option value="$PROJECT_DIR$/lib/content/article.js" />
-        <option value="$PROJECT_DIR$/lib/content/layout.js" />
-        <option value="$PROJECT_DIR$/lib/aem.js" />
         <option value="internal/linkedlist.js" />
         <option value="internal/process/next_tick.js" />
-        <option value="$PROJECT_DIR$/test/lib/TestAuthorization.js" />
-        <option value="$PROJECT_DIR$/lib/content/collection.js" />
+        <option value="$PROJECT_DIR$/test/mocha.opts" />
+        <option value="$PROJECT_DIR$/test/lib/content/TestArticle.js" />
         <option value="$PROJECT_DIR$/test/lib/content/TestEntity.js" />
+        <option value="$PROJECT_DIR$/test/lib/content/TestCollection2.js" />
+        <option value="$PROJECT_DIR$/lib/content/article.js" />
+        <option value="$PROJECT_DIR$/lib/content/layout.js" />
+        <option value="$PROJECT_DIR$/test/lib/content/TestLayout.js" />
+        <option value="$PROJECT_DIR$/test/lib/credentials.json" />
+        <option value="$PROJECT_DIR$/lib/aem.js" />
         <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/lib/content/entity.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/lib/content/collection.js" />
         <option value="$PROJECT_DIR$/test/lib/content/TestCollection.js" />
+        <option value="$PROJECT_DIR$/lib/content/entity.js" />
+        <option value="$PROJECT_DIR$/lib/authorization.js" />
+        <option value="$PROJECT_DIR$/test/lib/TestAuthorization.js" />
+        <option value="$PROJECT_DIR$/test/lib/TestAuthentication.js" />
+        <option value="$PROJECT_DIR$/test/lib/TestAEM.js" />
         <option value="$PROJECT_DIR$/lib/http/remote.js" />
+        <option value="$PROJECT_DIR$/lib/authentication.js" />
       </list>
     </option>
   </component>
@@ -129,10 +165,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="203" />
+    <option name="x" value="71" />
     <option name="y" value="23" />
-    <option name="width" value="1998" />
-    <option name="height" value="1317" />
+    <option name="width" value="1735" />
+    <option name="height" value="1312" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -176,6 +212,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="aemmobile-sdk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aemmobile-sdk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aemmobile-sdk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -317,7 +367,7 @@
       <recent name="$PROJECT_DIR$/configuration" />
     </key>
   </component>
-  <component name="RunManager" selected="Mocha.test/lib/content/TestCollection.js">
+  <component name="RunManager" selected="Mocha.test/lib/TestAuthentication.js">
     <configuration default="false" name="test/lib/TestAuthorization.js" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -328,6 +378,68 @@
       <extra-mocha-options />
       <test-kind>TEST_FILE</test-kind>
       <test-file>$PROJECT_DIR$/test/lib/TestAuthorization.js</test-file>
+      <method />
+    </configuration>
+    <configuration default="false" name="Collection.#uploadImage()" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/test/lib/content/TestCollection.js</test-file>
+      <test-names>
+        <name value="Collection" />
+        <name value="#uploadImage()" />
+      </test-names>
+      <method />
+    </configuration>
+    <configuration default="false" name="Authentication.#requestToken().should return a cached token" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/test/lib/TestAuthentication.js</test-file>
+      <test-names>
+        <name value="Authentication" />
+        <name value="#requestToken()" />
+        <name value="should return a cached token" />
+      </test-names>
+      <method />
+    </configuration>
+    <configuration default="false" name="Authentication.#requestToken().should return a token" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/test/lib/TestAuthentication.js</test-file>
+      <test-names>
+        <name value="Authentication" />
+        <name value="#requestToken()" />
+        <name value="should return a token" />
+      </test-names>
+      <method />
+    </configuration>
+    <configuration default="false" name="test/lib/TestAEM.js" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST_FILE</test-kind>
+      <test-file>$PROJECT_DIR$/test/lib/TestAEM.js</test-file>
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -453,17 +565,25 @@
       <test-file>$PROJECT_DIR$/test/lib/content/TestArticle.js</test-file>
       <method />
     </configuration>
-    <list size="6">
+    <list size="10">
       <item index="0" class="java.lang.String" itemvalue="Mocha.Test" />
       <item index="1" class="java.lang.String" itemvalue="Mocha.test/lib/TestAuthentication.js" />
       <item index="2" class="java.lang.String" itemvalue="Mocha.test/lib/content/TestEntity.js" />
       <item index="3" class="java.lang.String" itemvalue="Mocha.test/lib/content/TestCollection.js" />
       <item index="4" class="java.lang.String" itemvalue="Mocha.test/lib/content/TestArticle.js" />
       <item index="5" class="java.lang.String" itemvalue="Mocha.test/lib/TestAuthorization.js" />
+      <item index="6" class="java.lang.String" itemvalue="Mocha.Collection.#uploadImage()" />
+      <item index="7" class="java.lang.String" itemvalue="Mocha.Authentication.#requestToken().should return a cached token" />
+      <item index="8" class="java.lang.String" itemvalue="Mocha.Authentication.#requestToken().should return a token" />
+      <item index="9" class="java.lang.String" itemvalue="Mocha.test/lib/TestAEM.js" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Mocha.test/lib/TestAuthorization.js" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Mocha.Authentication.#requestToken().should return a token" />
+        <item index="1" class="java.lang.String" itemvalue="Mocha.test/lib/TestAEM.js" />
+        <item index="2" class="java.lang.String" itemvalue="Mocha.test/lib/TestAuthorization.js" />
+        <item index="3" class="java.lang.String" itemvalue="Mocha.Authentication.#requestToken().should return a cached token" />
+        <item index="4" class="java.lang.String" itemvalue="Mocha.Collection.#uploadImage()" />
       </list>
     </recent_temporary>
   </component>
@@ -485,7 +605,7 @@
       <workItem from="1464814532801" duration="2000" />
       <workItem from="1464814537690" duration="1181000" />
       <workItem from="1465500668513" duration="176995000" />
-      <workItem from="1467013251327" duration="13575000" />
+      <workItem from="1467013251327" duration="124865000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit">
       <created>1464814852592</created>
@@ -498,39 +618,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 20m 51s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Authentication_#requestToken()_should_return_a_token - 2016.07.01 at 19h 53m 31s.xml">
+      <configuration name="Authentication.#requestToken().should return a token" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 22m 05s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Authentication_#requestToken()_should_return_a_token - 2016.07.01 at 19h 53m 40s.xml">
+      <configuration name="Authentication.#requestToken().should return a token" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 22m 10s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Authentication_#requestToken()_should_return_a_token - 2016.07.01 at 19h 53m 43s.xml">
+      <configuration name="Authentication.#requestToken().should return a token" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 22m 47s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="test_lib_TestAEM_js - 2016.07.01 at 19h 47m 30s.xml">
+      <configuration name="test/lib/TestAEM.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 23m 38s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="test_lib_TestAuthentication_js - 2016.07.01 at 19h 41m 42s.xml">
+      <configuration name="test/lib/TestAuthentication.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 24m 11s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="test_lib_TestAuthentication_js - 2016.07.01 at 19h 52m 03s.xml">
+      <configuration name="test/lib/TestAuthentication.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 25m 14s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="test_lib_TestAuthentication_js - 2016.07.01 at 19h 53m 06s.xml">
+      <configuration name="test/lib/TestAuthentication.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 25m 37s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="test_lib_TestAuthentication_js - 2016.07.01 at 19h 53m 18s.xml">
+      <configuration name="test/lib/TestAuthentication.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 26m 36s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="test_lib_TestAuthentication_js - 2016.07.01 at 20h 23m 59s.xml">
+      <configuration name="test/lib/TestAuthentication.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="test_lib_content_TestCollection_js - 2016.06.27 at 07h 27m 28s.xml">
-      <configuration name="test/lib/content/TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="test_lib_TestAuthorization_js - 2016.07.01 at 19h 45m 27s.xml">
+      <configuration name="test/lib/TestAuthorization.js" configurationId="mocha-javascript-test-runner" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259445000" />
+    <option name="totallyTimeSpent" value="370735000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -542,25 +662,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="203" y="23" width="1998" height="1317" extended-state="0" />
+    <frame x="71" y="23" width="1735" height="1312" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13909964" sideWeight="0.68733853" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16044341" sideWeight="0.68733853" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939035" sideWeight="0.49779737" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33753148" sideWeight="0.27564505" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733223" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23725614" sideWeight="0.503642" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15315315" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26894864" sideWeight="0.7243549" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32815057" sideWeight="0.7243549" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27220863" sideWeight="0.49276274" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27220863" sideWeight="0.49276274" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19473007" sideWeight="0.3126615" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3838631" sideWeight="0.49528006" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38379705" sideWeight="0.49528006" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32805994" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -587,22 +707,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/authorization.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/authorization.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/cliui/.coveralls.yml" />
     <entry file="file://$PROJECT_DIR$/bin/www" />
     <entry file="file://$PROJECT_DIR$/default.js" />
@@ -628,13 +732,6 @@
     <entry file="file://$PROJECT_DIR$/_app.js" />
     <entry file="file://$PROJECT_DIR$/s3.js" />
     <entry file="file://$PROJECT_DIR$/app.js" />
-    <entry file="file://$PROJECT_DIR$/test/lib/TestAEM.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -643,13 +740,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/multipart/index.js" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/response.json" />
     <entry file="file://$PROJECT_DIR$/../20160510-Adobe Experience Manager Mobile On-Demand Services API/aemmobile-api-schema/collection.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -658,93 +748,122 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/credentials.json">
+    <entry file="file://$PROJECT_DIR$/test/mocha.opts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        <state relative-caret-position="0">
+          <caret line="0" column="14" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/content/TestCollection2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/lib/content/TestLayout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        <state relative-caret-position="150">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/lib/content/TestArticle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/authorization.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        <state relative-caret-position="195">
+          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/configuration/mime-types.json">
+    <entry file="file://$PROJECT_DIR$/test/lib/credentials.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+        <state relative-caret-position="15">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/content/layout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content/article.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/TestAuthentication.js">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/TestAuthorization.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content/collection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1686">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        <state relative-caret-position="135">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/lib/content/TestEntity.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+        <state relative-caret-position="345">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/authentication.js">
+    <entry file="file://$PROJECT_DIR$/lib/content/collection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+        <state relative-caret-position="1080">
+          <caret line="72" column="11" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/content/article.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/content/TestCollection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/TestAEM.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="3" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/TestAuthorization.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/aem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="673">
+          <caret line="63" column="25" selection-start-line="63" selection-start-column="25" selection-end-line="63" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -757,42 +876,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/aem.js">
+    <entry file="file://$PROJECT_DIR$/lib/configuration/mime-types.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content/entity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="88" column="34" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/content/TestCollection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6585">
-          <caret line="439" column="52" selection-start-line="439" selection-start-column="52" selection-end-line="439" selection-end-column="52" />
+        <state relative-caret-position="90">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/http/remote.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="63" selection-start-line="33" selection-start-column="63" selection-end-line="33" selection-end-column="63" />
+        <state relative-caret-position="448">
+          <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/content/entity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/TestAuthentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="3" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/authentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/authorization.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="10" selection-end-column="31" />
           <folding />
         </state>
       </provider>

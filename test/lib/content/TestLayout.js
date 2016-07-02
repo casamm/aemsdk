@@ -7,8 +7,8 @@ describe('Layout', function() {
     var layout;
 
     before(function() {
-        aem = new AEM(credentials);
-        layout = new AEM.Layout("b5bacc1e-7b55-4263-97a5-ca7015e367e0", "defaultLayout");
+        aem = new AEM();
+        layout = new AEM.Layout();
     });
 
     describe('#layout()', function () {

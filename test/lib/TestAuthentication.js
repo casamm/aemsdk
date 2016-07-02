@@ -3,72 +3,36 @@ describe('Authentication', function() {
     var assert = require('assert');
     var AEM = require("../../lib/aem");
     AEM.config.credentials = require('../lib/credentials.json');
+    var authentication = new AEM.Authentication();
 
     describe('#requestToken()', function () {
+
         it('should return a token', function (done) {
-            AEM.authentication.requestToken().then(function(data){
-                assert.ok(data);
-                assert.ok(data.access_token);
-                done();
-            }, function(error){
-                console.log(error);
-            });
-        });
-    });
-
-    describe('#getToken()', function () {
-        it('should return a token by using requestToken', function (done) {
-            AEM.authentication.getToken().then(function(data){
-                assert.ok(data);
-                assert.ok(data.access_token);
-                done();
-            }, function(error){
-                console.log(error);
-            });
-        });
-    });
-
-    describe('#cached requestToken()', function () {
-        it('should return a cached token', function (done) {
-
-            AEM.authentication.getToken().then(function(data){
-                var access_token = data.access_token;
-
-                AEM.authentication.getToken().then(function(data){
-                    assert.ok(access_token == data.access_token);
+            var body = {};
+            authentication.requestToken(body)
+                .then(function(data){
+                    assert.ok(data);
+                    assert.ok(data.authentication.access_token);
                     done();
-                }, function(error){
-                    console.log('a', error);
-                });
-
-            }, function(error){
-                console.log(error);
-            });
+                })
+                .catch(console.error);
         });
-    });
 
-    describe('#badToken', function () {
-        it('should return invalid auth', function (done) {
-            AEM.config.credentials = {
-                clientId: "aemm-ext-par-mirumagency-entitlement",
-                clientSecret: "a72a9c19-f4a0-40d0-9090-2f68d58b35bb",
-                clientVersion: "1.0.0",
-                deviceId: "xyz",
-                deviceToken: "abc"
-            };
-            AEM.authentication.requestToken().then(function(data){
-                //success is error
-            }, function(error){
-                assert.ok(error);
-                assert.ok(error.error);
-                AEM.config.credentials = require('../lib/credentials.json');
-                done();
-            });
+        it('should return a cached token', function (done) {
+            var access_token;
+            authentication.requestToken({})
+                .then(function(data){
+                    access_token = data.authentication.access_token;
+                    return {};
+                })
+                .then(authentication.getToken)
+                .then(function(data){
+                    assert.ok(data.authentication.access_token == access_token);
+                    done();
+                })
+                .catch(console.error);
         });
-    });
 
-    after(function(){
-        aem = null;
     });
 
 });

@@ -2,41 +2,10 @@ describe('AEM', function() {
 
     var assert = require('assert');
     var AEM = require("../../lib/aem");
-    var credentials = require('./credentials.json');
-    var aem;
 
-    before(function() {
-        aem = new AEM(credentials);
-    });
-
-    describe('#constructor()', function () {
-        it('should be able to construct', function () {
-            assert.ok(aem);
-        });
-    });
-
-    describe('#AEM.authentication', function () {
-        it('AEM.authentication should be instantiated', function () {
-            assert.ok(AEM.authentication);
-        });
-    });
-
-    describe('#aem.authorization', function () {
-        it('aem.authorization should be instantiated', function () {
-            assert.ok(AEM.authorization);
-        });
-    });
-
-    describe('#AEM.genId()', function () {
-        it('should generate a unique id', function () {
-            assert.equal(AEM.genId(4).length, 4, 'length should be 4');
-            assert.equal(AEM.genId(10).length, 10, 'length should be 10');
-            for(var i=0; i<100; i++) {
-                assert.equal(AEM.genId(10).indexOf('g'), -1, 'no occurence of g');
-                assert.equal(AEM.genId(10).indexOf('h'), -1, 'no occurence of h');
-                assert.equal(AEM.genId(10).indexOf('i'), -1, 'no occurence of i');
-                assert.equal(AEM.genId(10).indexOf('j'), -1, 'no occurence of j');
-            }
+    describe('AEM', function () {
+        it('should be available for use', function () {
+            assert.ok(AEM);
         });
     });
 
@@ -52,10 +21,6 @@ describe('AEM', function() {
                 assert.equal(AEM.genUUID().split('-')[4].length, 12, 'fifth part should have 12 characters');
             }
         });
-    });
-
-    after(function(){
-        aem = null;
     });
 
 });
