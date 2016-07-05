@@ -1,5 +1,5 @@
 {
-  "name": "aem-sdk",
+  "name": "aemm-sdk",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "keywords": [],
   "author": "Saad Shams",
-  "license": "Private",
+  "license": "Private - Mirum Agency",
   "dependencies": {
   }
 }

@@ -6,7 +6,7 @@ describe('Entity', function() {
     var entity = new AEM.Entity();
 
     var body = {
-        entity: {
+        data: {
             entityType: AEM.Article.TYPE,
             publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
         }
@@ -26,7 +26,7 @@ describe('Entity', function() {
     });
 
     it('#requestList Layout', function (done) {
-        body.entity.entityType = AEM.Layout.TYPE;
+        body.data.entityType = AEM.Layout.TYPE;
 
         entity.requestList(body)
             .then(function(data){

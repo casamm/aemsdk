@@ -1,8 +1,8 @@
 {
-    "authentication": "ims-na1.adobelogin.com",
-    "authorization": "authorization.publish.adobe.io",
-    "ingestion": "ings.publish.adobe.io",
-    "notification": "rps.publish.adobe.io",
-    "producer": "pecs.publish.adobe.io",
-    "product": "ps.publish.adobe.io"
+  "authentication": "ims-na1.adobelogin.com",
+  "authorization": "authorization.publish.adobe.io",
+  "ingestion": "ings.publish.adobe.io",
+  "notification": "rps.publish.adobe.io",
+  "producer": "pecs.publish.adobe.io",
+  "product": "ps.publish.adobe.io"
 }

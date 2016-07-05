@@ -1,10 +1,5 @@
 module.exports = require('./lib/aem');
 
-
-//http://marianna.im/tech/capture-nodejs-traffic-with-charles/
-
-/*
-
 /*
     Session Id, philosophy etc.
 
@@ -57,4 +52,22 @@ nodejs
 
  */
 
+/*
+Deployment
+1) credentials.json
+2) Charles Proxy (authentication, remote)
+3) markdown
+ */
 
+
+// .then(function(result){
+//     console.log(result);
+//     result.products.forEach(function(item){
+//         products[item.id] = item;
+//         delete item.id;
+//     });
+//
+//     body.data.entityType = AEM.Collection.TYPE;
+//     return body;
+// })
+//.then(collection.requestList) //list of collections
