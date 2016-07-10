@@ -1,7 +1,11 @@
 {
   "all" : "application/json, text/plain, */*",
   "article" : "application/vnd.adobe.article+zip",
-  "json" : "application/json",
+  "json" : "application/json;charset=UTF-8",
   "symlink" : "application/vnd.adobe.symboliclink+json",
-  "urlencoded" : "application/x-www-form-urlencoded"
+  "urlencoded" : "application/x-www-form-urlencoded",
+  "octetstream": "application/octet-stream",
+  "html": "text/html",
+  "png": "image/png",
+  "jpeg": "image/jpeg"
 }

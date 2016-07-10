@@ -3,19 +3,21 @@ var AEM = require("../../../lib/aem");
 AEM.config.credentials = require('../../lib/credentials.json');
 var collection = new AEM.Collection();
 var authorization = AEM.authorization;
+var path = require("path");
 
+var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
 var entity = {
     entityName: "demo",
     entityType: AEM.Collection.TYPE,
-    publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0",
+    publicationId: publicationId,
     title: "collection from nodejs",
     shortTitle: "nodejs",
     productIds: ["product_collection_demo"]
 };
 
-var thumbnail = {path: __dirname + '/img/thumbnail.png', type: "thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
-var background = {path: __dirname + '/img/background.png', type: "background", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
-var social = {path: __dirname + '/img/social.png', type: "socialSharing", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var thumbnail = {path: path.join(__dirname, '../resources/image/thumbnail.png'), type: "thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var background = {path: path.join(__dirname, '../resources/image/background.png'), type: "background", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var social = {path: path.join(__dirname, '../resources/image/social.png'), type: "socialSharing", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
 
 var contentElements = [
     {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test1-a"},
@@ -31,7 +33,7 @@ describe('#Collection()', function () {
 describe('#create()', function () {
     this.timeout(5000);
     var body = {
-        data: entity,
+        schema: entity,
         permissions: ["producer_content_add", "producer_content_delete"] //permissions to check for
     };
     it('should create', function(done){
@@ -40,7 +42,6 @@ describe('#create()', function () {
             .then(function(){done()})
             .catch(console.error);
     });
-
     it('should create after authorization', function (done) {
         authorization.verify(body)
             .then(collection.create)
@@ -50,13 +51,42 @@ describe('#create()', function () {
             })
             .catch(console.error);
     });
+    it('should create two simultaneously', function(done){
+        var body = {schema: {entityName: "demo", title: "demo", entityType: AEM.Collection.TYPE, publicationId: publicationId}};
+        var body2 = {schema: {entityName: "demo1", title: "demo1", entityType: AEM.Collection.TYPE, publicationId: publicationId}};
+        var col, col1;
+
+        collection.create(body)
+            .then(function(result){
+                col = result;
+                assert.ok(result.schema.entityName == "demo");
+                return result;
+            })
+            .then(collection.delete)
+            .then(function(result){
+                if(col && col1) done();
+            })
+            .catch(console.error);
+
+        collection.create(body2)
+            .then(function(result){
+                col1 = result;
+                assert.ok(result.schema.entityName == "demo1");
+                return result;
+            })
+            .then(collection.delete)
+            .then(function(result){
+                if(col && col1) done();
+            })
+            .catch(console.error)
+    });
 });
 
 describe("#requestList()", function(){
     it("should list", function(done){
         var body2 = {
             query: "collection?pageSize=5&q=entityType==collection",
-            data: {
+            schema: {
                 entityType: entity.entityType,
                 publicationId: entity.publicationId
             }
@@ -73,7 +103,7 @@ describe("#requestList()", function(){
         this.timeout(15000);
         var body = {
             query: "collection?pageSize=5&q=entityType==collection",
-            data: {
+            schema: {
                 entityType: entity.entityType,
                 publicationId: entity.publicationId
             }
@@ -86,10 +116,10 @@ describe("#requestList()", function(){
                     for(var i=0; i<data.collections.length; i++) {
                         var matches = data.collections[i].href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
                         var body2 = JSON.parse(JSON.stringify(body));
-                        body2.data = {
+                        body2.schema = {
                             entityName: matches[2],
                             entityType: matches[1],
-                            publicationId: body.data.publicationId
+                            publicationId: publicationId
                         };
                         promises.push(collection.requestMetadata(body2))
                     }
@@ -111,7 +141,7 @@ describe("#requestList()", function(){
 
 describe('#requestMetadata()', function () {
     var body = {
-        data: entity
+        schema: entity
     };
 
     it("should requestMetadata", function(done){
@@ -128,8 +158,8 @@ describe('#uploadImage()', function () {
     it('should upload thumbnail', function (done) {
         this.timeout(10000);
         var body = {
-            data: entity,
-            image: thumbnail
+            schema: entity,
+            file: thumbnail
         };
 
         collection.create(body)
@@ -144,8 +174,8 @@ describe('#uploadImage()', function () {
     it('should upload background', function (done) {
         this.timeout(15000);
         var body = {
-            data: entity,
-            image: background
+            schema: entity,
+            file: background
         };
         collection.create(body)
             .then(collection.uploadImage)
@@ -159,18 +189,18 @@ describe('#uploadImage()', function () {
     it('should upload thumbnail, background and socialSharing', function (done) {
         this.timeout(25000);
         var body = {
-            data: entity,
-            image: thumbnail
+            schema: entity,
+            file: thumbnail
         };
         collection.create(body)
             .then(collection.uploadImage)
             .then(function(data){
-                data.image = background;
+                data.file = background;
                 return data;
             })
             .then(collection.uploadImage)
             .then(function(data){
-                data.image = social;
+                data.file = social;
                 return data;
             })
             .then(collection.uploadImage)
@@ -184,20 +214,20 @@ describe('#uploadImage()', function () {
 
 describe('#update()', function () {
     var body = {
-        data: entity
+        schema: entity
     };
 
     it('should create', function (done) {
         collection.create(body)
             .then(function(res){
-                res.data.title = "title";
-                res.data.shortTitle = "nodejs2";
+                res.schema.title = "title";
+                res.schema.shortTitle = "nodejs2";
                 return res;
             })
             .then(collection.update)
             .then(function(res) {
-                assert.ok(res.data.title == "title");
-                assert.ok(res.data.shortTitle == "nodejs2");
+                assert.ok(res.schema.title == "title");
+                assert.ok(res.schema.shortTitle == "nodejs2");
                 return res;
             })
             .then(collection.delete)
@@ -208,7 +238,7 @@ describe('#update()', function () {
 
 describe("#requestContentElements()", function(){
     var body = {
-        data: entity,
+        schema: entity,
         contentElements: null
     };
     it("should getContentElements", function(done){
@@ -227,7 +257,7 @@ describe("#requestContentElements()", function(){
 
 describe("#updateContentElements()", function(){
     var body = {
-        data: entity,
+        schema: entity,
         contentElements: contentElements
     };
     it("should updateContentElements", function(done){
@@ -244,25 +274,45 @@ describe("#updateContentElements()", function(){
     });
 });
 
-xdescribe("#publish() collection", function(){
-    this.timeout(30000);
+describe("#publish() collection", function(){
+    this.timeout(0);
     it("should publish and then unpublish the collection", function(done){
         var body = {
-            entity: collection,
-            image: thumbnail
+            schema: entity,
+            file: thumbnail
         };
         collection.create(body)
             .then(collection.uploadImage)
             .then(collection.update)
             .then(collection.seal)
             .then(collection.publish)
-            .then(function(data){
+            .then(function(result){
                 return new Promise(function(resolve, reject){
-                    setTimeout(function(){resolve(data)}, 15000);
+                    var id = setInterval(function(){
+                        collection.requestStatus(result)
+                            .then(function(result){
+                                if(result.status[0].eventType == "success") {clearInterval(id); resolve(result)}
+                                if(result.status[0].eventType == "failure") {clearInterval(id); reject(result)}
+                            });
+                    }, 1000);
                 });
             })
-            .then(collection.unpublish)
-            .then(collection.delete)
+            .then(function(result){
+                return new Promise(function(resolve, reject){
+                    var id = setInterval(function(){
+                        collection.unpublish(result)
+                            .then(function(result){clearInterval(id); resolve(result);})
+                    }, 1000);
+                });
+            })
+            .then(function(result){
+                return new Promise(function(resolve, reject){
+                    var id = setInterval(function(){
+                        collection.delete(result)
+                            .then(function(result){clearInterval(id); resolve(result)})
+                    }, 1000);
+                });
+            })
             .then(function(data){done()})
             .catch(console.error)
     });
@@ -272,7 +322,7 @@ describe("#addEntity()", function(){
 
     it("should addEntity", function(done){
         var body = {
-            data: entity,
+            schema: entity,
             contentElement: contentElements[0],
             isLatestFirst: false
         };
@@ -292,7 +342,7 @@ describe("#addEntity()", function(){
     it("should add two entities one at a time", function(done){
         this.timeout(10000);
         var body = {
-            data: entity,
+            schema: entity,
             contentElement: contentElements[0]
         };
 
@@ -336,7 +386,7 @@ describe("#addEntity()", function(){
 
     it("should not add same collection twice", function(done){
         var body = {
-            data: entity,
+            schema: entity,
             contentElement: contentElements[0],
             isLatestFirst: false
         };
@@ -350,7 +400,6 @@ describe("#addEntity()", function(){
             .then(collection.delete)
             .then(function(){done()})
     });
-
 });
 
 describe("#removeEntity", function(){
@@ -358,7 +407,7 @@ describe("#removeEntity", function(){
     it("should removeEntity one at a time", function(done){
         this.timeout(5000);
         var body = {
-            data: entity,
+            schema: entity,
             contentElements: contentElements
         };
 
@@ -388,7 +437,7 @@ describe("#removeEntity", function(){
 
     it("should work without contentElement specified", function(done){
         var body = {
-            data: entity
+            schema: entity
         };
 
         collection.create(body)
@@ -400,10 +449,10 @@ describe("#removeEntity", function(){
             .catch(console.error);
     });
 
-    it("should not remove an invalid collection", function(done){
+    it("should not remove an invalid article", function(done){
         this.timeout(10000);
         var body = {
-            data: entity
+            schema: entity
         };
 
         collection.create(body)
@@ -412,7 +461,7 @@ describe("#removeEntity", function(){
                 assert.ok(data.contentElements.length == 0);
                 return data;
             })
-            .then(function(data){ //specify an invalid collection
+            .then(function(data){ //specify an invalid article
                 data.contentElement = {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/invalid"};
                 return data;
             })
@@ -426,13 +475,12 @@ describe("#removeEntity", function(){
             .then(collection.delete)
             .catch(console.error)
             .then(function(){done()})
-
     });
 
     it("should add two and remove one", function(done){
         this.timeout(7000);
         var body = {
-            data: entity,
+            schema: entity,
             contentElements: JSON.parse(JSON.stringify(contentElements)),
             contentElement: contentElements[0] //collection to remove
         };
@@ -453,61 +501,48 @@ describe("#removeEntity", function(){
     });
 });
 
-xdescribe("#requestStatus()", function(){
+describe("#requestStatus()", function(){
     it("should return status", function(done){
         this.timeout(0);
         var body = {
-            entity: collection,
-            image: thumbnail
+            schema: entity,
+            file: thumbnail
         };
         collection.create(body)
             .then(collection.uploadImage)
             .then(collection.update)
             .then(collection.seal)
             .then(collection.publish)
-            .then(function(data){
+            .then(function(result){ // requestStatus
                 return new Promise(function(resolve, reject){
-                    var intervalId = setInterval(function(){
-                        collection.requestStatus(data).then(function(data){
-                            console.log("publish", data.status[0].eventType);
-                            switch(data.status[0].eventType) {
-                                case "success":
-                                    clearInterval(intervalId);
-                                    console.log("delay");
-                                    setTimeout(function(){console.log("delay end");resolve(data)}, 5000);
-                                    break;
-                                case "failure":
-                                    clearInterval(intervalId);
-                                    reject(data.status);
-                                    break;
-                                case "progress":
-                                    break;
-                            }
-                        });
-                    }, 2000);
+                    var id = setInterval(function(){
+                        collection.requestStatus(result)
+                            .then(function(result){
+                                switch(result.status[0].eventType) {
+                                    case "progress": break;
+                                    case "success": clearInterval(id); resolve(result); break;
+                                    case "failure": clearInterval(id); reject(result.status[0]); break;
+                                }
+                            });
+                    }, 1000);
                 });
             })
-            .then(collection.unpublish)
-            .then(function(data) {
-                return new Promise(function (resolve, reject) {
-                    collection.requestStatus(data).then(function (data) {
-                        console.log("unpublish", data.status[0].eventType);
-                        switch (data.status[0].eventType) {
-                            case "success":
-                                console.log('delay 2');
-                                setTimeout(function(){console.log("delay 2 end");resolve(data)}, 5000);
-                                break;
-                            case "failure":
-                                clearInterval(intervalId);
-                                reject(data.status);
-                                break;
-                            case "progress":
-                                break;
-                        }
-                    })
+            .then(function(result){ // immediate unpublish after a publish success requires few retries
+                return new Promise(function(resolve, reject){
+                    var id = setInterval(function(){
+                        collection.unpublish(result)
+                            .then(function(result){clearInterval(id); resolve(result)});
+                    }, 1000);
                 });
             })
-            .then(collection.delete)
+            .then(function(result){ //imediate delete after unpublish requires few retries
+                return new Promise(function(resolve, reject){
+                    var id = setInterval(function(){
+                        collection.delete(result)
+                            .then(function(result){clearInterval(id); resolve(result)});
+                    }, 1000);
+                });
+            })
             .then(function(){done()})
             .catch(console.error);
     });

@@ -8,63 +8,67 @@ var publicationId = 'b5bacc1e-7b55-4263-97a5-ca7015e367e0';
 var bundleId = "subscription1";
 
 describe("#Bundle()", function(){
+
     it("should construct", function(done){
         assert.ok(bundle);
         done();
     });
-});
 
-xdescribe('#create()', function(){
-    it('should create', function(done){
-        var body = {
-            data: {
-                entityType: AEM.Bundle.TYPE,
-                entityName: bundleId,
-                publicationId: publicationId
-            }
-        };
-        product.create(body)
-            .then(function(data){
-                done();
-            })
-            .catch(console.error);
-    });
-});
+    // it('should create', function(done){
+    //     var body = {
+    //         schema: {
+    //             id: bundleId,
+    //             bundleType: "SUBSCRIPTION",
+    //             label: "subscription label",
+    //             strategy: '*',
+    //             subscriptionType: 'STANDARD'
+    //         },
+    //         entityType: AEM.Bundle.TYPE,
+    //         publicationId: publicationId
+    //     };
+    //     bundle.create(body)
+    //         .then(function(data){
+    //             done();
+    //         })
+    //         .catch(console.error);
+    // });
 
-xdescribe('#delete', function(){
-    it('should delete', function(done){
+    it('should verify and requestMetadata', function(done){
+        this.timeout(5000);
         var body = {
-            data: {
-                entityType: AEM.Bundle.TYPE,
-                entityName: bundleId,
+            schema: {
                 publicationId: publicationId
             },
             permissions: ['product_add', 'product_view'] //permissions to check for
         };
 
         authorization.verify(body)
-            .then(product.delete)
-            .then(function(data){
+            .then(function(result){
+                var meta = {
+                    schema: {
+                        id: bundleId
+                    },
+                    entityType: AEM.Bundle.TYPE,
+                    publicationId: publicationId
+                };
+                return bundle.requestMetadata(meta);
+            })
+            .then(function(result){
+                assert.ok(result.schema.id == bundleId);
                 done();
             })
             .catch(console.error);
     });
-});
 
-
-describe('#requestList', function(){
     it('should requestList', function(done){
         var body = {
-            data: {
-                entityType: AEM.Bundle.TYPE,
-                entityName: bundleId,
-                publicationId: publicationId
+            schema: {
+                id: bundleId
             },
-            permissions: []
+            entityType: AEM.Bundle.TYPE,
+            publicationId: publicationId
         };
-
-        authorization.verify(body)
-            .then(bundle.requestList)
+        bundle.requestList(body)
             .then(function(data){
                 assert.ok(data);
                 assert.ok(data.bundles);
@@ -72,21 +76,35 @@ describe('#requestList', function(){
             })
             .catch(console.error);
     });
-});
 
-describe('#requestMetadata', function(){
+    it('should requestList', function(done){
+        var body = {
+            schema: {
+                id: bundleId
+            },
+            entityType: AEM.Bundle.TYPE,
+            publicationId: publicationId
+        };
+        bundle.requestList(body)
+            .then(function(data){
+                assert.ok(data);
+                assert.ok(data.bundles);
+                done();
+            })
+            .catch(console.error);
+    });
+
     it('should requestMetadata for a product', function(done){
         var body = {
-            data: {
-                entityType: AEM.Bundle.TYPE,
-                entityName: bundleId,
-                publicationId: publicationId
-            }
+            schema: {
+                id: bundleId
+            },
+            entityType: AEM.Bundle.TYPE,
+            publicationId: publicationId
         };
         bundle.requestMetadata(body)
             .then(function(result){
-                console.log(result);
-                assert.ok(result.data.id == bundleId);
+                assert.ok(result.schema.id == bundleId);
                 done();
             })
             .catch(console.error)
@@ -94,10 +112,8 @@ describe('#requestMetadata', function(){
 
     it('should requestMetadata for all products in parallel', function(done){
         var body = {
-            data: {
-                entityType: AEM.Bundle.TYPE,
-                publicationId: publicationId
-            }
+            entityType: AEM.Bundle.TYPE,
+            publicationId: publicationId
         };
         var total;
         bundle.requestList(body)
@@ -106,11 +122,11 @@ describe('#requestMetadata', function(){
                 var promises = [];
                 data.bundles.forEach(function(value){
                     var obj = {
-                        data: {
-                            entityType: AEM.Bundle.TYPE,
-                            entityName: value.id,
-                            publicationId: publicationId
-                        }
+                        schema: {
+                            id: value.id
+                        },
+                        entityType: AEM.Bundle.TYPE,
+                        publicationId: publicationId
                     };
                     promises.push(bundle.requestMetadata(obj))
                 });
@@ -121,3 +137,5 @@ describe('#requestMetadata', function(){
             })
     });
 });
+
+

@@ -22,7 +22,7 @@ describe('Authorization', function() {
     describe('#verifyPermissions()', function() {
         it('should return permissions for a publication', function (done) {
             var body = {
-                data: {publicationId: publicationId}
+                schema: {publicationId: publicationId}
             };
             authorization.requestPermissions(body)
                 .then(authorization.verifyPermissions)
@@ -85,7 +85,7 @@ describe('Authorization', function() {
     describe('#verify()', function () {
         it("should verify in one go", function(done){
             var body = {
-                data: {
+                schema: {
                     publicationId: publicationId
                 },
                 permissions: ["producer_content_add"]
