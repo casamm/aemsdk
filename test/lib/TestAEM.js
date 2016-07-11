@@ -2,10 +2,14 @@ describe('AEM', function() {
 
     var assert = require('assert');
     var AEM = require("../../lib/aem");
-
+    
     describe('AEM', function () {
         it('should be available for use', function () {
-            assert.ok(AEM);
+            assert.ok(AEM.config.credentials.clientId);
+            assert.ok(AEM.config.credentials.clientSecret);
+            assert.ok(AEM.config.credentials.clientVersion);
+            assert.ok(AEM.config.credentials.deviceId);
+            assert.ok(AEM.config.credentials.deviceToken);
         });
     });
 

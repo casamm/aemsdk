@@ -2,7 +2,6 @@ describe('Authentication', function() {
 
     var assert = require('assert');
     var AEM = require("../../lib/aem");
-    AEM.config.credentials = require('../lib/credentials.json');
     var authentication = new AEM.Authentication();
 
     it('should return a token', function (done) {

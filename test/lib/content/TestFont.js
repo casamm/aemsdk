@@ -1,15 +1,14 @@
 var assert = require('assert');
 var AEM = require("../../../lib/aem");
-AEM.config.credentials = require('../credentials.json');
+//AEM.config.credentials = require('../credentials.json');
 var font = new AEM.Font();
 
 describe("#Font()", function(){
+
     it("should construct", function(){
         assert.ok(font);
     });
-});
 
-describe("#requestList", function(){
     it("should requestList", function(done){
         var body = {
             schema: {
@@ -24,9 +23,6 @@ describe("#requestList", function(){
             })
             .catch(console.error);
     });
-});
-
-describe('#requestMetadata, uploadFont, publish, unpublish, delete', function(){
 
     it("should uploadFont, publish, unpublish and delete", function(done){
         this.timeout(0);
@@ -40,14 +36,14 @@ describe('#requestMetadata, uploadFont, publish, unpublish, delete', function(){
                 publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
             },
             file: {
-                path: path.join(__dirname, "../resources/fonts/adobe.otf"), type: "device"
+                path: path.join(__dirname, "../resources/font/font.otf"), type: "device"
             }
         };
 
         font.create(body)
             .then(font.uploadFont)
             .then(function(result){
-                result.file = {path: path.join(__dirname, "../resources/fonts/adobe.woff"), type: "web"};
+                result.file = {path: path.join(__dirname, "../resources/font/font.woff"), type: "web"};
                 return result;
             })
             .then(font.uploadFont)

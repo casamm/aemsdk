@@ -1,6 +1,5 @@
 var assert = require('assert');
 var AEM = require("../../../lib/aem");
-AEM.config.credentials = require('../../lib/credentials.json');
 var bundle = new AEM.Bundle();
 var authorization = new AEM.Authorization();
 

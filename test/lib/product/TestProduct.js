@@ -1,6 +1,5 @@
 var assert = require('assert');
 var AEM = require('../../../lib/aem');
-AEM.config.credentials = require('../../lib/credentials.json');
 var authorization = new AEM.Authorization();
 var product = new AEM.Product();
 
@@ -247,7 +246,6 @@ describe('#Product()', function() {
                     if(list.collections[item].thumbnail) assert.ok(fs.existsSync(list.collections[item].thumbnail));
                     if(list.collections[item].background) assert.ok(fs.existsSync(list.collections[item].background));
                 }
-                //console.log(list.collections);
                 done();
             })
             .catch(console.error);

@@ -55,27 +55,11 @@ Save the manifest.xml in the root folder and archive all content (like select al
 
 Rename to .article and upload.
     Again, look at a regular .article archive content so you can figure out what you must do.
-    */
-//
-// Promise.retry = function(fn, times, delay) {
-//     return new Promise(function(resolve, reject){
-//         var error;
-//         var loop = function() {
-//             if (times == 0) {
-//                 reject(error);
-//             } else {
-//                 fn().then(resolve)
-//                     .catch(function(e){
-//                         times--;
-//                         error = e;
-//                         setTimeout(loop, delay);
-//                     });
-//             }
-//         };
-//         loop();
-//     });
-// };
 
-// .then(function(result){
-//     return Promise.retry(collection.unpublish.bind(collection, result), 10, 2000);
-// })
+ http://stackoverflow.com/questions/5754153/zip-archives-in-node-js
+
+ http://serverfault.com/questions/39071/does-windows-have-a-built-in-zip-command-for-the-command-line
+ http://superuser.com/questions/110991/can-you-zip-a-file-from-the-command-prompt-using-only-windows-built-in-capabili
+
+ http://serverfault.com/questions/147902/windows-command-line-built-in-compression-extraction-tool?rq=1
+    */
