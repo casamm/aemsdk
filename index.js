@@ -63,3 +63,37 @@ Rename to .article and upload.
 
  http://serverfault.com/questions/147902/windows-command-line-built-in-compression-extraction-tool?rq=1
     */
+
+/*
+
+
+ function iterate(directory) {
+ return new Promise(function(resolve, reject){
+ var files = [];
+ fs.readdir(directory, function(error, list){
+ if(error) {
+ reject(error)
+ } else {
+ list.forEach(function(file){
+ file = path.resolve(directory, file);
+ fs.stat(file, function(error, stat){
+ if(error) {
+ reject(error);
+ } else {
+ if(stat.isDirectory()) {
+ iterate(file).then(function(result){
+ files.push(result);
+ if(files.length == list.length) resolve(files);
+ });
+ } else {
+ files.push(file);
+ if(files.length == list.length) resolve(files);
+ }
+ }
+ });
+ });
+ }
+ });
+ });
+ }
+ */

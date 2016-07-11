@@ -13,12 +13,22 @@ describe('#Article()', function () {
         assert.ok(article, "constructor test");
     });
 
-    it('should test spawn', function(done){
+    it('should iterate a directory', function(done){
+        this.timeout(0);
+        body = {
+            path: path.join(__dirname, "../../../lib")
+        };
+        article.iterateArticleDirectory(body)
+            .then(function(result){console.log(result); done()})
+            .catch(console.error);
+    });
+
+    it('should create a zip', function(done){
         this.timeout(0);
         var fs = require('fs');
         var options = {
-            root: path.join(__dirname, "../resources/html/"),
-            folder: "article/",
+            root: path.join(__dirname, "../resources/html"),
+            folder: "article",
             filename: "article.zip"
         };
 

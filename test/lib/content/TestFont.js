@@ -1,6 +1,5 @@
 var assert = require('assert');
 var AEM = require("../../../lib/aem");
-//AEM.config.credentials = require('../credentials.json');
 var font = new AEM.Font();
 
 describe("#Font()", function(){

@@ -2,7 +2,6 @@ describe('Entity', function() {
 
     var assert = require('assert');
     var AEM = require("../../../lib/aem");
-    AEM.config.credentials = require('../credentials.json');
     var entity = new AEM.Entity();
 
     var body = {

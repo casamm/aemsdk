@@ -1,6 +1,5 @@
 var assert = require('assert');
 var AEM = require("../../../lib/aem");
-AEM.config.credentials = require('../../lib/credentials.json');
 
 var layout = new AEM.Layout();
 var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
