@@ -2,128 +2,197 @@ var assert = require('assert');
 var AEM = require("../../../lib/aem");
 var article = new AEM.Article();
 
-var entityName = "test1-a";
-var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
-
+var fs = require("fs");
 var path = require("path");
+var datum;
 
 describe('#Article()', function () {
-    
+
+    before(function() {
+        datum = {
+            schema: {
+                entityName: "nodejs",
+                entityType: "article",
+                title: "article from nodejs",
+                publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
+            },
+            article: {
+                src: path.join(__dirname, "../resources/html/article"),
+                generateManifest: true, // default is true
+                deleteSourceDir: false // default is false
+            },
+            images: [
+                {path: path.join(__dirname, '../resources/image/thumbnail.png'), type: "thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'},
+                {path: path.join(__dirname, '../resources/image/socialSharing.png'), type: "socialSharing"}
+            ],
+            notify: function(result){
+                if(result.length) { // status
+                    //console.log(Math.round(result[0].numerator/result[0].denominator * 100));
+                } else { // workflow
+                    //console.log(result.status)
+                }
+            }
+        };
+    });
+
     it('should be instantiated', function () {
         assert.ok(article, "constructor test");
     });
 
-    it('should iterate a directory', function(done){
+    it('should requestManifest', function(done){
         this.timeout(0);
-        body = {
-            path: path.join(__dirname, "../../../lib")
-        };
-        article.iterateArticleDirectory(body)
-            .then(function(result){console.log(result); done()})
+        article.create(datum)
+            .then(article.buildArticle)
+            .then(article.uploadArticle)
+            .then(article.addStatusObserver)
+            .then(article.requestMetadata)
+            .then(article.requestManifest)
+            .then(function(result){
+                assert.ok(result.contentUrl);
+                return result;
+            })
+            .then(article.delete)
+            .then(function(){done()})
             .catch(console.error);
     });
 
-    it('should create a zip', function(done){
-        this.timeout(0);
-        var fs = require('fs');
-        var options = {
-            root: path.join(__dirname, "../resources/html"),
-            folder: "article",
-            filename: "article.zip"
-        };
-
-        article.zip(options)
+    it('should requestMetadata', function(done){
+        article.create(datum)
+            .then(article.requestMetadata)
             .then(function(result){
-                assert.ok(fs.existsSync(path.join(options.root, options.filename)));
+                assert.ok(result.schema);
+                return result;
+            })
+            .then(article.delete)
+            .then(function(){done()})
+            .catch(console.error);
+    });
+
+    it('should requestStatus', function(done){
+        article.create(datum)
+            .then(article.requestStatus)
+            .then(function(result){
+                assert.ok(result.status);
+                return result;
+            })
+            .then(article.delete)
+            .then(function(){done()})
+            .catch(console.error);
+    });
+
+    it('should build an article file', function(done){
+        article.buildArticle(datum)
+            .then(function(result){
+                assert.ok(fs.existsSync(result.article.path)); // archive exists
+                assert.ok(fs.existsSync(datum.article.src) != datum.article.deleteSourceDir); // if deleteSourceDirectory folder got deleted
+                assert.ok(fs.existsSync(path.join(datum.article.src, "/manifest.xml")) != datum.article.generateManifest); //if generated, it's deleted
+                fs.unlinkSync(result.article.path);
+                done();
+            })
+            .catch(console.error)
+    });
+
+    it('should create, build an article file and publish', function(done){
+        this.timeout(0);
+        article.create(datum)
+            .then(article.buildArticle)
+            .then(article.uploadArticle)
+            .then(article.addStatusObserver)
+            .then(article.requestMetadata)
+            .then(article.delete)
+            .then(function(){done()})
+            .catch(console.error)
+    });
+
+    it('should upload an image and delete', function(done){
+        this.timeout(0);
+        article.create(datum)
+            .then(article.uploadImages)
+            .then(article.update)
+            .then(article.seal)
+            .then(article.delete)
+            .then(function(result){
                 done();
             })
             .catch(console.error);
     });
 
+    it('should upload an image and article, publish, unpublish, delete', function(done){
+        this.timeout(0);
+        article.create(datum)
+            .then(article.uploadImages)
+            .then(article.update)
+            .then(article.seal) // version change
+            .then(article.buildArticle)
+            .then(article.uploadArticle)
+            .then(article.addStatusObserver) // uploadArticle progress observer
+            .then(article.requestMetadata) // request latest schema version
+            .then(article.publish)
+            .then(article.addWorkflowObserver) // publish workflow observer
+            .then(article.unpublish)
+            .then(article.addWorkflowObserver)
+            .then(article.delete)
+            .then(function(){done()})
+            .catch(console.error);
+    });
+
     it('should requestList', function(done){
-        var body = {
-            schema: {
-                entityType: AEM.Article.TYPE,
-                publicationId: publicationId
-            }
-        };
-        article.requestList(body)
+        article.requestList(datum)
             .then(function(result){
                 assert.ok(result);
                 assert.ok(result.schema);
-                assert.ok(result.articles);
+                assert.ok(result.entities);
                 done();
             })
             .catch(console.error);
     });
 
     it('should requestList with query', function(done){
-        var body = {
-            schema: {
-                publicationId: publicationId
-            },
-            query: "entity?pageSize=100&q=entityType==article"
-        };
-        article.requestList(body)
+        datum.query = "pageSize=100&q=entityType==article";
+        article.requestList(datum)
             .then(function(result){
-                assert.ok(result.articles);
+                assert.ok(result.entities);
                 done();
             })
             .catch(console.error);
     });
 
     it('should requestList with metadata', function(done){
-        var body = {
-            schema: {
-                entityType: AEM.Article.TYPE,
-                publicationId: publicationId
-            }
-        };
-        article.requestList(body)
+        article.requestList(datum)
             .then(function(result){
-                var promises = [];
-                result.articles.forEach(function(item){
+                Promise.all(result.entities.map(function(item){
                     var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
-                    var body = {
+                    var data = {
                         schema: {
                             entityType: matches[1],
                             entityName: matches[2],
-                            publicationId: publicationId
+                            publicationId: result.schema.publicationId
                         }
                     };
-                    promises.push(article.requestMetadata(body));
-                });
-                Promise.all(promises).then(function(data){
-                    assert.ok(result.articles.length == data.length);
-                    done();
-                }).catch(console.error);
+                    return article.requestMetadata(data);
+                })).then(function(data){
+                        assert.ok(result.entities.length == data.length);
+                        done();
+                    }).catch(console.error);
             })
             .catch(console.error);
     });
 
     it('should requestList with status', function(done){
-        var body = {
-            schema: {
-                entityType: AEM.Article.TYPE,
-                publicationId: publicationId
-            }
-        };
-        article.requestList(body)
+        article.requestList(datum)
             .then(function(result){
-                var promises = [];
-                result.articles.forEach(function(item){
+                Promise.all(result.entities.map(function(item){
                     var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
-                    var body = {
+                    var data = {
                         schema: {
                             entityType: matches[1],
                             entityName: matches[2],
-                            publicationId: publicationId
+                            publicationId: result.schema.publicationId
                         }
                     };
-                    promises.push(article.requestStatus(body));
-                });
-                Promise.all(promises).then(function(data){
-                    assert.ok(result.articles.length == data.length);
+                    return article.requestStatus(data);
+                })).then(function(data){
+                    assert.ok(result.entities.length == data.length);
                     data.forEach(function(item){
                         assert.ok(item.status);
                     });
@@ -133,182 +202,4 @@ describe('#Article()', function () {
             .catch(console.error);
     });
 
-    it('should requestManifest', function(done){
-        var body = {
-            schema: {
-                entityName: entityName,
-                entityType: AEM.Article.TYPE,
-                publicationId: publicationId
-            }
-        };
-        article.requestMetadata(body)
-            .then(function(result){
-                article.requestManifest(result)
-                    .then(function(entity){
-                        assert.ok(entity.contentUrl);
-                        done();
-                    })
-                    .catch(console.error);
-            })
-            .catch(console.error);
-    });
-
-    it('should requestMetadata', function(done){
-        this.timeout(5000);
-         var body = {
-             schema: {
-                 entityName: entityName,
-                 entityType: AEM.Article.TYPE,
-                 publicationId: publicationId
-             }
-         };
-        article.requestMetadata(body)
-            .then(function(result){
-                assert.ok(result.schema);
-                done();
-            })
-            .catch(console.error);
-    });
-
-    it('should requestStatus', function(done){
-        var body = {
-            schema: {
-                entityName: entityName,
-                entityType: AEM.Article.TYPE,
-                publicationId: publicationId
-            }
-        };
-        article.requestStatus(body)
-            .then(function(result){
-                assert.ok(result.status);
-                done();
-            })
-            .catch(console.error);
-    });
-
-    it('should publish', function(done){
-        this.timeout(0);
-        var body = {
-            schema: {
-                entityName: entityName,
-                entityType: AEM.Article.TYPE,
-                publicationId: publicationId
-            }
-        };
-        article.requestMetadata(body)
-            .then(article.publish)
-            .then(function(result){
-                assert.ok(result);
-                assert.ok(result.workflowId);
-                done();
-            })
-            .catch(console.error);
-    });
-
-    it('should upload and delete', function(done){
-        this.timeout(0);
-        var path = require("path");
-        var body = {
-            schema: {
-                entityName: "nodejs",
-                entityType: "article",
-                title: "article from nodejs",
-                publicationId: publicationId
-            },
-            file: {path: path.join(__dirname, '../resources/html/art.article'), type: "folio"}
-        };
-        article.create(body)
-            .then(article.uploadArticle)
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        article.requestStatus(result).then(function(data){
-                            switch(data.status[0].eventType) {
-                                case "progress": break;
-                                case "success": clearInterval(id); resolve(data); break;
-                                case "failure": clearInterval(id); reject(data); break;
-                            }
-                        })
-                    }, 1000);
-                });
-            })
-            .then(article.requestMetadata)
-            .then(article.delete)
-            .then(function(result){
-                done();
-            })
-            .catch(console.error);
-    });
-
-    it('should upload, publish, unpublish and delete', function(done){
-        this.timeout(0);
-        var body = {
-            schema: {
-                entityName: "nodejs",
-                entityType: "article",
-                title: "article from nodejs",
-                publicationId: publicationId
-            }
-        };
-
-        article.create(body)
-            .then(function(result){
-                result.file = {path: path.join(__dirname, '../resources/image/thumbnail.png'), type: "thumbnail"};
-                return result;
-            })
-            .then(article.uploadImage)
-            .then(article.update)
-            .then(article.seal)
-            .then(function(result){
-                result.file = {path: path.join(__dirname, '../resources/html/art.article'), type: "folio"};
-                return result;
-            })
-            .then(article.uploadArticle)
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        article.requestStatus(result).then(function(data){
-                            switch(data.status[0].eventType) {
-                                case "progress": break;
-                                case "success": clearInterval(id); resolve(data); break;
-                                case "failure": clearInterval(id); reject(data); break;
-                            }
-                        }).catch(function(error){clearInterval(id); reject(error)});
-                    }, 1000);
-                });
-            })
-            .then(article.requestMetadata)
-            .then(article.publish)
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        article.requestStatus(result).then(function(data){
-                            switch(data.status[0].eventType) {
-                                case "progress": break;
-                                case "success": clearInterval(id); resolve(data); break;
-                                case "failure": clearInterval(id); reject(data); break;
-                            }
-                        }).catch(function(error){clearInterval(id); reject(error)})
-                    }, 1000)
-                });
-            })
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        article.unpublish(result).then(function(data){clearInterval(id); resolve(data)});
-                    }, 1000);
-                });
-            })
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        article.delete(result).then(function(data){clearInterval(id); resolve(data)})
-                    }, 1000);
-                })
-            })
-            .then(function(result){
-                done();
-            })
-            .catch(console.error);
-    });
 });

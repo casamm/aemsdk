@@ -6,7 +6,6 @@ describe('Authorization', function() {
     var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
 
     describe('#requestPermissions()', function() {
-
         it('should return list of permissions for all publications', function (done) {
             var body = {};
             authorization.requestPermissions(body).then(function(data){

@@ -13,26 +13,19 @@ describe('#Product()', function() {
     });
 
     it('should check for permissions', function(done){
-        var body = {
-            schema: {
-                entityType: AEM.Product.TYPE,
-                publicationId: publicationId
-            },
+        var meta = {
+            schema: {publicationId: publicationId},
             permissions: ['product_add', 'product_view']
         };
-        authorization.verify(body)
-            .then(function(data){
-                assert.ok(data.permissions.length == 0);
-            })
+
+        var datum = {
+            schema: { id: productId },
+            entityType: AEM.Product.TYPE,
+            publicationId: publicationId
+        };
+        authorization.verify(meta)
             .then(function(){
-                var meta = {
-                    schema: {
-                        id: productId
-                    },
-                    entityType: AEM.Product.TYPE,
-                    publicationId: publicationId
-                };
-                return product.requestMetadata(meta);
+                return product.requestMetadata(datum);
             })
             .then(function(result){
                 assert.ok(result.schema.id == productId);
@@ -46,19 +39,16 @@ describe('#Product()', function() {
             schema: {
                 id: productId
             },
+            update: {
+                label: "new label"
+            },
             entityType: AEM.Product.TYPE,
-            publicationId: publicationId,
+            publicationId: publicationId
         };
-        var random = Math.random();
         product.requestMetadata(body)
-            .then(function(result){
-                assert.ok(result);
-                result.schema.label = "label " + random;
-                return result;
-            })
             .then(product.update)
             .then(function(result){
-                assert.ok(result.schema.label == "label " + random);
+                assert.ok(result.schema.label == "new label");
                 done();
             })
             .catch(console.error);
@@ -66,13 +56,14 @@ describe('#Product()', function() {
 
     it('should requestList', function(done){
         var body = {
+            schema: {},
             entityType: AEM.Product.TYPE,
             publicationId: publicationId
         };
         product.requestList(body)
             .then(function(data){
                 assert.ok(data);
-                assert.ok(data.products);
+                assert.ok(data.entities);
                 done();
             })
             .catch(console.error);
@@ -96,27 +87,25 @@ describe('#Product()', function() {
 
     it('should requestMetadata for all products in parallel', function(done){
         this.timeout(5000);
-        var body = {
+        var datum = {
+            schema: {},
             entityType: AEM.Product.TYPE,
             publicationId: publicationId
         };
         var total;
-        product.requestList(body)
-            .then(function(data){
-                total = data.products.length;
-                var promises = [];
-                data.products.forEach(function(value){
-                    var obj = {
+        product.requestList(datum)
+            .then(function(result){
+                Promise.all(result.entities.map(function(value){
+                    var data = {
                         schema: {
                             id: value.id
                         },
                         entityType: AEM.Product.TYPE,
                         publicationId: publicationId
                     };
-                    promises.push(product.requestMetadata(obj))
-                });
-                Promise.all(promises).then(function(data){
-                    assert.ok(data.length == total);
+                    return product.requestMetadata(data);
+                })).then(function(data){
+                    assert.ok(data.length == result.entities.length);
                     done();
                 });
             })
@@ -124,27 +113,27 @@ describe('#Product()', function() {
 
     it("should get list from both", function(done){
         var bundle = new AEM.Bundle();
-        var body = {
+        var datum = {
             schema: {
                 id: productId
             },
             entityType: AEM.Product.TYPE,
             publicationId: publicationId
         };
-        var body2 = {
+        var datum2 = {
             schema: {
                 id: "subscription1"
             },
-            publicationId: publicationId,
-            entityType: AEM.Bundle.TYPE
+            entityType: AEM.Bundle.TYPE,
+            publicationId: publicationId
         };
-        product.requestList(body)
+        product.requestList(datum)
             .then(function(result){
-                if(body.products && body2.bundles) done();
+                if(datum.entities && datum2.entities) done();
             });
-        bundle.requestList(body2)
+        bundle.requestList(datum2)
             .then(function(result){
-                if(body.products && body2.bundles) done();
+                if(datum.entities && datum2.entities) done();
             });
     });
 
@@ -153,117 +142,124 @@ describe('#Product()', function() {
 
         var collection = new AEM.Collection();
         var product = new AEM.Product();
-        var body = {
+        var datum = {
             schema: {
                 entityType: AEM.Collection.TYPE,
                 publicationId: publicationId
             }
         };
 
-        collection.requestList(body) // requestList
+        collection.requestList(datum) // requestList
             .then(function(data){ // requestMetadata
-                var promises = [];
-                data.collections.forEach(function(item){
+                return Promise.all(data.entities.map(function(item){
                     var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
                     var meta = {schema: {entityName: matches[2], entityType: matches[1], publicationId: publicationId}};
-                    promises.push(collection.requestMetadata(meta));
-                });
-                return Promise.all(promises).then(function(result){
-                    data.collections = {};
+                    return collection.requestMetadata(meta);
+                })).then(function(result){
+                    data.entities = {};
                     result.forEach(function(item){
-                        data.collections[item.schema.entityName] = item.schema;
+                        data.entities[item.schema.entityName] = item.schema;
                     });
                     return data;
                 });
             })
-            .then(function(list){ // requestStatus
+            .then(function(data){ // requestStatus
                 var promises = [];
-                for (var property in list.collections) {
-                    var body = {schema: list.collections[property]};
+                for (var property in data.entities) {
+                    var body = {schema: data.entities[property]};
                     promises.push(collection.requestStatus(body));
                 }
                 return Promise.all(promises).then(function(result){
                     result.forEach(function(item){
-                        list.collections[item.schema.entityName].isPublished = item.status.length == 2 && item.status[1].eventType == 'success' ? true : false;
+                        data.entities[item.schema.entityName].isPublished = item.status.length == 2 && item.status[1].eventType == 'success' ? true : false;
                     });
-                    return list;
+                    return data;
                 });
             })
-            .then(function(list){ // productList
-                var body = {
+            .then(function(data){ // productList
+                var meta = {
+                    schema: {},
                     entityType: AEM.Product.TYPE,
                     publicationId: publicationId
                 };
-                return product.requestList(body).then(function(data){
-                    for(property in list.collections) {
-                        list.collections[property].productIds.forEach(function(productId){
-                            list.collections[property].products = {};
-                            data.products.forEach(function(item){
-                                if(productId == item.id) {
-                                    delete item.id;
-                                    list.collections[property].products[productId] = item;
-                                }
+                return product.requestList(meta)
+                    .then(function(product){
+                        for(property in data.entities) {
+                            data.entities[property].productIds.forEach(function(productId){
+                                data.entities[property].products = {};
+                                product.entities.forEach(function(item){
+                                    if(productId == item.id) {
+                                        delete item.id;
+                                        data.entities[property].products[productId] = item;
+                                    }
+                                });
                             });
-                        });
-                    }
-                    return list;
-                });
+                        }
+                        return data;
+                    });
             })
-            .then(function(list){ // thumbnail
+            .then(function(data){ // download thumbnail
                 var promises = [];
-                for(property in list.collections) {
-                    if(list.collections[property]._links.thumbnail) {
-                        var body = {schema: list.collections[property], href: "images/thumbnail"};
+                for(property in data.entities) {
+                    if(data.entities[property]._links.thumbnail) {
+                        var body = {schema: data.entities[property], href: "images/thumbnail"};
                         promises.push(collection.requestEntity(body));
                     }
                 }
                 return Promise.all(promises).then(function(result){
                     result.forEach(function(item){
-                        list.collections[item.schema.entityName].thumbnail = item.thumbnail;
+                        data.entities[item.schema.entityName].thumbnail = item.thumbnail;
                     });
-                    return list;
+                    return data;
                 });
             })
-            .then(function(list){ // background
+            .then(function(data){ // download background
                 var promises = [];
-                for(property in list.collections) {
-                    if(list.collections[property]._links.background) {
-                        var body = {schema: list.collections[property], href: "images/background"};
+                for(property in data.entities) {
+                    if(data.entities[property]._links.background) {
+                        var body = {schema: data.entities[property], href: "images/background"};
                         promises.push(collection.requestEntity(body));
                     }
                 }
                 return Promise.all(promises).then(function(result){
                     result.forEach(function(item){
-                        list.collections[item.schema.entityName].background = item.background;
+                        data.entities[item.schema.entityName].background = item.background;
                     });
-                    return list;
+                    return data;
                 });
             })
-            .then(function(list){
+            .then(function(data){
                 var fs = require('fs');
+                var hasImages = false;
 
-                for(item in list.collections) {
-                    if(list.collections[item].thumbnail) assert.ok(fs.existsSync(list.collections[item].thumbnail));
-                    if(list.collections[item].background) assert.ok(fs.existsSync(list.collections[item].background));
+                for(item in data.entities) {
+                    if(data.entities[item].thumbnail) {
+                        hasImages = true;
+                        assert.ok(fs.existsSync(data.entities[item].thumbnail))
+                    }
+                    if(data.entities[item].background) {
+                        hasImages = true;
+                        assert.ok(fs.existsSync(data.entities[item].background));
+                    }
                 }
+                assert.ok(hasImages);
                 done();
             })
             .catch(console.error);
     });
 });
 
-
 // describe('#create()', function(){
 //     it('should create', function(done){
 //         var body = {
 //             schema: {
-//                 entityType: AEM.Product.TYPE,
-//                 publicationId: publicationId,
 //                 id: productId,
 //                 label: "Product 1",
 //                 isFree: false,
 //                 isDistributionRestricted: false
-//             }
+//             },
+//             entityType: AEM.Product.TYPE,
+//             publicationId: publicationId,
 //         };
 //         product.create(body)
 //             .then(function(result){
@@ -279,10 +275,10 @@ describe('#Product()', function() {
 //     it('should delete', function(done){
 //         var body = {
 //             schema: {
-//                 entityType: AEM.Product.TYPE,
-//                 publicationId: publicationId,
 //                 id: productId
 //             },
+//             entityType: AEM.Product.TYPE,
+//             publicationId: publicationId,
 //             permissions: ['product_add', 'product_view'] //permissions to check for
 //         };
 //         authorization.verify(body)

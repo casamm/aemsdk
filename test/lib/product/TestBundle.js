@@ -70,7 +70,7 @@ describe("#Bundle()", function(){
         bundle.requestList(body)
             .then(function(data){
                 assert.ok(data);
-                assert.ok(data.bundles);
+                assert.ok(data.entities);
                 done();
             })
             .catch(console.error);
@@ -87,7 +87,7 @@ describe("#Bundle()", function(){
         bundle.requestList(body)
             .then(function(data){
                 assert.ok(data);
-                assert.ok(data.bundles);
+                assert.ok(data.entities);
                 done();
             })
             .catch(console.error);
@@ -110,16 +110,16 @@ describe("#Bundle()", function(){
     });
 
     it('should requestMetadata for all products in parallel', function(done){
+        this.timeout(0);
         var body = {
+            schema: {},
             entityType: AEM.Bundle.TYPE,
             publicationId: publicationId
         };
         var total;
         bundle.requestList(body)
             .then(function(data){
-                total = data.bundles.length;
-                var promises = [];
-                data.bundles.forEach(function(value){
+                Promise.all(data.entities.map(function(value){
                     var obj = {
                         schema: {
                             id: value.id
@@ -127,10 +127,9 @@ describe("#Bundle()", function(){
                         entityType: AEM.Bundle.TYPE,
                         publicationId: publicationId
                     };
-                    promises.push(bundle.requestMetadata(obj))
-                });
-                Promise.all(promises).then(function(data){
-                    assert.ok(data.length == total);
+                    return bundle.requestMetadata(obj);
+                })).then(function(result){
+                    assert.ok(result.length == data.entities.length);
                     done();
                 });
             })

@@ -1,6 +1,5 @@
 var assert = require('assert');
 var AEM = require("../../../lib/aem");
-AEM.config.credentials = require('../../lib/credentials.json');
 var cardTemplate = new AEM.CardTemplate();
 
 var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
@@ -19,7 +18,7 @@ describe('#CardTemplate()', function () {
         };
         cardTemplate.requestList(body)
             .then(function(result){
-                assert.ok(result.cardTemplates);
+                assert.ok(result.entities);
                 done();
             })
             .catch(console.error);
@@ -30,11 +29,11 @@ describe('#CardTemplate()', function () {
             schema: {
                 publicationId: publicationId
             },
-            query: "entity?pageSize=100&q=entityType==cardTemplate"
+            query: "pageSize=100&q=entityType==cardTemplate"
         };
         cardTemplate.requestList(body)
             .then(function(result){
-                assert.ok(result.cardTemplates);
+                assert.ok(result.entities);
                 done();
             })
             .catch(console.error);
@@ -50,8 +49,7 @@ describe('#CardTemplate()', function () {
         };
         cardTemplate.requestList(body)
             .then(function(result){
-                var promises = [];
-                result.cardTemplates.forEach(function(item){
+                Promise.all(result.entities.map(function(item){
                     var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
                     var body = {
                         schema: {
@@ -60,11 +58,9 @@ describe('#CardTemplate()', function () {
                             publicationId: publicationId
                         }
                     };
-                    promises.push(cardTemplate.requestMetadata(body));
-                });
-                Promise.all(promises)
-                    .then(function(data){
-                        assert.ok(result.cardTemplates.length == data.length);
+                    return cardTemplate.requestMetadata(body);
+                })).then(function(data){
+                        assert.ok(result.entities.length == data.length);
                         done();
                     })
                     .catch(console.error);
@@ -82,9 +78,8 @@ describe('#CardTemplate()', function () {
         };
         cardTemplate.requestList(body)
             .then(function(result){
-                var promises = [];
 
-                result.cardTemplates.forEach(function(item){
+                Promise.all(result.entities.map(function(item){
                     var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
                     var body = {
                         schema: {
@@ -93,14 +88,12 @@ describe('#CardTemplate()', function () {
                             publicationId: publicationId
                         }
                     };
-                    promises.push(cardTemplate.requestStatus(body));
-                });
-
-                Promise.all(promises).then(function(items){
+                    return cardTemplate.requestStatus(body);
+                })).then(function(items){
                     items.forEach(function(item){
                         assert.ok(item.status);
                     });
-                    assert.ok(items.length, result.cardTemplates.length == items.length);
+                    assert.ok(items.length, result.entities.length == items.length);
                     done();
                 });
             });

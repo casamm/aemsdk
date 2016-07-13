@@ -1,6 +1,5 @@
 var assert = require('assert');
 var AEM = require("../../../lib/aem");
-AEM.config.credentials = require('../../lib/credentials.json');
 
 var publication = new AEM.Publication();
 var authorization = AEM.authorization;
@@ -36,30 +35,13 @@ describe('Publication', function() {
         var body = {
             schema: {
                 publicationId: publicationId
+            },
+            notify: function(result) {
+                //console.log(result.status);
             }
         };
         publication.preflight(body)
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var body = {
-                        schema: {
-                            entityType: AEM.Publication.TYPE,
-                            entityName: result.schema.publicationId,
-                            publicationId: result.schema.publicationId
-                        }
-                    };
-                    var id = setInterval(function(){
-                        publication.requestStatus(body)
-                            .then(function(result){
-                                switch(result.status[0].eventType) {
-                                    case "progress": break;
-                                    case "success": clearInterval(id); resolve(result); break;
-                                    case "failure": clearInterval(id); reject("preflight failure"); break;
-                                }
-                            });
-                    }, 500);
-                });
-            })
+            .then(publication.addWorkflowObserver)
             .then(function(result){
                 done();
             })
@@ -127,14 +109,13 @@ describe('Publication', function() {
                     });
                 });
 
-                Promise.all(promises).then(function(result){
-                    result.forEach(function(item){
-                        assert.ok(item.status);
-                    });
-                    done();
-                }).catch(function(error){
-                    console.log(error)
-                });
+                return Promise.all(promises)
+                    .then(function(result){
+                        result.forEach(function(item){
+                            assert.ok(item.status);
+                        });
+                        done();
+                    }).catch(console.error);
             })
             .catch(console.error);
     });

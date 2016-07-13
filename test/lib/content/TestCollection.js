@@ -1,6 +1,6 @@
 var assert = require('assert');
 var AEM = require("../../../lib/aem");
-AEM.config.credentials = require('../../lib/credentials.json');
+
 var collection = new AEM.Collection();
 var authorization = AEM.authorization;
 var path = require("path");
@@ -17,7 +17,7 @@ var entity = {
 
 var thumbnail = {path: path.join(__dirname, '../resources/image/thumbnail.png'), type: "thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
 var background = {path: path.join(__dirname, '../resources/image/background.png'), type: "background", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
-var social = {path: path.join(__dirname, '../resources/image/social.png'), type: "socialSharing", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var socialSharing = {path: path.join(__dirname, '../resources/image/socialSharing.png'), type: "socialSharing", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
 
 var contentElements = [
     {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test1-a"},
@@ -28,6 +28,48 @@ describe('#Collection()', function () {
     it('should be instantiated', function () {
         assert.ok(collection, 'constructor test');
     });
+});
+
+describe("#topLevelPhoneContent unpublish", function(){
+    var data = {
+        schema: {
+            entityName: "topLevelPhoneContent",
+            entityType: AEM.Collection.TYPE,
+            publicationId: publicationId
+        }
+    };
+    it("should not unpublish", function(done){
+        collection.requestMetadata(data)
+            .then(collection.unpublish)
+            .then(function(){
+                assert.ok(false, "should not be able to unpublish");
+            })
+            .catch(function(){
+                done();
+            });
+    });
+
+    it("publish all", function(done){
+        this.timeout(0);
+        collection.requestList(data)
+            .then(collection.publishEntities)
+            .then(collection.addWorkflowObserver)
+            .then(function(){
+                done();
+            })
+            .catch(console.error);
+    });
+
+    it("unpublish all", function(done){
+        this.timeout(0);
+        collection.requestList(data)
+            .then(collection.unpublishEntities)
+            .then(collection.addWorkflowObserver)
+            .then(function(){
+                done();
+            })
+            .catch(console.error);
+    })
 });
 
 describe('#create()', function () {
@@ -51,41 +93,12 @@ describe('#create()', function () {
             })
             .catch(console.error);
     });
-    it('should create two simultaneously', function(done){
-        var body = {schema: {entityName: "demo", title: "demo", entityType: AEM.Collection.TYPE, publicationId: publicationId}};
-        var body2 = {schema: {entityName: "demo1", title: "demo1", entityType: AEM.Collection.TYPE, publicationId: publicationId}};
-        var col, col1;
-
-        collection.create(body)
-            .then(function(result){
-                col = result;
-                assert.ok(result.schema.entityName == "demo");
-                return result;
-            })
-            .then(collection.delete)
-            .then(function(result){
-                if(col && col1) done();
-            })
-            .catch(console.error);
-
-        collection.create(body2)
-            .then(function(result){
-                col1 = result;
-                assert.ok(result.schema.entityName == "demo1");
-                return result;
-            })
-            .then(collection.delete)
-            .then(function(result){
-                if(col && col1) done();
-            })
-            .catch(console.error)
-    });
 });
 
 describe("#requestList()", function(){
     it("should list", function(done){
         var body2 = {
-            query: "collection?pageSize=5&q=entityType==collection",
+            query: "pageSize=5&q=entityType==collection",
             schema: {
                 entityType: entity.entityType,
                 publicationId: entity.publicationId
@@ -93,7 +106,7 @@ describe("#requestList()", function(){
         };
         collection.requestList(body2)
             .then(function(data){
-                assert.ok(data.collections);
+                assert.ok(data.entities);
                 done();
             })
             .catch(console.error);
@@ -102,7 +115,7 @@ describe("#requestList()", function(){
     it('should request for all collection elements', function(done){
         this.timeout(15000);
         var body = {
-            query: "collection?pageSize=5&q=entityType==collection",
+            query: "pageSize=5&q=entityType==collection",
             schema: {
                 entityType: entity.entityType,
                 publicationId: entity.publicationId
@@ -113,8 +126,8 @@ describe("#requestList()", function(){
             .then(function(data){
                 return new Promise(function(resolve, reject){
                     var promises = [];
-                    for(var i=0; i<data.collections.length; i++) {
-                        var matches = data.collections[i].href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
+                    for(var i=0; i<data.entities.length; i++) {
+                        var matches = data.entities[i].href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
                         var body2 = JSON.parse(JSON.stringify(body));
                         body2.schema = {
                             entityName: matches[2],
@@ -128,10 +141,8 @@ describe("#requestList()", function(){
             })
             .then(function(data){
                 assert.ok(data);
-
                 data.forEach(function(value){
                     assert.ok(value);
-                    //console.log(data[i].entity.title);
                 });
             })
             .then(function(){done()})
@@ -156,14 +167,14 @@ describe('#requestMetadata()', function () {
 describe('#uploadImage()', function () {
 
     it('should upload thumbnail', function (done) {
-        this.timeout(10000);
+        this.timeout(0);
         var body = {
             schema: entity,
-            file: thumbnail
+            images: [thumbnail]
         };
 
         collection.create(body)
-            .then(collection.uploadImage)
+            .then(collection.uploadImages)
             .then(collection.update)
             .then(collection.seal)
             .then(collection.delete)
@@ -172,13 +183,13 @@ describe('#uploadImage()', function () {
     });
 
     it('should upload background', function (done) {
-        this.timeout(15000);
+        this.timeout(0);
         var body = {
             schema: entity,
-            file: background
+            images: [background]
         };
         collection.create(body)
-            .then(collection.uploadImage)
+            .then(collection.uploadImages)
             .then(collection.update)
             .then(collection.seal)
             .then(collection.delete)
@@ -187,23 +198,13 @@ describe('#uploadImage()', function () {
     });
 
     it('should upload thumbnail, background and socialSharing', function (done) {
-        this.timeout(25000);
+        this.timeout(0);
         var body = {
             schema: entity,
-            file: thumbnail
+            images: [thumbnail, background, socialSharing]
         };
         collection.create(body)
-            .then(collection.uploadImage)
-            .then(function(data){
-                data.file = background;
-                return data;
-            })
-            .then(collection.uploadImage)
-            .then(function(data){
-                data.file = social;
-                return data;
-            })
-            .then(collection.uploadImage)
+            .then(collection.uploadImages)
             .then(collection.update)
             .then(collection.seal)
             .then(collection.delete)
@@ -214,21 +215,19 @@ describe('#uploadImage()', function () {
 
 describe('#update()', function () {
     var body = {
-        schema: entity
+        schema: entity,
+        update: {
+            title: "newtitle",
+            shortTitle: "new short title"
+        }
     };
-
-    it('should create', function (done) {
+    it('should update', function (done) {
         collection.create(body)
-            .then(function(res){
-                res.schema.title = "title";
-                res.schema.shortTitle = "nodejs2";
-                return res;
-            })
             .then(collection.update)
-            .then(function(res) {
-                assert.ok(res.schema.title == "title");
-                assert.ok(res.schema.shortTitle == "nodejs2");
-                return res;
+            .then(function(data) {
+                assert.ok(data.schema.title == "newtitle");
+                assert.ok(data.schema.shortTitle == "new short title");
+                return data;
             })
             .then(collection.delete)
             .then(function(){done()})
@@ -279,40 +278,17 @@ describe("#publish() collection", function(){
     it("should publish and then unpublish the collection", function(done){
         var body = {
             schema: entity,
-            file: thumbnail
+            images: [thumbnail]
         };
         collection.create(body)
-            .then(collection.uploadImage)
+            .then(collection.uploadImages)
             .then(collection.update)
             .then(collection.seal)
             .then(collection.publish)
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        collection.requestStatus(result)
-                            .then(function(result){
-                                if(result.status[0].eventType == "success") {clearInterval(id); resolve(result)}
-                                if(result.status[0].eventType == "failure") {clearInterval(id); reject(result)}
-                            });
-                    }, 1000);
-                });
-            })
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        collection.unpublish(result)
-                            .then(function(result){clearInterval(id); resolve(result);})
-                    }, 1000);
-                });
-            })
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        collection.delete(result)
-                            .then(function(result){clearInterval(id); resolve(result)})
-                    }, 1000);
-                });
-            })
+            .then(collection.addWorkflowObserver)
+            .then(collection.unpublish)
+            .then(collection.addWorkflowObserver)
+            .then(collection.delete)
             .then(function(data){done()})
             .catch(console.error)
     });
@@ -501,48 +477,48 @@ describe("#removeEntity", function(){
     });
 });
 
-describe("#requestStatus()", function(){
-    it("should return status", function(done){
+describe("#requestWorkflow()", function(){
+    it("should return workflow", function(done){
         this.timeout(0);
         var body = {
             schema: entity,
-            file: thumbnail
+            images: [thumbnail, background, socialSharing]
         };
         collection.create(body)
-            .then(collection.uploadImage)
+            .then(collection.uploadImages)
             .then(collection.update)
             .then(collection.seal)
-            .then(collection.publish)
-            .then(function(result){ // requestStatus
+            .then(collection.publish) // requestStatus test itself
+            .then(function(result){
                 return new Promise(function(resolve, reject){
                     var id = setInterval(function(){
-                        collection.requestStatus(result)
-                            .then(function(result){
-                                switch(result.status[0].eventType) {
-                                    case "progress": break;
-                                    case "success": clearInterval(id); resolve(result); break;
-                                    case "failure": clearInterval(id); reject(result.status[0]); break;
+                        collection.requestWorkflow(result)
+                            .then(function(data){
+                                switch(data.workflowStatus.status) {
+                                    case "RUNNING": break;
+                                    case "COMPLETED": clearInterval(id); resolve(data); break;
+                                    case "NOT_FOUND": clearInterval(id); resolve(data); break;
                                 }
                             });
                     }, 1000);
                 });
             })
-            .then(function(result){ // immediate unpublish after a publish success requires few retries
+            .then(collection.unpublish)
+            .then(function(result){
                 return new Promise(function(resolve, reject){
                     var id = setInterval(function(){
-                        collection.unpublish(result)
-                            .then(function(result){clearInterval(id); resolve(result)});
+                        collection.requestWorkflow(result)
+                            .then(function(data){
+                                switch(data.workflowStatus.status) {
+                                    case "RUNNING": break;
+                                    case "COMPLETED": clearInterval(id); resolve(data); break;
+                                    case "NOT_FOUND": clearInterval(id); resolve(data); break;
+                                }
+                            });
                     }, 1000);
                 });
             })
-            .then(function(result){ //imediate delete after unpublish requires few retries
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        collection.delete(result)
-                            .then(function(result){clearInterval(id); resolve(result)});
-                    }, 1000);
-                });
-            })
+            .then(collection.delete)
             .then(function(){done()})
             .catch(console.error);
     });

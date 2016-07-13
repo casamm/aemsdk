@@ -32,7 +32,7 @@ b- zip the contents of the folder ( see if this helps your cause: https://www.np
 You can rename a .article into a .zip one and see the contents so you can imagine what you need to do. Open the manifest.xml file to see what you need for nodes and attributes.
 
     So, the most problematic is point a). I have searched some helping info on this adapted for your solution:
-    you’ll need to iterate through the contents of all files from a specific folder at a precise location. You can use this as helping documentation: https://www.npmjs.com/package/directory-tree OR https://www.npmjs.com/package/walk (I like the second one more)
+    you’ll need to iteratedir through the contents of all files from a specific folder at a precise location. You can use this as helping documentation: https://www.npmjs.com/package/directory-tree OR https://www.npmjs.com/package/walk (I like the second one more)
     In same time as getting the file names, you can also get their specs:
     Size,
         Mime type (http://stackoverflow.com/questions/10431845/node-js-file-system-get-file-type see this helper)
@@ -67,7 +67,7 @@ Rename to .article and upload.
 /*
 
 
- function iterate(directory) {
+ function iteratedir(directory) {
  return new Promise(function(resolve, reject){
  var files = [];
  fs.readdir(directory, function(error, list){
@@ -81,7 +81,7 @@ Rename to .article and upload.
  reject(error);
  } else {
  if(stat.isDirectory()) {
- iterate(file).then(function(result){
+ iteratedir(file).then(function(result){
  files.push(result);
  if(files.length == list.length) resolve(files);
  });
