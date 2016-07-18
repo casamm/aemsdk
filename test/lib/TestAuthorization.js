@@ -1,8 +1,8 @@
 describe('Authorization', function() {
 
     var assert = require('assert');
-    var AEM = require("../../lib/aem");
-    var authorization = new AEM.Authorization();
+    var AEMM = require("../../lib/aemm");
+    var authorization = new AEMM.Authorization();
     var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
 
     describe('#requestPermissions()', function() {
@@ -34,8 +34,8 @@ describe('Authorization', function() {
     describe('#verifyRoles()', function () {
         it('should verify roles', function () {
             var body = {
-                authorizations: ["product_view", "producer_preview", "product_add"],
-                permissions: ["product_view"]
+                authorizations: [AEMM.Authorization.PRODUCT_VIEW, AEMM.Authorization.PRODUCER_PREVIEW, AEMM.Authorization.PRODUCT_ADD],
+                permissions: [AEMM.Authorization.PRODUCT_VIEW]
             };
             authorization.verifyRoles(body);
             assert.equal(body.permissions.length, 0, "roles not zero");

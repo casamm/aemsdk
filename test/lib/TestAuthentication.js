@@ -1,8 +1,8 @@
 describe('Authentication', function() {
 
     var assert = require('assert');
-    var AEM = require("../../lib/aem");
-    var authentication = new AEM.Authentication();
+    var AEMM = require("../../lib/aemm");
+    var authentication = new AEMM.Authentication();
 
     it('should return a token', function (done) {
         var body = {};
@@ -10,14 +10,16 @@ describe('Authentication', function() {
             .then(function(data){
                 assert.ok(data);
                 assert.ok(data.authentication.access_token);
+                assert.ok(body.authentication.access_token == data.authentication.access_token);
                 done();
             })
             .catch(console.error);
     });
 
     it('should return a cached token', function (done) {
+        var body = {};
         var access_token;
-        authentication.requestToken({})
+        authentication.requestToken(body)
             .then(function(data){
                 access_token = data.authentication.access_token;
                 return {};

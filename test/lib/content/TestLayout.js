@@ -1,7 +1,7 @@
 var assert = require('assert');
-var AEM = require("../../../lib/aem");
+var AEMM = require("../../../lib/aemm");
 
-var layout = new AEM.Layout();
+var layout = new AEMM.Layout();
 var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
 
 describe('Layout', function() {
@@ -34,7 +34,7 @@ describe('Layout', function() {
     it('should requestList', function(done){
         var body = {
             schema: {
-                entityType: AEM.Layout.TYPE,
+                entityType: AEMM.Layout.TYPE,
                 publicationId: publicationId
             }
         };
@@ -51,7 +51,7 @@ describe('Layout', function() {
     it('should requestList with metadata', function(done){
         var body = {
             schema: {
-                entityType: AEM.Layout.TYPE,
+                entityType: AEMM.Layout.TYPE,
                 publicationId: publicationId
             }
         };
@@ -80,7 +80,7 @@ describe('Layout', function() {
     it('should requestList with status', function(done){
         var body = {
             schema: {
-                entityType: AEM.Layout.TYPE,
+                entityType: AEMM.Layout.TYPE,
                 publicationId: publicationId
             }
         };

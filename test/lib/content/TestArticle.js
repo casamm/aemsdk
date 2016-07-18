@@ -1,6 +1,6 @@
 var assert = require('assert');
-var AEM = require("../../../lib/aem");
-var article = new AEM.Article();
+var AEMM = require("../../../lib/aemm");
+var article = new AEMM.Article();
 
 var fs = require("fs");
 var path = require("path");
@@ -12,31 +12,57 @@ describe('#Article()', function () {
         datum = {
             schema: {
                 entityName: "nodejs",
-                entityType: "article",
+                entityType: AEMM.Article.TYPE,
                 title: "article from nodejs",
                 publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
             },
             article: {
                 src: path.join(__dirname, "../resources/html/article"),
+                rendition: 'folio', // default is folio
+                targetViewer: "33.0.0", // default is 33.0.0
+                viewerVersion: "3.0.0", // default is 3.0.0
                 generateManifest: true, // default is true
                 deleteSourceDir: false // default is false
             },
             images: [
-                {path: path.join(__dirname, '../resources/image/thumbnail.png'), type: "thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'},
-                {path: path.join(__dirname, '../resources/image/socialSharing.png'), type: "socialSharing"}
+                {path: path.join(__dirname, '../resources/image/thumbnail.png'), subpath: "images/thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'},
+                {path: path.join(__dirname, '../resources/image/socialSharing.png'), subpath: "images/socialSharing"}
             ],
-            notify: function(result){
-                if(result.length) { // status
-                    //console.log(Math.round(result[0].numerator/result[0].denominator * 100));
-                } else { // workflow
-                    //console.log(result.status)
-                }
+            notify: function(status) {
+                //console.log(status.numerator, status.subAspect);
             }
         };
     });
 
     it('should be instantiated', function () {
         assert.ok(article, "constructor test");
+    });
+
+    it('should requestList with metadata and manifest', function(done){
+        this.timeout(0);
+        var datum = {
+            query: "pageSize=100&q=entityType==article",
+            schema: {
+                publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
+            }
+        };
+        article.requestList(datum)
+            .then(function(result){
+                return Promise.all(result.entities.map(function(item){
+                    return article.requestMetadata(item);
+                }));
+            })
+            .then(function(result){
+                return Promise.all(result.map(function(item){
+                    return article.requestManifest(item);
+                }));
+            })
+            .then(function(result){
+                result.forEach(function(item){
+                    assert.ok(item.contentUrl);
+                });
+                done();
+            })
     });
 
     it('should requestManifest', function(done){
@@ -53,6 +79,24 @@ describe('#Article()', function () {
             })
             .then(article.delete)
             .then(function(){done()})
+            .catch(console.error);
+    });
+
+    it('should request referencing', function(done){
+        var datum = {
+            schema: {
+                entityName: "test1-a",
+                entityType: AEMM.Article.TYPE,
+                publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
+            },
+            referencingEntityType: AEMM.Collection.TYPE
+        };
+        article.requestMetadata(datum)
+            .then(article.requestReferencing)
+            .then(function(result){
+                assert.ok(result.referencingEntities);
+                done();
+            })
             .catch(console.error);
     });
 
@@ -92,7 +136,7 @@ describe('#Article()', function () {
             .catch(console.error)
     });
 
-    it('should create, build an article file and publish', function(done){
+    it('should create, build and upload article file', function(done){
         this.timeout(0);
         article.create(datum)
             .then(article.buildArticle)
@@ -122,15 +166,15 @@ describe('#Article()', function () {
         article.create(datum)
             .then(article.uploadImages)
             .then(article.update)
-            .then(article.seal) // version change
+            .then(article.seal)
             .then(article.buildArticle)
             .then(article.uploadArticle)
-            .then(article.addStatusObserver) // uploadArticle progress observer
+            .then(article.addStatusObserver) // uploadArticle progress observer (Ingestion)
             .then(article.requestMetadata) // request latest schema version
             .then(article.publish)
             .then(article.addWorkflowObserver) // publish workflow observer
             .then(article.unpublish)
-            .then(article.addWorkflowObserver)
+            .then(article.addWorkflowObserver) //
             .then(article.delete)
             .then(function(){done()})
             .catch(console.error);
@@ -161,7 +205,7 @@ describe('#Article()', function () {
         article.requestList(datum)
             .then(function(result){
                 Promise.all(result.entities.map(function(item){
-                    var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
+                    var matches = AEMM.matchUrl(item.href);
                     var data = {
                         schema: {
                             entityType: matches[1],
@@ -182,7 +226,7 @@ describe('#Article()', function () {
         article.requestList(datum)
             .then(function(result){
                 Promise.all(result.entities.map(function(item){
-                    var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
+                    var matches = AEMM.matchUrl(item.href);
                     var data = {
                         schema: {
                             entityType: matches[1],

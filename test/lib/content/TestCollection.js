@@ -1,30 +1,32 @@
 var assert = require('assert');
-var AEM = require("../../../lib/aem");
+var AEMM = require("../../../lib/aemm");
 
-var collection = new AEM.Collection();
-var authorization = AEM.authorization;
+var collection = new AEMM.Collection();
+var authorization = AEMM.authorization;
+var fs = require('fs');
 var path = require("path");
 
 var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
 var entity = {
     entityName: "demo",
-    entityType: AEM.Collection.TYPE,
+    entityType: AEMM.Collection.TYPE,
     publicationId: publicationId,
     title: "collection from nodejs",
     shortTitle: "nodejs",
     productIds: ["product_collection_demo"]
 };
 
-var thumbnail = {path: path.join(__dirname, '../resources/image/thumbnail.png'), type: "thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
-var background = {path: path.join(__dirname, '../resources/image/background.png'), type: "background", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
-var socialSharing = {path: path.join(__dirname, '../resources/image/socialSharing.png'), type: "socialSharing", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var thumbnail = {path: path.join(__dirname, '../resources/image/thumbnail.png'), subpath: "images/thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var background = {path: path.join(__dirname, '../resources/image/background.png'), subpath: "images/background", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var socialSharing = {path: path.join(__dirname, '../resources/image/socialSharing.png'), subpath: "images/socialSharing", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
 
 var contentElements = [
-    {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test1-a"},
-    {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test2-b"}
+    {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test1-a;version=1465569834257"},
+    {href: '/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test2-b;version=1465569833754'}
 ];
 
 describe('#Collection()', function () {
+
     it('should be instantiated', function () {
         assert.ok(collection, 'constructor test');
     });
@@ -33,18 +35,20 @@ describe('#Collection()', function () {
 describe("#topLevelPhoneContent unpublish", function(){
     var data = {
         schema: {
-            entityName: "topLevelPhoneContent",
-            entityType: AEM.Collection.TYPE,
+            entityType: AEMM.Collection.TYPE,
             publicationId: publicationId
         }
     };
+
     it("should not unpublish", function(done){
+        data.entityName = "topLevelPhoneContent";
         collection.requestMetadata(data)
             .then(collection.unpublish)
             .then(function(){
                 assert.ok(false, "should not be able to unpublish");
             })
-            .catch(function(){
+            .catch(function(error){
+                delete data.entityName; // reset
                 done();
             });
     });
@@ -52,7 +56,7 @@ describe("#topLevelPhoneContent unpublish", function(){
     it("publish all", function(done){
         this.timeout(0);
         collection.requestList(data)
-            .then(collection.publishEntities)
+            .then(collection.publish)
             .then(collection.addWorkflowObserver)
             .then(function(){
                 done();
@@ -63,7 +67,7 @@ describe("#topLevelPhoneContent unpublish", function(){
     it("unpublish all", function(done){
         this.timeout(0);
         collection.requestList(data)
-            .then(collection.unpublishEntities)
+            .then(collection.unpublish)
             .then(collection.addWorkflowObserver)
             .then(function(){
                 done();
@@ -76,7 +80,7 @@ describe('#create()', function () {
     this.timeout(5000);
     var body = {
         schema: entity,
-        permissions: ["producer_content_add", "producer_content_delete"] //permissions to check for
+        permissions: [AEMM.Authorization.PRODUCER_CONTENT_ADD, AEMM.Authorization.PRODUCER_CONTENT_DELETE] //permissions to check for
     };
     it('should create', function(done){
         collection.create(body)
@@ -98,9 +102,8 @@ describe('#create()', function () {
 describe("#requestList()", function(){
     it("should list", function(done){
         var body2 = {
-            query: "pageSize=5&q=entityType==collection",
+            query: "page=0&pageSize=5&q=entityType==collection&sortField=modified&descending=true",
             schema: {
-                entityType: entity.entityType,
                 publicationId: entity.publicationId
             }
         };
@@ -117,7 +120,6 @@ describe("#requestList()", function(){
         var body = {
             query: "pageSize=5&q=entityType==collection",
             schema: {
-                entityType: entity.entityType,
                 publicationId: entity.publicationId
             }
         };
@@ -148,6 +150,26 @@ describe("#requestList()", function(){
             .then(function(){done()})
             .catch(console.error);
     });
+
+    it('should requestList with shortcut metadata', function(done){
+        this.timeout(0);
+        var body = {
+            query: "pageSize=100&q=entityType==collection",
+            schema: {
+                publicationId: entity.publicationId
+            }
+        };
+        collection.requestList(body)
+            .then(function(result){
+                return Promise.all(result.entities.map(function(entity){
+                    return collection.requestMetadata(entity);
+                }))
+            })
+            .then(function(result){
+                done();
+            })
+            .catch(console.error);
+    })
 });
 
 describe('#requestMetadata()', function () {
@@ -194,16 +216,16 @@ describe('#uploadImage()', function () {
             .then(collection.seal)
             .then(collection.delete)
             .then(function(){done()})
-            .catch(console.error)
+            .catch(console.error);
     });
 
     it('should upload thumbnail, background and socialSharing', function (done) {
         this.timeout(0);
-        var body = {
+        var datum = {
             schema: entity,
             images: [thumbnail, background, socialSharing]
         };
-        collection.create(body)
+        collection.create(datum)
             .then(collection.uploadImages)
             .then(collection.update)
             .then(collection.seal)
@@ -211,10 +233,40 @@ describe('#uploadImage()', function () {
             .then(function(){done()})
             .catch(console.error);
     });
+
+    it("should download images", function(done){
+        this.timeout(0);
+        var datum = {
+            schema: entity,
+            images: [thumbnail, background, socialSharing], // required for initial setup
+            downSamples: true
+        };
+        collection.create(datum)
+            .then(collection.uploadImages)
+            .then(collection.update)
+            .then(collection.seal)
+            .then(collection.downloadImages)
+            .then(function(datum){
+                assert.ok(datum.images.length);
+                var isDownloaded = false;
+                datum.images.forEach(function(image){
+                    isDownloaded = true;
+                    assert.ok(fs.existsSync(image));
+                    fs.unlink(image);
+                });
+                assert.ok(isDownloaded);
+                return datum;
+            })
+            .then(collection.delete)
+            .then(function(){
+                done();
+            })
+            .catch(console.error)
+    });
 });
 
 describe('#update()', function () {
-    var body = {
+    var datum = {
         schema: entity,
         update: {
             title: "newtitle",
@@ -222,12 +274,12 @@ describe('#update()', function () {
         }
     };
     it('should update', function (done) {
-        collection.create(body)
+        collection.create(datum)
             .then(collection.update)
-            .then(function(data) {
-                assert.ok(data.schema.title == "newtitle");
-                assert.ok(data.schema.shortTitle == "new short title");
-                return data;
+            .then(function(datum) {
+                assert.ok(datum.schema.title == "newtitle");
+                assert.ok(datum.schema.shortTitle == "new short title");
+                return datum;
             })
             .then(collection.delete)
             .then(function(){done()})
@@ -255,22 +307,59 @@ describe("#requestContentElements()", function(){
 });
 
 describe("#updateContentElements()", function(){
-    var body = {
+    var datum = {
         schema: entity,
         contentElements: contentElements
     };
     it("should updateContentElements", function(done){
-        collection.create(body)
+        collection.create(datum)
             .then(collection.updateContentElements)
             .then(collection.requestContentElements)
-            .then(function(data){
-                assert.ok(data.contentElements.length == 2);
-                return data;
+            .then(function(datum){
+                assert.ok(datum.contentElements.length == 2);
+                return datum;
             })
             .then(collection.delete)
             .then(function(){done()})
             .catch(console.error);
     });
+
+    it("should updateContentElements and requestReferencing", function(done){
+        this.timeout(0);
+        var datum = {
+            schema: entity,
+            contentElements: contentElements
+        };
+
+        var datum2 = {
+            schema: {
+                entityType: AEMM.Article.TYPE,
+                entityName: "test1-a",
+                publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
+            },
+            referencingEntityType: AEMM.Collection.TYPE
+        };
+
+        var article = new AEMM.Article();
+        article.requestMetadata(datum2)
+            .then(function(articleMetadata){
+                collection.create(datum)
+                    .then(collection.updateContentElements)
+                    .then(function(collectionMetadata){
+                        return article.requestReferencing(articleMetadata)
+                            .then(function(datum){
+                                assert.ok(datum.referencingEntities.length);
+                                return collectionMetadata;
+                            })
+                    })
+                    .then(collection.delete)
+                    .then(function(){
+                        done();
+                    })
+                    .catch(console.error);
+
+            })
+    })
 });
 
 describe("#publish() collection", function(){
@@ -278,7 +367,10 @@ describe("#publish() collection", function(){
     it("should publish and then unpublish the collection", function(done){
         var body = {
             schema: entity,
-            images: [thumbnail]
+            images: [thumbnail],
+            notify: function(status){
+                console.log(status);
+            }
         };
         collection.create(body)
             .then(collection.uploadImages)
@@ -316,7 +408,7 @@ describe("#addEntity()", function(){
     });
 
     it("should add two entities one at a time", function(done){
-        this.timeout(10000);
+        this.timeout(0);
         var body = {
             schema: entity,
             contentElement: contentElements[0]
@@ -403,7 +495,7 @@ describe("#removeEntity", function(){
             .then(collection.requestContentElements)
             .then(function(data){
                 assert.ok(data.contentElements.length == 1);
-                assert.ok(data.contentElements[0].href == contentElements[0].href);
+                assert.ok(data.contentElements[0].href == contentElements[0].href.split(";version")[0]);
                 return data;
             })
             .then(collection.delete)
@@ -457,7 +549,10 @@ describe("#removeEntity", function(){
         this.timeout(7000);
         var body = {
             schema: entity,
-            contentElements: JSON.parse(JSON.stringify(contentElements)),
+            contentElements: [
+                {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test1-a"},
+                {href: '/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test2-b'}
+            ],
             contentElement: contentElements[0] //collection to remove
         };
 
@@ -468,7 +563,7 @@ describe("#removeEntity", function(){
             .then(collection.requestContentElements)
             .then(function(data){
                 assert.ok(data.contentElements.length == 1);
-                assert.ok(data.contentElements[0].href == contentElements[1].href);
+                assert.ok(data.contentElements[0].href == contentElements[1].href.split(";version=")[0]);
                 return data;
             })
             .then(collection.delete)
@@ -488,7 +583,7 @@ describe("#requestWorkflow()", function(){
             .then(collection.uploadImages)
             .then(collection.update)
             .then(collection.seal)
-            .then(collection.publish) // requestStatus test itself
+            .then(collection.publish) // requestStatus test itself to test requestWorkflow directly
             .then(function(result){
                 return new Promise(function(resolve, reject){
                     var id = setInterval(function(){

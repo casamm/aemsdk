@@ -1,7 +1,7 @@
 var assert = require('assert');
-var AEM = require('../../../lib/aem');
-var authorization = new AEM.Authorization();
-var product = new AEM.Product();
+var AEMM = require('../../../lib/aemm');
+var authorization = new AEMM.Authorization();
+var product = new AEMM.Product();
 
 var publicationId = 'b5bacc1e-7b55-4263-97a5-ca7015e367e0';
 var productId = 'com.sothebys.del13';
@@ -20,7 +20,7 @@ describe('#Product()', function() {
 
         var datum = {
             schema: { id: productId },
-            entityType: AEM.Product.TYPE,
+            entityType: AEMM.Product.TYPE,
             publicationId: publicationId
         };
         authorization.verify(meta)
@@ -42,7 +42,7 @@ describe('#Product()', function() {
             update: {
                 label: "new label"
             },
-            entityType: AEM.Product.TYPE,
+            entityType: AEMM.Product.TYPE,
             publicationId: publicationId
         };
         product.requestMetadata(body)
@@ -57,7 +57,7 @@ describe('#Product()', function() {
     it('should requestList', function(done){
         var body = {
             schema: {},
-            entityType: AEM.Product.TYPE,
+            entityType: AEMM.Product.TYPE,
             publicationId: publicationId
         };
         product.requestList(body)
@@ -74,7 +74,7 @@ describe('#Product()', function() {
             schema: {
                 id: productId
             },
-            entityType: AEM.Product.TYPE,
+            entityType: AEMM.Product.TYPE,
             publicationId: publicationId
         };
         product.requestMetadata(body)
@@ -89,7 +89,7 @@ describe('#Product()', function() {
         this.timeout(5000);
         var datum = {
             schema: {},
-            entityType: AEM.Product.TYPE,
+            entityType: AEMM.Product.TYPE,
             publicationId: publicationId
         };
         var total;
@@ -100,7 +100,7 @@ describe('#Product()', function() {
                         schema: {
                             id: value.id
                         },
-                        entityType: AEM.Product.TYPE,
+                        entityType: AEMM.Product.TYPE,
                         publicationId: publicationId
                     };
                     return product.requestMetadata(data);
@@ -112,19 +112,19 @@ describe('#Product()', function() {
     });
 
     it("should get list from both", function(done){
-        var bundle = new AEM.Bundle();
+        var bundle = new AEMM.Bundle();
         var datum = {
             schema: {
                 id: productId
             },
-            entityType: AEM.Product.TYPE,
+            entityType: AEMM.Product.TYPE,
             publicationId: publicationId
         };
         var datum2 = {
             schema: {
                 id: "subscription1"
             },
-            entityType: AEM.Bundle.TYPE,
+            entityType: AEMM.Bundle.TYPE,
             publicationId: publicationId
         };
         product.requestList(datum)
@@ -140,11 +140,11 @@ describe('#Product()', function() {
     it("should generate issue list", function(done){
         this.timeout(25000);
 
-        var collection = new AEM.Collection();
-        var product = new AEM.Product();
+        var collection = new AEMM.Collection();
+        var product = new AEMM.Product();
         var datum = {
             schema: {
-                entityType: AEM.Collection.TYPE,
+                entityType: AEMM.Collection.TYPE,
                 publicationId: publicationId
             }
         };
@@ -179,7 +179,7 @@ describe('#Product()', function() {
             .then(function(data){ // productList
                 var meta = {
                     schema: {},
-                    entityType: AEM.Product.TYPE,
+                    entityType: AEMM.Product.TYPE,
                     publicationId: publicationId
                 };
                 return product.requestList(meta)
@@ -208,7 +208,7 @@ describe('#Product()', function() {
                 }
                 return Promise.all(promises).then(function(result){
                     result.forEach(function(item){
-                        data.entities[item.schema.entityName].thumbnail = item.thumbnail;
+                        data.entities[item.schema.entityName].thumbnail = item.file;
                     });
                     return data;
                 });
@@ -223,7 +223,7 @@ describe('#Product()', function() {
                 }
                 return Promise.all(promises).then(function(result){
                     result.forEach(function(item){
-                        data.entities[item.schema.entityName].background = item.background;
+                        data.entities[item.schema.entityName].background = item.file;
                     });
                     return data;
                 });
@@ -258,7 +258,7 @@ describe('#Product()', function() {
 //                 isFree: false,
 //                 isDistributionRestricted: false
 //             },
-//             entityType: AEM.Product.TYPE,
+//             entityType: AEMM.Product.TYPE,
 //             publicationId: publicationId,
 //         };
 //         product.create(body)
@@ -277,7 +277,7 @@ describe('#Product()', function() {
 //             schema: {
 //                 id: productId
 //             },
-//             entityType: AEM.Product.TYPE,
+//             entityType: AEMM.Product.TYPE,
 //             publicationId: publicationId,
 //             permissions: ['product_add', 'product_view'] //permissions to check for
 //         };

@@ -1,8 +1,8 @@
 var assert = require('assert');
-var AEM = require("../../../lib/aem");
+var AEMM = require("../../../lib/aemm");
 
-var publication = new AEM.Publication();
-var authorization = AEM.authorization;
+var publication = new AEMM.Publication();
+var authorization = AEMM.authorization;
 var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
 
 describe('Publication', function() {
@@ -15,7 +15,7 @@ describe('Publication', function() {
         var body = {
             schema: {
                 entityName: publicationId,
-                entityType: AEM.Publication.TYPE,
+                entityType: AEMM.Publication.TYPE,
                 publicationId: publicationId
             },
             permissions: ["publication_admin"]
@@ -67,7 +67,7 @@ describe('Publication', function() {
                             schema: {
                                 entityName: item.id,
                                 publicationId: item.id,
-                                entityType: AEM.Publication.TYPE
+                                entityType: AEMM.Publication.TYPE
                             }
                         };
                         promises.push(publication.requestMetadata(body));
@@ -102,7 +102,7 @@ describe('Publication', function() {
                             schema: {
                                 entityName: item.name,
                                 publicationId: item.id,
-                                entityType: AEM.Publication.TYPE
+                                entityType: AEMM.Publication.TYPE
                             }
                         };
                         promises.push(publication.requestStatus(body));

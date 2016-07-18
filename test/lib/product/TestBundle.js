@@ -1,7 +1,7 @@
 var assert = require('assert');
-var AEM = require("../../../lib/aem");
-var bundle = new AEM.Bundle();
-var authorization = new AEM.Authorization();
+var AEMM = require("../../../lib/aemm");
+var bundle = new AEMM.Bundle();
+var authorization = new AEMM.Authorization();
 
 var publicationId = 'b5bacc1e-7b55-4263-97a5-ca7015e367e0';
 var bundleId = "subscription1";
@@ -22,7 +22,7 @@ describe("#Bundle()", function(){
     //             strategy: '*',
     //             subscriptionType: 'STANDARD'
     //         },
-    //         entityType: AEM.Bundle.TYPE,
+    //         entityType: AEMM.Bundle.TYPE,
     //         publicationId: publicationId
     //     };
     //     bundle.create(body)
@@ -47,7 +47,7 @@ describe("#Bundle()", function(){
                     schema: {
                         id: bundleId
                     },
-                    entityType: AEM.Bundle.TYPE,
+                    entityType: AEMM.Bundle.TYPE,
                     publicationId: publicationId
                 };
                 return bundle.requestMetadata(meta);
@@ -64,7 +64,7 @@ describe("#Bundle()", function(){
             schema: {
                 id: bundleId
             },
-            entityType: AEM.Bundle.TYPE,
+            entityType: AEMM.Bundle.TYPE,
             publicationId: publicationId
         };
         bundle.requestList(body)
@@ -81,7 +81,7 @@ describe("#Bundle()", function(){
             schema: {
                 id: bundleId
             },
-            entityType: AEM.Bundle.TYPE,
+            entityType: AEMM.Bundle.TYPE,
             publicationId: publicationId
         };
         bundle.requestList(body)
@@ -98,7 +98,7 @@ describe("#Bundle()", function(){
             schema: {
                 id: bundleId
             },
-            entityType: AEM.Bundle.TYPE,
+            entityType: AEMM.Bundle.TYPE,
             publicationId: publicationId
         };
         bundle.requestMetadata(body)
@@ -113,7 +113,7 @@ describe("#Bundle()", function(){
         this.timeout(0);
         var body = {
             schema: {},
-            entityType: AEM.Bundle.TYPE,
+            entityType: AEMM.Bundle.TYPE,
             publicationId: publicationId
         };
         var total;
@@ -124,7 +124,7 @@ describe("#Bundle()", function(){
                         schema: {
                             id: value.id
                         },
-                        entityType: AEM.Bundle.TYPE,
+                        entityType: AEMM.Bundle.TYPE,
                         publicationId: publicationId
                     };
                     return bundle.requestMetadata(obj);

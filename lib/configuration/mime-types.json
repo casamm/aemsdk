@@ -20,6 +20,7 @@
   "jpgv": "video/jpeg",
   "js": "application/javascript",
   "json": "application/json",
+  "json_utf8": "application/json;charset=UTF-8",
   "mpeg": "video/mpeg",
   "mpga": "audio/mpeg",
   "mp4": "video/x-m4v",
@@ -34,5 +35,6 @@
   "ttf": "application/x-font-ttf",
   "txt": "text/plain",
   "woff": "application/x-font-woff",
-  "xml": "application/xml"
+  "xml": "application/xml",
+  "plain": "text/plain"
 }

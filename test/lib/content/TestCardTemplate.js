@@ -1,6 +1,6 @@
 var assert = require('assert');
-var AEM = require("../../../lib/aem");
-var cardTemplate = new AEM.CardTemplate();
+var AEMM = require("../../../lib/aemm");
+var cardTemplate = new AEMM.CardTemplate();
 
 var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
 
@@ -12,7 +12,7 @@ describe('#CardTemplate()', function () {
     it('should requestList', function(done){
         var body = {
             schema: {
-                entityType: AEM.CardTemplate.TYPE,
+                entityType: AEMM.CardTemplate.TYPE,
                 publicationId: publicationId
             }
         };
@@ -43,7 +43,7 @@ describe('#CardTemplate()', function () {
         this.timeout(5000);
         var body = {
             schema: {
-                entityType: AEM.CardTemplate.TYPE,
+                entityType: AEMM.CardTemplate.TYPE,
                 publicationId: publicationId
             }
         };
@@ -72,7 +72,7 @@ describe('#CardTemplate()', function () {
         this.timeout(5000);
         var body = {
             schema: {
-                entityType: AEM.CardTemplate.TYPE,
+                entityType: AEMM.CardTemplate.TYPE,
                 publicationId: publicationId
             }
         };
@@ -103,7 +103,7 @@ describe('#CardTemplate()', function () {
         this.timeout(5000);
         var body = {
             schema: {
-                entityType: AEM.CardTemplate.TYPE,
+                entityType: AEMM.CardTemplate.TYPE,
                 entityName: "defaultCardTemplate",
                 publicationId: publicationId
             }
@@ -120,7 +120,7 @@ describe('#CardTemplate()', function () {
     it('should requestStatus', function(done){
         var body = {
             schema: {
-                entityType: AEM.CardTemplate.TYPE,
+                entityType: AEMM.CardTemplate.TYPE,
                 entityName: "defaultCardTemplate",
                 publicationId: publicationId
             }
