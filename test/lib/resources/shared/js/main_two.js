@@ -1,2 +1,2 @@
-var content = document.getElementById('content-two');
+var content = document.getElementById('content2');
 content.innerHTML = 'yes!';

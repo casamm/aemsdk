@@ -37,8 +37,8 @@ describe("#Font()", function(){
                 publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
             },
             fonts: [
-                {path: path.join(__dirname, "../resources/font/font.otf"), subpath: "fonts/device"},
-                {path: path.join(__dirname, "../resources/font/font.woff"), subpath: "fonts/web"}
+                {file: path.join(__dirname, "../resources/font/font.otf"), path: "fonts/device"},
+                {file: path.join(__dirname, "../resources/font/font.woff"), path: "fonts/web"}
             ]
         };
 
@@ -68,8 +68,8 @@ describe("#Font()", function(){
                 publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
             },
             fonts: [
-                {path: path.join(__dirname, "../resources/font/font.otf"), subpath: "fonts/device"},
-                {path: path.join(__dirname, "../resources/font/font.woff"), subpath: "fonts/web"}
+                {file: path.join(__dirname, "../resources/font/font.otf"), path: "fonts/device"},
+                {file: path.join(__dirname, "../resources/font/font.woff"), path: "fonts/web"}
             ]
         };
 
@@ -85,7 +85,7 @@ describe("#Font()", function(){
                 data.fonts.forEach(function(item){
                     isDownloaded = true;
                     assert.ok(fs.existsSync(item));
-                    //fs.unlink(item);
+                    fs.unlink(item);
                 });
                 assert.ok(isDownloaded);
                 done();

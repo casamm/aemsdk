@@ -202,13 +202,14 @@ describe('#Product()', function() {
                 var promises = [];
                 for(property in data.entities) {
                     if(data.entities[property]._links.thumbnail) {
-                        var body = {schema: data.entities[property], href: "images/thumbnail"};
+                        var body = {schema: data.entities[property], path: "images/thumbnail"};
                         promises.push(collection.requestEntity(body));
                     }
                 }
                 return Promise.all(promises).then(function(result){
+                    console.log(result);
                     result.forEach(function(item){
-                        data.entities[item.schema.entityName].thumbnail = item.file;
+                        data.entities[item.schema.entityName].thumbnail = item;
                     });
                     return data;
                 });

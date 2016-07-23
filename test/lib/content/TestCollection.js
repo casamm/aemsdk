@@ -16,9 +16,9 @@ var entity = {
     productIds: ["product_collection_demo"]
 };
 
-var thumbnail = {path: path.join(__dirname, '../resources/image/thumbnail.png'), subpath: "images/thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
-var background = {path: path.join(__dirname, '../resources/image/background.png'), subpath: "images/background", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
-var socialSharing = {path: path.join(__dirname, '../resources/image/socialSharing.png'), subpath: "images/socialSharing", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var thumbnail = {file: path.join(__dirname, '../resources/image/thumbnail.png'), path: "images/thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var background = {file: path.join(__dirname, '../resources/image/background.png'), path: "images/background", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
+var socialSharing = {file: path.join(__dirname, '../resources/image/socialSharing.png'), path: "images/socialSharing", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
 
 var contentElements = [
     {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test1-a;version=1465569834257"},
@@ -30,6 +30,62 @@ describe('#Collection()', function () {
     it('should be instantiated', function () {
         assert.ok(collection, 'constructor test');
     });
+});
+
+describe("#maintain sessionId throughout", function(){
+    this.timeout(0);
+    var sessionId;
+    var datum = {
+          schema: {entityName: "demo", entityType: AEMM.Collection.TYPE, publicationId: publicationId, title: "demo", productIds:["product_collection_demo"]},
+          images: [thumbnail, background]
+    };
+    it("should maintain same sessionId throughout", function(done){
+        collection.create(datum)
+            .then(function(result){
+                assert.ok(result.sessionId);
+                sessionId = result.sessionId;
+                return result;
+            })
+            .then(collection.uploadImages)
+            .then(function(result){
+                assert.equal(sessionId, result.sessionId);
+                return result;
+            })
+            .then(collection.update)
+            .then(function(result){
+                assert.equal(sessionId, result.sessionId);
+                return result;
+            })
+            .then(collection.seal)
+            .then(function(result){
+                assert.equal(sessionId, result.sessionId);
+                return result;
+            })
+            .then(collection.publish)
+            .then(function(result){
+                assert.equal(sessionId, result.sessionId);
+                return collection.addWorkflowObserver(result)
+                    .then(function(status){
+                        return result;
+                    })
+            })
+            .then(collection.unpublish)
+            .then(function(result){
+                assert.equal(sessionId, result.sessionId);
+                return collection.addWorkflowObserver(result)
+                    .then(function(status){
+                        return result;
+                    });
+            })
+            .then(collection.delete)
+            .then(function(result){
+                assert.equal(sessionId, result.sessionId);
+            })
+            .then(function(){
+                done();
+            })
+            .catch(console.error);
+    })
 });
 
 describe("#topLevelPhoneContent unpublish", function(){
@@ -252,7 +308,7 @@ describe('#uploadImage()', function () {
                 datum.images.forEach(function(image){
                     isDownloaded = true;
                     assert.ok(fs.existsSync(image));
-                    fs.unlink(image);
+                    //fs.unlink(image);
                 });
                 assert.ok(isDownloaded);
                 return datum;
@@ -447,9 +503,7 @@ describe("#addEntity()", function(){
             })
             .then(collection.delete)
             .then(function(){done()})
-            .catch(function(error){
-                console.log(error);
-            })
+            .catch(console.error)
     });
 
     it("should not add same collection twice", function(done){
@@ -495,7 +549,7 @@ describe("#removeEntity", function(){
             .then(collection.requestContentElements)
             .then(function(data){
                 assert.ok(data.contentElements.length == 1);
-                assert.ok(data.contentElements[0].href == contentElements[0].href.split(";version")[0]);
+                assert.ok(data.contentElements[0].href == contentElements[0].href);
                 return data;
             })
             .then(collection.delete)
@@ -549,10 +603,7 @@ describe("#removeEntity", function(){
         this.timeout(7000);
         var body = {
             schema: entity,
-            contentElements: [
-                {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test1-a"},
-                {href: '/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test2-b'}
-            ],
+            contentElements: JSON.parse(JSON.stringify(contentElements)),
             contentElement: contentElements[0] //collection to remove
         };
 
@@ -563,7 +614,7 @@ describe("#removeEntity", function(){
             .then(collection.requestContentElements)
             .then(function(data){
                 assert.ok(data.contentElements.length == 1);
-                assert.ok(data.contentElements[0].href == contentElements[1].href.split(";version=")[0]);
+                assert.ok(data.contentElements[0].href == contentElements[1].href);
                 return data;
             })
             .then(collection.delete)

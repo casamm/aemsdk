@@ -2,39 +2,517 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34d157d0-58d8-4718-80a1-2a03dd177ecc" name="Default" comment="Second Commit">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/content/SharedContent.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/http/httpObject.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notes_article" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/content/TestSharedContent.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/http/remote.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/aem.js" afterPath="$PROJECT_DIR$/lib/aemm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/images/bg01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/images/bg02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/images/bg03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/images/pic01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/images/pic02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/images/pic03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/images/pic04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/images/pic05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/images/pic06.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/css/images/overlay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/images/avatar.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/images/bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/css/images/ie/banner-overlay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/css/images/overlay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/images/banner.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/images/pic01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/images/pic02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/images/pic03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/images/pic04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/images/pic05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/images/pic06.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/images/pic07.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/images/pic08.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/06.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/07.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/08.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/09.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/10.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/11.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/fulls/12.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/06.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/07.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/08.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/09.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/10.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/11.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/images/thumbs/12.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/06.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/07.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/08.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/09.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/10.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/11.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/fulls/12.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/06.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/07.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/08.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/09.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/10.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/11.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/images/thumbs/12.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic06.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic07.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic08.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic09.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic10.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic11.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic12.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic13.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic14.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/pic15.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/css/images/overlay1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/css/images/overlay2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/images/header.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/images/pic01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/images/pic02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/images/pic03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/images/pic04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/images/pic05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/images/pic06.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/images/bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/images/pic01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/images/pic02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/images/pic03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/images/pic04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/images/pic05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/images/pic06.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/images/pic07.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/images/pic08.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/images/banner.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/images/pic01.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/images/pic02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/images/pic03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/images/pic04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/images/pic05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_6.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_7.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_8.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/thumbnail_9.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/api/filedir.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/TestArticle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/TestCollection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/js/ie/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/js/ie/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/base/_bg.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/base/_page.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/base/_typography.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/components/_button.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/components/_form.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/components/_icon.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/components/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/components/_section.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/layout/_footer.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/layout/_header.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/layout/_signup-form.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/0/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/css/images/intro.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/js/ie/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/js/ie/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/js/jquery.scrollex.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/js/jquery.scrolly.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/js/skel.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/js/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/base/_page.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/base/_typography.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_box.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_button.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_features.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_form.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_icon.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_image.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_section.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_split.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_spotlights.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_table.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/components/_wrapper.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/layout/_footer.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/layout/_header.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/layout/_intro.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/layout/_sidebar.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/layout/_wrapper.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/1/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/css/noscript.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/js/PIE.htc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/js/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/js/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/base/_page.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/base/_typography.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/components/_button.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/components/_form.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/components/_icon.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/components/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/layout/_footer.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/layout/_main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/layout/_wrapper.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/assets/sass/noscript.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/2/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/css/images/arrow.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/ie/PIE.htc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/ie/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/ie/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/jquery.dropotron.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/jquery.scrollex.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/jquery.scrolly.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/skel.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/js/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/3/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/images/arrow-small.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/images/arrow.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/images/close-small-alt.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/images/close-small.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/images/close.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/images/open-small.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/images/open.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/images/spinner.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/css/noscript.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/js/ie/PIE.htc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/js/ie/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/js/ie/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/js/skel.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/base/_page.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/base/_typography.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/components/_button.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/components/_form.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/components/_icon.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/components/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/layout/_footer.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/layout/_header.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/layout/_main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/layout/_thumbnails.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/layout/_viewer.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/assets/sass/noscript.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/4/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/css/images/arrow.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/css/images/close.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/css/images/spinner.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/js/ie/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/js/ie/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/js/jquery.poptrox.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/js/skel.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/js/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/base/_page.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/base/_typography.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/components/_button.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/components/_form.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/components/_icon.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/components/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/components/_panel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/components/_poptrox-popup.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/components/_table.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/layout/_footer.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/layout/_header.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/layout/_main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/layout/_wrapper.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/5/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/js/ie/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/js/ie/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/js/skel.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/js/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/base/_page.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/base/_typography.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/components/_box.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/components/_button.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/components/_form.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/components/_icon.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/components/_image.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/components/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/components/_section.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/components/_table.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/components/_tiles.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/layout/_footer.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/layout/_header.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/layout/_main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/layout/_menu.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/layout/_wrapper.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/images/logo.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/6/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/css/images/overlay3.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/css/images/overlay4.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/js/ie/PIE.htc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/js/ie/backgroundsize.min.htc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/js/ie/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/js/ie/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/js/jquery.scrolly.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/js/skel.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/js/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/7/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/css/images/close.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/js/ie/PIE.htc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/js/ie/backgroundsize.min.htc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/js/ie/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/js/ie/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/js/jquery.scrollex.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/js/skel.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/js/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/base/_page.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/base/_typography.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/components/_box.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/components/_button.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/components/_features.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/components/_form.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/components/_icon.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/components/_image.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/components/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/components/_section.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/components/_table.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/layout/_banner.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/layout/_footer.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/layout/_header.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/layout/_menu.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/layout/_wrapper.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/elements.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/generic.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/8/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/css/ie8.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/css/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/css/images/arrow.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/css/images/bars.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/css/images/close.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/js/ie/backgroundsize.min.htc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/js/ie/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/js/ie/respond.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/js/jquery.scrollex.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/js/jquery.scrolly.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/js/skel.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/js/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/sass/ie8.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/sass/ie9.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/sass/libs/_functions.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/sass/libs/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/sass/libs/_skel.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/sass/libs/_vars.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/assets/sass/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lib/concurrent/articles/9/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/resources/html/article.article" afterPath="$PROJECT_DIR$/test/lib/resources/html/article.article" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/resources/shared/sharedHTML.article" afterPath="$PROJECT_DIR$/test/lib/resources/shared/sharedHTML.article" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Authentication.js" afterPath="$PROJECT_DIR$/lib/Authentication.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Authorization.js" afterPath="$PROJECT_DIR$/lib/Authorization.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/configuration/mime-types.json" afterPath="$PROJECT_DIR$/lib/configuration/mime-types.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/aemm.js" afterPath="$PROJECT_DIR$/lib/aemm.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/Article.js" afterPath="$PROJECT_DIR$/lib/content/Article.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/Collection.js" afterPath="$PROJECT_DIR$/lib/content/Collection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/Entity.js" afterPath="$PROJECT_DIR$/lib/content/Entity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/Publication.js" afterPath="$PROJECT_DIR$/lib/content/Publication.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/cardTemplate.js" afterPath="$PROJECT_DIR$/lib/content/cardTemplate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/SharedContent.js" afterPath="$PROJECT_DIR$/lib/content/SharedContent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/font.js" afterPath="$PROJECT_DIR$/lib/content/font.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/content/layout.js" afterPath="$PROJECT_DIR$/lib/content/layout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/product/Bundle.js" afterPath="$PROJECT_DIR$/lib/product/Bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/product/Product.js" afterPath="$PROJECT_DIR$/lib/product/Product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/TestAEM.js" afterPath="$PROJECT_DIR$/test/lib/TestAEM.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/TestAuthentication.js" afterPath="$PROJECT_DIR$/test/lib/TestAuthentication.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/TestAuthorization.js" afterPath="$PROJECT_DIR$/test/lib/TestAuthorization.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/http/httpObject.js" afterPath="$PROJECT_DIR$/lib/http/httpObject.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestArticle.js" afterPath="$PROJECT_DIR$/test/lib/content/TestArticle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestCardTemplate.js" afterPath="$PROJECT_DIR$/test/lib/content/TestCardTemplate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestCollection.js" afterPath="$PROJECT_DIR$/test/lib/content/TestCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestEntity.js" afterPath="$PROJECT_DIR$/test/lib/content/TestEntity.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestFont.js" afterPath="$PROJECT_DIR$/test/lib/content/TestFont.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestLayout.js" afterPath="$PROJECT_DIR$/test/lib/content/TestLayout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestPublication.js" afterPath="$PROJECT_DIR$/test/lib/content/TestPublication.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/product/TestBundle.js" afterPath="$PROJECT_DIR$/test/lib/product/TestBundle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/content/TestSharedContent.js" afterPath="$PROJECT_DIR$/test/lib/content/TestSharedContent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/product/TestProduct.js" afterPath="$PROJECT_DIR$/test/lib/product/TestProduct.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/resources/shared/js/main_two.js" afterPath="$PROJECT_DIR$/test/lib/resources/shared/js/main_two.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lib/resources/shared/sharedHTML/index.html" afterPath="$PROJECT_DIR$/test/lib/resources/shared/sharedHTML/index.html" />
     </list>
     <ignored path="aemmobile-sdk.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,22 +531,32 @@
     <favorites_list name="aemmobile-sdk" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="collection.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/content/collection.js">
+    <leaf>
+      <file leaf-file-name="entity.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/content/entity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="48" column="128" selection-start-line="48" selection-start-column="128" selection-end-line="48" selection-end-column="128" />
+            <state relative-caret-position="348">
+              <caret line="246" column="90" selection-start-line="246" selection-start-column="90" selection-end-line="246" selection-end-column="90" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestCollection.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/lib/content/TestCollection.js">
+      <file leaf-file-name="TestCollection.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/lib/concurrent/TestCollection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="587" column="61" selection-start-line="587" selection-start-column="61" selection-end-line="587" selection-end-column="61" />
+            <state relative-caret-position="376">
+              <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aemm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/aemm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="68" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -78,17 +566,47 @@
         <entry file="file://$PROJECT_DIR$/lib/content/SharedContent.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="entity.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/content/entity.js">
+      <file leaf-file-name="Publication.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/content/Publication.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-645">
-              <caret line="198" column="32" selection-start-line="198" selection-start-column="32" selection-end-line="198" selection-end-column="32" />
+            <state relative-caret-position="165">
+              <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/content/layout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="font.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/content/font.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="45" column="2" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="filedir.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/api/filedir.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -109,13 +627,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/promise-settle-shim.js" />
-        <option value="$PROJECT_DIR$/test/test.js" />
-        <option value="$PROJECT_DIR$/lib/valueObject/CollectionVO.js" />
-        <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/lib/valueObject/ValueObject.js" />
-        <option value="$PROJECT_DIR$/lib/content/layout.js" />
-        <option value="internal/linkedlist.js" />
         <option value="$PROJECT_DIR$/lib/content/Card.js" />
         <option value="$PROJECT_DIR$/lib/content/card.js" />
         <option value="$PROJECT_DIR$/test/lib/content/TestCard.js" />
@@ -140,26 +651,33 @@
         <option value="$PROJECT_DIR$/test/lib/content/TestEntity.js" />
         <option value="$PROJECT_DIR$/test/lib/content/TestLayout.js" />
         <option value="$PROJECT_DIR$/test/lib/content/TestPublication.js" />
-        <option value="$PROJECT_DIR$/test/lib/product/TestProduct.js" />
         <option value="$PROJECT_DIR$/test/lib/TestAEM.js" />
         <option value="$PROJECT_DIR$/notes_article" />
         <option value="$PROJECT_DIR$/lib/authorization.js" />
         <option value="$PROJECT_DIR$/test/lib/TestAuthorization.js" />
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/lib/authentication.js" />
-        <option value="$PROJECT_DIR$/lib/aemm.js" />
         <option value="$PROJECT_DIR$/test/lib/product/TestBundle.js" />
         <option value="$PROJECT_DIR$/lib/configuration/mime-types.json" />
         <option value="$PROJECT_DIR$/lib/content/font.js" />
-        <option value="$PROJECT_DIR$/lib/http/httpObject.js" />
         <option value="$PROJECT_DIR$/test/lib/content/TestFont.js" />
-        <option value="$PROJECT_DIR$/lib/content/SharedContent.js" />
-        <option value="$PROJECT_DIR$/lib/content/entity.js" />
-        <option value="$PROJECT_DIR$/test/lib/content/TestSharedContent.js" />
+        <option value="$PROJECT_DIR$/test/lib/product/TestProduct.js" />
+        <option value="$PROJECT_DIR$/lib/http/httpObject.js" />
+        <option value="$PROJECT_DIR$/test/lib/resources/shared/js/main_two.js" />
+        <option value="$PROJECT_DIR$/lib/aemm.js" />
+        <option value="$PROJECT_DIR$/test/lib/resources/shared/sharedHTML/index.html" />
         <option value="$PROJECT_DIR$/lib/content/article.js" />
         <option value="$PROJECT_DIR$/test/lib/content/TestArticle.js" />
+        <option value="$PROJECT_DIR$/test/lib/content/TestSharedContent.js" />
+        <option value="$PROJECT_DIR$/test/lib/aemm/TestCollection.js" />
         <option value="$PROJECT_DIR$/test/lib/content/TestCollection.js" />
+        <option value="$PROJECT_DIR$/lib/content/entity.js" />
         <option value="$PROJECT_DIR$/lib/content/collection.js" />
+        <option value="$PROJECT_DIR$/lib/content/SharedContent.js" />
+        <option value="$PROJECT_DIR$/test/lib/concurrent/TestArticle.js" />
+        <option value="$PROJECT_DIR$/lib/api/fs.js" />
+        <option value="$PROJECT_DIR$/test/lib/concurrent/TestCollection.js" />
+        <option value="$PROJECT_DIR$/lib/api/filedir.js" />
       </list>
     </option>
   </component>
@@ -172,10 +690,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="61" />
+    <option name="x" value="10" />
     <option name="y" value="23" />
-    <option name="width" value="2224" />
-    <option name="height" value="1312" />
+    <option name="width" value="2239" />
+    <option name="height" value="1323" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -225,6 +743,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -293,107 +812,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="product" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content" />
+              <option name="myItemId" value="concurrent" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -408,24 +827,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aemmobile-sdk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -465,9 +866,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aemmobile-sdk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aemmobile-sdk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -477,7 +895,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="vcs.CVS" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="javascript.karma.karma_node_package_dir" value="/usr/local/lib/node_modules/karma" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="/usr/local/lib/node_modules/mocha" />
@@ -485,18 +903,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/lib/aemm" />
       <recent name="$PROJECT_DIR$/test/lib/resources/image" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/test/lib" />
       <recent name="$PROJECT_DIR$/test/content/img" />
-      <recent name="$PROJECT_DIR$/test/content" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/lib/resources/shared/js" />
       <recent name="$PROJECT_DIR$/test/lib/resources/html" />
       <recent name="$PROJECT_DIR$/test/lib/resources/html/article" />
       <recent name="$PROJECT_DIR$/test/lib/resources/html/article/css" />
       <recent name="$PROJECT_DIR$/test/lib/resources" />
-      <recent name="$PROJECT_DIR$/lib/configuration" />
     </key>
   </component>
   <component name="RunManager" selected="Mocha.TestSharedContent.js">
@@ -834,7 +1252,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -854,7 +1272,15 @@
       <workItem from="1467692971764" duration="141543000" />
       <workItem from="1468261111067" duration="117157000" />
       <workItem from="1468517143085" duration="2269000" />
-      <workItem from="1468524662187" duration="91941000" />
+      <workItem from="1468524662187" duration="112465000" />
+      <workItem from="1468878193607" duration="425000" />
+      <workItem from="1468956140573" duration="1206000" />
+      <workItem from="1468971228774" duration="1774000" />
+      <workItem from="1468983240685" duration="1373000" />
+      <workItem from="1468986298666" duration="6000" />
+      <workItem from="1469153853868" duration="445000" />
+      <workItem from="1469159222063" duration="4910000" />
+      <workItem from="1469210444223" duration="25902000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit">
       <created>1464814852592</created>
@@ -867,39 +1293,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="#addEntity()_should_addEntity - 2016.07.18 at 00h 13m 44s.xml">
-      <configuration name="#addEntity().should addEntity" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="#maintain_sessionId_throughout - 2016.07.22 at 22h 01m 23s.xml">
+      <configuration name="#maintain sessionId throughout" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="#addEntity()_should_add_two_entities_one_at_a_time - 2016.07.18 at 00h 13m 51s.xml">
-      <configuration name="#addEntity().should add two entities one at a time" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="#maintain_sessionId_throughout_should_maintain_same_sessionId_throughout - 2016.07.22 at 21h 52m 51s.xml">
+      <configuration name="#maintain sessionId throughout.should maintain same sessionId throughout" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="#removeEntity_should_add_two_and_remove_one - 2016.07.18 at 00h 16m 12s.xml">
-      <configuration name="#removeEntity.should add two and remove one" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="#maintain_sessionId_throughout_should_maintain_same_sessionId_throughout - 2016.07.22 at 21h 55m 39s.xml">
+      <configuration name="#maintain sessionId throughout.should maintain same sessionId throughout" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="#removeEntity_should_add_two_and_remove_one - 2016.07.18 at 00h 17m 12s.xml">
-      <configuration name="#removeEntity.should add two and remove one" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="#maintain_sessionId_throughout_should_maintain_same_sessionId_throughout - 2016.07.22 at 21h 58m 38s.xml">
+      <configuration name="#maintain sessionId throughout.should maintain same sessionId throughout" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="#removeEntity_should_add_two_and_remove_one - 2016.07.18 at 00h 17m 19s.xml">
-      <configuration name="#removeEntity.should add two and remove one" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Collections_should_create_collections_and_publish_in_multiple_job_requests - 2016.07.22 at 22h 01m 37s.xml">
+      <configuration name="Collections.should create collections and publish in multiple job requests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="#removeEntity_should_add_two_and_remove_one - 2016.07.18 at 00h 18m 22s.xml">
-      <configuration name="#removeEntity.should add two and remove one" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Collections_should_create_collections_and_publish_in_multiple_job_requests - 2016.07.22 at 22h 02m 33s.xml">
+      <configuration name="Collections.should create collections and publish in multiple job requests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="#removeEntity_should_add_two_and_remove_one - 2016.07.18 at 00h 18m 42s.xml">
-      <configuration name="#removeEntity.should add two and remove one" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Collections_should_create_collections_and_publish_in_multiple_job_requests - 2016.07.22 at 22h 03m 17s.xml">
+      <configuration name="Collections.should create collections and publish in multiple job requests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="#removeEntity_should_removeEntity_one_at_a_time - 2016.07.18 at 00h 11m 58s.xml">
-      <configuration name="#removeEntity.should removeEntity one at a time" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Collections_should_create_collections_and_publish_in_multiple_job_requests - 2016.07.22 at 22h 16m 32s.xml">
+      <configuration name="Collections.should create collections and publish in multiple job requests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="#removeEntity_should_removeEntity_one_at_a_time - 2016.07.18 at 00h 12m 25s.xml">
-      <configuration name="#removeEntity.should removeEntity one at a time" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Collections_should_delete_all_collections_using_in_hand_data - 2016.07.22 at 22h 02m 06s.xml">
+      <configuration name="Collections.should delete all collections using in hand data" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="TestCollection_js - 2016.07.18 at 00h 15m 45s.xml">
-      <configuration name="TestCollection.js" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="Collections_should_delete_all_collections_using_in_hand_data - 2016.07.22 at 22h 15m 30s.xml">
+      <configuration name="Collections.should delete all collections using in hand data" configurationId="mocha-javascript-test-runner" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="801378000" />
+    <option name="totallyTimeSpent" value="857943000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -911,26 +1337,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="61" y="23" width="2224" height="1312" extended-state="0" />
+    <frame x="10" y="23" width="2239" height="1323" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12679856" sideWeight="0.5710526" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12714157" sideWeight="0.5710526" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32851407" sideWeight="0.49779737" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52931726" sideWeight="0.28848225" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24778761" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984716" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14800861" sideWeight="0.42894736" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15236568" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32743362" sideWeight="0.71151775" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15163934" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24532901" sideWeight="0.71151775" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27068272" sideWeight="0.49276274" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26969942" sideWeight="0.49276274" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14800861" sideWeight="0.42894736" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39501208" sideWeight="0.6318622" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2851064" sideWeight="0.6318622" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984716" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24754098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -952,21 +1378,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="60" />
+      <option name="time" value="67" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/lib/resources/html/article/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/resources/html/article/manifest.xml" />
-    <entry file="file://$PROJECT_DIR$/test/lib/resources/html/test/js/app.js" />
-    <entry file="file://$PROJECT_DIR$/test/lib/resources/html/copy/js/app.js" />
     <entry file="file://$PROJECT_DIR$/test/lib/resources/html/copy/manifest.xml" />
     <entry file="file://$PROJECT_DIR$/../20160510-Adobe Experience Manager Mobile On-Demand Services API/aemmobile-sdk-for-php/recipes/resources/html/art/manifest.xml" />
     <entry file="file://$PROJECT_DIR$/test/mocha.opts">
@@ -989,23 +1405,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/http/remote.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/http/remote.js" />
     <entry file="file://$PROJECT_DIR$/test/lib/content/TestCardTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,15 +1420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/product/TestProduct.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,7 +1427,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="33" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,39 +1434,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/authorization.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="95" column="10" selection-start-line="95" selection-start-column="10" selection-end-line="95" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/resources/html/article 2/manifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/resources/html/article 2/manifest.xml" />
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/resources/shared/js/main_two.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1077,15 +1449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/resources/shared/sharedHTML/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1093,7 +1456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1101,7 +1463,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1109,7 +1470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="63" column="56" selection-start-line="63" selection-start-column="56" selection-end-line="63" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,7 +1477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1125,7 +1484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1133,39 +1491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/authentication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="67" selection-start-line="60" selection-start-column="67" selection-end-line="60" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/product/Product.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/product/Bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/aemm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="14" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1173,118 +1498,183 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/configuration/end-points.json">
+    <entry file="file://$PROJECT_DIR$/test/lib/product/TestBundle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="1680">
+          <caret line="112" column="24" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/authorization.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="95" column="10" selection-start-line="95" selection-start-column="10" selection-end-line="95" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/content/TestFont.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1455">
+          <caret line="97" column="113" selection-start-line="97" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/product/TestProduct.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="203" column="23" selection-start-line="203" selection-start-column="22" selection-end-line="203" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/product/Product.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/product/Bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/lib/resources/shared/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/resources/shared/js/main_two.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
           <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/product/TestBundle.js">
+    <entry file="file://$PROJECT_DIR$/test/lib/resources/shared/js/html/article/js/app.js" />
+    <entry file="file://$PROJECT_DIR$/test/lib/resources/shared/sharedHTML/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="135" column="7" selection-start-line="135" selection-start-column="7" selection-end-line="135" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="120">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content/cardTemplate.js">
+    <entry file="file://$PROJECT_DIR$/test/lib/content/TestArticle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content/font.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content/layout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content/Publication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/content/TestFont.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state relative-caret-position="385">
+          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/lib/content/TestSharedContent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="102" column="40" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
+        <state relative-caret-position="303">
+          <caret line="60" column="26" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="26" />
+          <folding>
+            <marker date="1469164176000" expanded="true" signature="6871:7349" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/authentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="52" column="54" selection-start-line="52" selection-start-column="54" selection-end-line="52" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/configuration/mime-types.json">
+    <entry file="file://$PROJECT_DIR$/test/lib/content/TestCollection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="10" />
+        <state relative-caret-position="840">
+          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/http/httpObject.js">
+    <entry file="file://$PROJECT_DIR$/test/lib/concurrent/TestArticle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/content/TestArticle.js">
+    <entry file="file://$PROJECT_DIR$/lib/content/cardTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+        <state relative-caret-position="150">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/content/collection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="71" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/content/article.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+        <state relative-caret-position="1635">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content/entity.js">
+    <entry file="file://$PROJECT_DIR$/lib/http/httpObject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-645">
-          <caret line="198" column="32" selection-start-line="198" selection-start-column="32" selection-end-line="198" selection-end-column="32" />
+        <state relative-caret-position="465">
+          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/api/filedir.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/aemm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="68" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/configuration/mime-types.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/configuration/end-points.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lib/concurrent/TestCollection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -1292,23 +1682,39 @@
     <entry file="file://$PROJECT_DIR$/lib/content/SharedContent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/content/collection.js">
+    <entry file="file://$PROJECT_DIR$/lib/content/Publication.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="48" column="128" selection-start-line="48" selection-start-column="128" selection-end-line="48" selection-end-column="128" />
+        <state relative-caret-position="165">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/lib/content/TestCollection.js">
+    <entry file="file://$PROJECT_DIR$/lib/content/layout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="587" column="61" selection-start-line="587" selection-start-column="61" selection-end-line="587" selection-end-column="61" />
+        <state relative-caret-position="195">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/content/font.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="2" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/content/entity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="246" column="90" selection-start-line="246" selection-start-column="90" selection-end-line="246" selection-end-column="90" />
           <folding />
         </state>
       </provider>

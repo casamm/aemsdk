@@ -25,8 +25,8 @@ describe('#Article()', function () {
                 deleteSourceDir: false // default is false
             },
             images: [
-                {path: path.join(__dirname, '../resources/image/thumbnail.png'), subpath: "images/thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'},
-                {path: path.join(__dirname, '../resources/image/socialSharing.png'), subpath: "images/socialSharing"}
+                {file: path.join(__dirname, '../resources/image/thumbnail.png'), path: "images/thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'},
+                {file: path.join(__dirname, '../resources/image/socialSharing.png'), path: "images/socialSharing"}
             ],
             notify: function(status) {
                 //console.log(status.numerator, status.subAspect);
@@ -174,7 +174,7 @@ describe('#Article()', function () {
             .then(article.publish)
             .then(article.addWorkflowObserver) // publish workflow observer
             .then(article.unpublish)
-            .then(article.addWorkflowObserver) //
+            .then(article.addWorkflowObserver) // unpublish workflow observer
             .then(article.delete)
             .then(function(){done()})
             .catch(console.error);
