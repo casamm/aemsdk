@@ -178,4 +178,9 @@ returns: [/article/sharpsophisticated;version, article, sharpsophisticated]
 1 - entityType
 2 - entityName
 
+Upload Limit: 978 files or above throws this message
+message: 'Unable to complete upload request; msgText=There are too many files in the article=ArticleUploadInfo [publicationId=192a7f47-84c1-445e-a615-ff82d92e2eaa, articleName=demo_0, articleVersion=1469821651498, articleId=demo_0;version=1469821651498, folioOrRendition=folio, workflowId=42c03afb-7b5e-41aa-830a-5824f67966f0, isPDF=false, horizontalSwipe=false, md5=null, length=19185861, jobConversionJobId=n',
+code: 'IN031',
+extraData: '42c03afb-7b5e-41aa-830a-5824f67966f0'
+
 

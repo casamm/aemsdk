@@ -5,8 +5,7 @@ var publicationId = "192a7f47-84c1-445e-a615-ff82d92e2eaa";
 var datums = [0,1,2,3,4,5,6,7,8,9].map(function(item, index){
     return {
         schema: { entityName: "demo_" + index, entityType: AEMM.Collection.TYPE, publicationId: publicationId, title: "demo_" + index, productIds: ["ag.casa.demo"]},
-        images: [ {file: path.join(__dirname, "articles/thumbnail_" + index + ".jpg"), path: "images/thumbnail"},
-                  {file: path.join(__dirname, "articles/thumbnail_" + index + ".jpg"), path: "images/background"} ]
+        images: [ {file: path.join(__dirname, "articles/thumbnail_" + index + ".jpg"), path: "images/thumbnail"}, {file: path.join(__dirname, "articles/thumbnail_" + index + ".jpg"), path: "images/background"} ]
     };
 });
 
@@ -19,7 +18,7 @@ describe("Collections", function(){
                 .then(collection.uploadImages)
                 .then(collection.update)
                 .then(collection.seal)
-                .then(collection.publish)
+                .then(collection.execute)
         })).then(function(result){done()})
             .catch(console.error);
     });
@@ -36,7 +35,7 @@ describe("Collections", function(){
             result.forEach(function(data){
                 temp.entities.push({href: "/publication/" + data.schema.publicationId + "/" + data.schema.entityType + "/" + data.schema.entityName + ";version=" + data.schema.version})
             });
-            return collection.publish(temp);
+            return collection.execute(temp);
         }).then(function(result){
             console.log(result);
             done();
@@ -72,12 +71,13 @@ describe("Collections", function(){
         var datum = { schema: { entityType: AEMM.Collection.TYPE, publicationId: publicationId}};
         collection.requestList(datum)
             .then(function(result){
-                result.entities.forEach(function(data){
-                    collection.requestMetadata(data)
-                        .then(collection.delete)
-                        .then(function(){done()});
-                });
-            }).catch(console.error);
+                return Promise.all(result.entities.map(function(data){
+                    return collection.requestMetadata(data)
+                        .then(collection.delete);
+                }))
+            })
+            .then(function(){done()})
+            .catch(console.error);
     });
 
     it("should delete all collections using local data", function(done){

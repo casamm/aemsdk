@@ -35,6 +35,7 @@
   "ttf": "application/x-font-ttf",
   "txt": "text/plain",
   "woff": "application/x-font-woff",
+  "woff2": "application/x-font-woff",
   "xml": "application/xml",
   "plain": "text/plain"
 }
