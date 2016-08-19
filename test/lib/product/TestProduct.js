@@ -1,31 +1,27 @@
 var assert = require('assert');
 var AEMM = require('../../../lib/aemm');
-var authorization = new AEMM.Authorization();
 var product = new AEMM.Product();
+var authentication = new AEMM.Authentication();
+var authorization = new AEMM.Authorization();
+var publicationId = '192a7f47-84c1-445e-a615-ff82d92e2eaa';
+var productId = 'ag.casa.demo';
 
-var publicationId = 'b5bacc1e-7b55-4263-97a5-ca7015e367e0';
-var productId = 'com.sothebys.del13';
+before(function(done) {
+    authentication.requestToken()
+        .then(function(data) {
+            assert.equal(data.access_token, authentication.getToken().access_token);
+            done();
+        })
+        .catch(console.error);
+});
 
 describe('#Product()', function() {
-
-    it('should construct', function(){
-        assert.ok(product);
-    });
-
     it('should check for permissions', function(done){
-        var meta = {
-            schema: {publicationId: publicationId},
-            permissions: ['product_add', 'product_view']
-        };
-
-        var datum = {
-            schema: { id: productId },
-            entityType: AEMM.Product.TYPE,
-            publicationId: publicationId
-        };
-        authorization.verify(meta)
+        var authorizationData = {schema: {publicationId: publicationId}, permissions: ['product_add', 'product_view']};
+        var data = {schema: { id: productId }, entityType: AEMM.Product.TYPE, publicationId: publicationId};
+        authorization.verify(authorizationData)
             .then(function(){
-                return product.requestMetadata(datum);
+                return product.requestMetadata(data);
             })
             .then(function(result){
                 assert.ok(result.schema.id == productId);
@@ -35,17 +31,14 @@ describe('#Product()', function() {
     });
 
     it('should update', function(done){
-        var body = {
-            schema: {
-                id: productId
-            },
-            update: {
-                label: "new label"
-            },
+        this.timeout(0);
+        var data = {
+            schema: {id: productId},
+            update: {label: "new label"},
             entityType: AEMM.Product.TYPE,
             publicationId: publicationId
         };
-        product.requestMetadata(body)
+        product.requestMetadata(data)
             .then(product.update)
             .then(function(result){
                 assert.ok(result.schema.label == "new label");
@@ -68,12 +61,9 @@ describe('#Product()', function() {
             })
             .catch(console.error);
     });
-
     it('should requestMetadata for a product', function(done){
         var body = {
-            schema: {
-                id: productId
-            },
+            schema: {id: productId},
             entityType: AEMM.Product.TYPE,
             publicationId: publicationId
         };
@@ -97,9 +87,7 @@ describe('#Product()', function() {
             .then(function(result){
                 Promise.all(result.entities.map(function(value){
                     var data = {
-                        schema: {
-                            id: value.id
-                        },
+                        schema: {id: value.id},
                         entityType: AEMM.Product.TYPE,
                         publicationId: publicationId
                     };
@@ -111,19 +99,15 @@ describe('#Product()', function() {
             })
     });
 
-    it("should get list from both", function(done){
+    it("should get list from both products and bundles", function(done){
         var bundle = new AEMM.Bundle();
         var datum = {
-            schema: {
-                id: productId
-            },
+            schema: {id: productId},
             entityType: AEMM.Product.TYPE,
             publicationId: publicationId
         };
         var datum2 = {
-            schema: {
-                id: "subscription1"
-            },
+            schema: {id: "subscription1"},
             entityType: AEMM.Bundle.TYPE,
             publicationId: publicationId
         };
@@ -138,21 +122,21 @@ describe('#Product()', function() {
     });
 
     it("should generate issue list", function(done){
-        this.timeout(25000);
+        this.timeout(0);
 
         var collection = new AEMM.Collection();
         var product = new AEMM.Product();
-        var datum = {
+        var data = {
             schema: {
                 entityType: AEMM.Collection.TYPE,
                 publicationId: publicationId
             }
         };
 
-        collection.requestList(datum) // requestList
-            .then(function(data){ // requestMetadata
-                return Promise.all(data.entities.map(function(item){
-                    var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
+        collection.requestList(data) // requestList
+            .then(function(result){ // requestMetadata
+                return Promise.all(result.entities.map(function(item){
+                    var matches = AEMM.matchUrl(item.href);
                     var meta = {schema: {entityName: matches[2], entityType: matches[1], publicationId: publicationId}};
                     return collection.requestMetadata(meta);
                 })).then(function(result){
@@ -166,8 +150,8 @@ describe('#Product()', function() {
             .then(function(data){ // requestStatus
                 var promises = [];
                 for (var property in data.entities) {
-                    var body = {schema: data.entities[property]};
-                    promises.push(collection.requestStatus(body));
+                    var temp = {schema: data.entities[property]};
+                    promises.push(collection.requestStatus(temp));
                 }
                 return Promise.all(promises).then(function(result){
                     result.forEach(function(item){
@@ -207,7 +191,6 @@ describe('#Product()', function() {
                     }
                 }
                 return Promise.all(promises).then(function(result){
-                    console.log(result);
                     result.forEach(function(item){
                         data.entities[item.schema.entityName].thumbnail = item;
                     });

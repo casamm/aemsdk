@@ -1,9 +1,17 @@
 var assert = require('assert');
 var AEMM = require("../../../lib/aemm");
+var authentication = new AEMM.Authentication();
 var font = new AEMM.Font();
+var publicationId = '192a7f47-84c1-445e-a615-ff82d92e2eaa';
 
 var fs = require("fs");
 var path = require("path");
+
+before(function(done){
+    authentication.requestToken()
+        .then(function(){done()})
+        .catch(console.error);
+});
 
 describe("#Font()", function(){
 
@@ -12,13 +20,10 @@ describe("#Font()", function(){
     });
 
     it("should requestList", function(done){
-        var body = {
-            schema: {
-                entityType: AEMM.Font.TYPE,
-                publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
-            }
+        var data = {
+            schema: {entityType: AEMM.Font.TYPE, publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"}
         };
-        font.requestList(body)
+        font.requestList(data)
             .then(function(data){
                 assert.ok(data);
                 done();
@@ -34,7 +39,7 @@ describe("#Font()", function(){
                 title: "font title",
                 postscriptName: "font.otf",
                 entityType: AEMM.Font.TYPE,
-                publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
+                publicationId: publicationId
             },
             fonts: [
                 {file: path.join(__dirname, "../resources/font/font.otf"), path: "fonts/device"},
@@ -65,7 +70,7 @@ describe("#Font()", function(){
                 title: "font title",
                 postscriptName: "font.otf",
                 entityType: AEMM.Font.TYPE,
-                publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
+                publicationId: publicationId
             },
             fonts: [
                 {file: path.join(__dirname, "../resources/font/font.otf"), path: "fonts/device"},
@@ -78,7 +83,6 @@ describe("#Font()", function(){
             .then(font.update)
             .then(font.seal)
             .then(font.downloadFonts)
-            .then(font.delete)
             .then(function(data){
                 assert.ok(data.fonts.length == 2);
                 var isDownloaded = false;
@@ -88,6 +92,10 @@ describe("#Font()", function(){
                     fs.unlink(item);
                 });
                 assert.ok(isDownloaded);
+                return data;
+            })
+            .then(font.delete)
+            .then(function(){
                 done();
             })
             .catch(console.error);
@@ -95,18 +103,18 @@ describe("#Font()", function(){
 
     it("should match font", function(){
         var urls = [
-            "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/font/fontEntity/contents;contentVersion=1468627103814/fonts/web",
-            "/publication/b5baabce-7b55-5563-97a6-ca7235e367e0/font/newFont001/contents;contentVersion=1468627103814/fonts/device"
+            "/publication/192a7f47-84c1-445e-a615-ff82d92e2eaa/font/fontEntity/contents;contentVersion=1468627103814/fonts/web",
+            "/publication/192a7f47-84c1-445e-a615-ff82d92e2eaa/font/newFont001/contents;contentVersion=1468627103814/fonts/device"
         ];
 
-        var matches = AEMM.matchContentUrl(urls[0]);
-        assert.ok(matches[1] == 'b5bacc1e-7b55-4263-97a5-ca7015e367e0');
-        assert.ok(matches[3] == "font");
-        assert.ok(matches[4] == 'fontEntity');
-        assert.ok(matches[6] == 'web');
+        var matches = AEMM.matchContentUrlPath(urls[0]);
+        assert.equal(matches[1], publicationId);
+        assert.equal(matches[3], "font");
+        assert.equal(matches[4], 'fontEntity');
+        assert.equal(matches[7], 'web');
 
-        matches = AEMM.matchContentUrl(urls[1]);
-        assert.ok(matches[6] == 'device');
+        matches = AEMM.matchContentUrlPath(urls[1]);
+        assert.equal(matches[7], 'device');
     });
 
 });

@@ -2,7 +2,13 @@ var assert = require('assert');
 var AEMM = require("../../../lib/aemm");
 var cardTemplate = new AEMM.CardTemplate();
 
-var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
+var publicationId = "192a7f47-84c1-445e-a615-ff82d92e2eaa";
+
+before(function(done){
+    AEMM.authentication.requestToken()
+        .then(function(){done()})
+        .catch(console.error);
+});
 
 describe('#CardTemplate()', function () {
     it('should be instantiated', function () {

@@ -2,17 +2,19 @@ var assert = require('assert');
 var AEMM = require("../../../lib/aemm");
 
 var collection = new AEMM.Collection();
-var authorization = AEMM.authorization;
+var article = new AEMM.Article();
+var authentication = new AEMM.Authentication();
+var authorization = new AEMM.Authorization();
 var fs = require('fs');
 var path = require("path");
 
-var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
+var publicationId = '192a7f47-84c1-445e-a615-ff82d92e2eaa';
 var entity = {
-    entityName: "demo",
+    entityName: "collection_test",
     entityType: AEMM.Collection.TYPE,
     publicationId: publicationId,
-    title: "collection from nodejs",
-    shortTitle: "nodejs",
+    title: "collection test",
+    shortTitle: "test",
     productIds: ["product_collection_demo"]
 };
 
@@ -20,15 +22,167 @@ var thumbnail = {file: path.join(__dirname, '../resources/image/thumbnail.png'),
 var background = {file: path.join(__dirname, '../resources/image/background.png'), path: "images/background", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
 var socialSharing = {file: path.join(__dirname, '../resources/image/socialSharing.png'), path: "images/socialSharing", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'};
 
-var contentElements = [
-    {href: "/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test1-a;version=1465569834257"},
-    {href: '/publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/test2-b;version=1465569833754'}
-];
+before(function(done) {
+    authentication.requestToken({})
+        .then(function(data) {
+            assert.equal(data.authentication.access_token, authentication.getToken().access_token);
+            done();
+        })
+        .catch(console.error);
+});
 
 describe('#Collection()', function () {
-
     it('should be instantiated', function () {
         assert.ok(collection, 'constructor test');
+    });
+});
+
+describe('#create()', function () {
+    var data = {
+        schema: entity,
+        permissions: [AEMM.Authorization.PRODUCER_CONTENT_ADD, AEMM.Authorization.PRODUCER_CONTENT_DELETE] // permissions to check for
+    };
+
+    it('should create', function(done){
+        collection.create(data)
+            .then(collection.delete)
+            .then(function(){done()})
+            .catch(console.error);
+    });
+
+    it('should create after authorization', function (done) {
+        authorization.verify(data)
+            .then(collection.create)
+            .then(collection.delete)
+            .then(function(){
+                done();
+            })
+            .catch(console.error);
+    });
+});
+
+describe('#update()', function () {
+    this.timeout(0);
+    var data = {
+        schema: entity,
+        update: {
+            title: "newtitle",
+            shortTitle: "new short title"
+        }
+    };
+    it('should update', function (done) {
+        collection.create(data)
+            .then(collection.update)
+            .then(function(result) {
+                assert.equal(result.schema.title, "newtitle");
+                assert.ok(result.schema.shortTitle == "new short title");
+                return result;
+            })
+            .then(collection.delete)
+            .then(function(){done()})
+            .catch(console.error);
+    });
+});
+
+describe('#uploadImage()', function () {
+
+    it('should upload thumbnail', function (done) {
+        this.timeout(0);
+        var data = {
+            schema: entity,
+            images: [thumbnail]
+        };
+        collection.create(data)
+            .then(collection.uploadImages)
+            .then(collection.update)
+            .then(collection.seal)
+            .then(collection.delete)
+            .then(function(){done()})
+            .catch(console.error)
+    });
+
+    it('should upload background', function (done) {
+        this.timeout(0);
+        var data = {
+            schema: entity,
+            images: [background]
+        };
+        collection.create(data)
+            .then(collection.uploadImages)
+            .then(collection.update)
+            .then(collection.seal)
+            .then(collection.delete)
+            .then(function(){done()})
+            .catch(console.error);
+    });
+
+    it('should upload thumbnail, background and socialSharing', function (done) {
+        this.timeout(0);
+        var data = {
+            schema: entity,
+            images: [thumbnail, background, socialSharing]
+        };
+        collection.create(data)
+            .then(collection.uploadImages)
+            .then(collection.update)
+            .then(collection.seal)
+            .then(collection.delete)
+            .then(function(){done()})
+            .catch(console.error);
+    });
+
+    it("should download images", function(done){
+        this.timeout(0);
+        var data = {
+            schema: entity,
+            images: [thumbnail, background, socialSharing], // required for initial setup
+            downSamples: true
+        };
+        collection.create(data)
+            .then(collection.uploadImages)
+            .then(collection.update)
+            .then(collection.seal)
+            .then(collection.downloadImages)
+            .then(function(result){
+                assert.ok(result.images.length);
+                var isDownloaded = false;
+                result.images.forEach(function(image){
+                    isDownloaded = true;
+                    assert.ok(fs.existsSync(image));
+                    fs.unlink(image);
+                });
+                assert.ok(isDownloaded);
+                return result;
+            })
+            .then(collection.delete)
+            .then(function(){
+                done();
+            })
+            .catch(console.error)
+    });
+});
+
+describe("#publish() collection", function(){
+    this.timeout(0);
+    it("should publish and then unpublish the collection", function(done){
+        var body = {
+            schema: entity,
+            images: [thumbnail],
+            notify: function(status){
+                console.log(status);
+            }
+        };
+        collection.create(body)
+            .then(collection.uploadImages)
+            .then(collection.update)
+            .then(collection.seal)
+            .then(collection.publish)
+            .then(collection.addWorkflowObserver)
+            .then(collection.unpublish)
+            .then(collection.addWorkflowObserver)
+            .then(collection.delete)
+            .then(function(data){done()})
+            .catch(console.error)
     });
 });
 
@@ -78,9 +232,6 @@ describe("#maintain sessionId throughout", function(){
                     });
             })
             .then(collection.delete)
-            .then(function(result){
-                assert.equal(sessionId, result.sessionId);
-            })
             .then(function(){
                 done();
             })
@@ -128,34 +279,14 @@ describe("#topLevelPhoneContent unpublish", function(){
             .then(function(){
                 done();
             })
-            .catch(console.error);
+            .catch(function(error){
+                error.code == 'TopLevelCollectionUnpublishException' ? done() : console.error(error);
+            });
     })
 });
 
-describe('#create()', function () {
-    this.timeout(5000);
-    var body = {
-        schema: entity,
-        permissions: [AEMM.Authorization.PRODUCER_CONTENT_ADD, AEMM.Authorization.PRODUCER_CONTENT_DELETE] //permissions to check for
-    };
-    it('should create', function(done){
-        collection.create(body)
-            .then(collection.delete)
-            .then(function(){done()})
-            .catch(console.error);
-    });
-    it('should create after authorization', function (done) {
-        authorization.verify(body)
-            .then(collection.create)
-            .then(collection.delete)
-            .then(function(data){
-                done();
-            })
-            .catch(console.error);
-    });
-});
-
 describe("#requestList()", function(){
+
     it("should list", function(done){
         var body2 = {
             query: "page=0&pageSize=5&q=entityType==collection&sortField=modified&descending=true",
@@ -218,6 +349,7 @@ describe("#requestList()", function(){
         collection.requestList(body)
             .then(function(result){
                 return Promise.all(result.entities.map(function(entity){
+                    entity.authentication = body.authentication;
                     return collection.requestMetadata(entity);
                 }))
             })
@@ -236,107 +368,6 @@ describe('#requestMetadata()', function () {
     it("should requestMetadata", function(done){
         collection.create(body)
             .then(collection.requestMetadata)
-            .then(collection.delete)
-            .then(function(){done()})
-            .catch(console.error);
-    });
-});
-
-describe('#uploadImage()', function () {
-
-    it('should upload thumbnail', function (done) {
-        this.timeout(0);
-        var body = {
-            schema: entity,
-            images: [thumbnail]
-        };
-
-        collection.create(body)
-            .then(collection.uploadImages)
-            .then(collection.update)
-            .then(collection.seal)
-            .then(collection.delete)
-            .then(function(){done()})
-            .catch(console.error)
-    });
-
-    it('should upload background', function (done) {
-        this.timeout(0);
-        var body = {
-            schema: entity,
-            images: [background]
-        };
-        collection.create(body)
-            .then(collection.uploadImages)
-            .then(collection.update)
-            .then(collection.seal)
-            .then(collection.delete)
-            .then(function(){done()})
-            .catch(console.error);
-    });
-
-    it('should upload thumbnail, background and socialSharing', function (done) {
-        this.timeout(0);
-        var datum = {
-            schema: entity,
-            images: [thumbnail, background, socialSharing]
-        };
-        collection.create(datum)
-            .then(collection.uploadImages)
-            .then(collection.update)
-            .then(collection.seal)
-            .then(collection.delete)
-            .then(function(){done()})
-            .catch(console.error);
-    });
-
-    it("should download images", function(done){
-        this.timeout(0);
-        var datum = {
-            schema: entity,
-            images: [thumbnail, background, socialSharing], // required for initial setup
-            downSamples: true
-        };
-        collection.create(datum)
-            .then(collection.uploadImages)
-            .then(collection.update)
-            .then(collection.seal)
-            .then(collection.downloadImages)
-            .then(function(datum){
-                assert.ok(datum.images.length);
-                var isDownloaded = false;
-                datum.images.forEach(function(image){
-                    isDownloaded = true;
-                    assert.ok(fs.existsSync(image));
-                    //fs.unlink(image);
-                });
-                assert.ok(isDownloaded);
-                return datum;
-            })
-            .then(collection.delete)
-            .then(function(){
-                done();
-            })
-            .catch(console.error)
-    });
-});
-
-describe('#update()', function () {
-    var datum = {
-        schema: entity,
-        update: {
-            title: "newtitle",
-            shortTitle: "new short title"
-        }
-    };
-    it('should update', function (done) {
-        collection.create(datum)
-            .then(collection.update)
-            .then(function(datum) {
-                assert.ok(datum.schema.title == "newtitle");
-                assert.ok(datum.schema.shortTitle == "new short title");
-                return datum;
-            })
             .then(collection.delete)
             .then(function(){done()})
             .catch(console.error);
@@ -363,86 +394,94 @@ describe("#requestContentElements()", function(){
 });
 
 describe("#updateContentElements()", function(){
-    var datum = {
-        schema: entity,
-        contentElements: contentElements
-    };
+    this.timeout(0);
+    var contentElements;
+    before(function(done){
+        Promise.all([0, 1].map(function(item){
+            return article.create({schema: {entityName: 'test_' + item, title: 'test_' + item, entityType: 'article', publicationId: publicationId}})
+        })).then(function(result){
+            contentElements = result.map(function(item){
+                return {href: '/publication/' + item.schema.publicationId + '/' + item.schema.entityType + '/' + item.schema.entityName + ';version=' + item.schema.version};
+            });
+            done();
+        }).catch(console.error);
+    });
+
+    after(function(done){
+        Promise.all(contentElements.map(function(item){
+            return article.delete(item);
+        })).then(function(){
+            done();
+        }).catch(console.error);
+    });
+
     it("should updateContentElements", function(done){
-        collection.create(datum)
+        var data = {
+            schema: entity,
+            contentElements: contentElements
+        };
+
+        return collection.create(data)
             .then(collection.updateContentElements)
             .then(collection.requestContentElements)
-            .then(function(datum){
-                assert.ok(datum.contentElements.length == 2);
-                return datum;
+            .then(function(result){
+                assert.ok(result.contentElements.length == 2);
+                return result;
+            })
+            .then(collection.requestMetadata)
+            .then(collection.delete)
+            .then(function(){
+                done();
+            });
+    });
+
+    it("should updateContentElements and requestReferencing", function(done){
+        var data = {
+            schema: entity,
+            contentElements: contentElements
+        };
+
+        collection.create(data)
+            .then(collection.updateContentElements)
+            .then(function(collectionMetadata){
+                var matches = AEMM.matchUrl(contentElements[0].href);
+                var temp = {schema: {publicationId: publicationId, entityName: matches[4], entityType: matches[3], version: matches[5]}, referencingEntityType: 'collection'};
+                return article.requestReferencing(temp)
+                    .then(function(result){
+                        assert.ok(result.referencingEntities.length);
+                    })
+                    .then(function(){
+                        return collection.requestMetadata(collectionMetadata);
+                    });
             })
             .then(collection.delete)
             .then(function(){done()})
             .catch(console.error);
     });
 
-    it("should updateContentElements and requestReferencing", function(done){
-        this.timeout(0);
-        var datum = {
-            schema: entity,
-            contentElements: contentElements
-        };
-
-        var datum2 = {
-            schema: {
-                entityType: AEMM.Article.TYPE,
-                entityName: "test1-a",
-                publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
-            },
-            referencingEntityType: AEMM.Collection.TYPE
-        };
-
-        var article = new AEMM.Article();
-        article.requestMetadata(datum2)
-            .then(function(articleMetadata){
-                collection.create(datum)
-                    .then(collection.updateContentElements)
-                    .then(function(collectionMetadata){
-                        return article.requestReferencing(articleMetadata)
-                            .then(function(datum){
-                                assert.ok(datum.referencingEntities.length);
-                                return collectionMetadata;
-                            })
-                    })
-                    .then(collection.delete)
-                    .then(function(){
-                        done();
-                    })
-                    .catch(console.error);
-
-            })
-    })
-});
-
-describe("#publish() collection", function(){
-    this.timeout(0);
-    it("should publish and then unpublish the collection", function(done){
-        var body = {
-            schema: entity,
-            images: [thumbnail],
-            notify: function(status){
-                console.log(status);
-            }
-        };
-        collection.create(body)
-            .then(collection.uploadImages)
-            .then(collection.update)
-            .then(collection.seal)
-            .then(collection.publish)
-            .then(collection.addWorkflowObserver)
-            .then(collection.unpublish)
-            .then(collection.addWorkflowObserver)
-            .then(collection.delete)
-            .then(function(data){done()})
-            .catch(console.error)
-    });
 });
 
 describe("#addEntity()", function(){
+    this.timeout(0);
+    var contentElements;
+    before(function(done){
+        Promise.all([0, 1].map(function(item){
+            return article.create({schema: {entityName: 'test_' + item, title: 'test_' + item, entityType: 'article', publicationId: publicationId}})
+        })).then(function(result){
+            contentElements = result.map(function(item){
+                return {href: '/publication/' + item.schema.publicationId + '/' + item.schema.entityType + '/' + item.schema.entityName + ';version=' + item.schema.version};
+            });
+            done();
+        }).catch(console.error);
+    });
+
+    after(function(done){
+        Promise.all(contentElements.map(function(item){
+            return article.delete(item);
+        })).then(function(){
+            done();
+        }).catch(console.error);
+    });
 
     it("should addEntity", function(done){
         var body = {
@@ -525,6 +564,26 @@ describe("#addEntity()", function(){
 });
 
 describe("#removeEntity", function(){
+    this.timeout(0);
+    var contentElements;
+    before(function(done){
+        Promise.all([0, 1].map(function(item){
+            return article.create({schema: {entityName: 'test_' + item, title: 'test_' + item, entityType: 'article', publicationId: publicationId}})
+        })).then(function(result){
+            contentElements = result.map(function(item){
+                return {href: '/publication/' + item.schema.publicationId + '/' + item.schema.entityType + '/' + item.schema.entityName + ';version=' + item.schema.version};
+            });
+            done();
+        }).catch(console.error);
+    });
+
+    after(function(done){
+        Promise.all(contentElements.map(function(item){
+            return article.delete(item);
+        })).then(function(){
+            done();
+        }).catch(console.error);
+    });
 
     it("should removeEntity one at a time", function(done){
         this.timeout(5000);
@@ -616,53 +675,6 @@ describe("#removeEntity", function(){
                 assert.ok(data.contentElements.length == 1);
                 assert.ok(data.contentElements[0].href == contentElements[1].href);
                 return data;
-            })
-            .then(collection.delete)
-            .then(function(){done()})
-            .catch(console.error);
-    });
-});
-
-describe("#requestWorkflow()", function(){
-    it("should return workflow", function(done){
-        this.timeout(0);
-        var body = {
-            schema: entity,
-            images: [thumbnail, background, socialSharing]
-        };
-        collection.create(body)
-            .then(collection.uploadImages)
-            .then(collection.update)
-            .then(collection.seal)
-            .then(collection.publish) // requestStatus test itself to test requestWorkflow directly
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        collection.requestWorkflow(result)
-                            .then(function(data){
-                                switch(data.workflowStatus.status) {
-                                    case "RUNNING": break;
-                                    case "COMPLETED": clearInterval(id); resolve(data); break;
-                                    case "NOT_FOUND": clearInterval(id); resolve(data); break;
-                                }
-                            });
-                    }, 1000);
-                });
-            })
-            .then(collection.unpublish)
-            .then(function(result){
-                return new Promise(function(resolve, reject){
-                    var id = setInterval(function(){
-                        collection.requestWorkflow(result)
-                            .then(function(data){
-                                switch(data.workflowStatus.status) {
-                                    case "RUNNING": break;
-                                    case "COMPLETED": clearInterval(id); resolve(data); break;
-                                    case "NOT_FOUND": clearInterval(id); resolve(data); break;
-                                }
-                            });
-                    }, 1000);
-                });
             })
             .then(collection.delete)
             .then(function(){done()})

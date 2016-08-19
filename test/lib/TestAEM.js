@@ -1,7 +1,7 @@
 describe('AEMM', function() {
 
     var assert = require('assert');
-    var AEM = require("../../lib/aemm");
+    var AEMM = require("../../lib/aemm");
     
     describe('AEMM', function () {
         it('should be available for use', function () {

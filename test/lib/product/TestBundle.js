@@ -1,10 +1,20 @@
 var assert = require('assert');
 var AEMM = require("../../../lib/aemm");
 var bundle = new AEMM.Bundle();
+var authentication = new AEMM.Authentication();
 var authorization = new AEMM.Authorization();
 
 var publicationId = 'b5bacc1e-7b55-4263-97a5-ca7015e367e0';
 var bundleId = "subscription1";
+
+before(function(done) {
+    authentication.requestToken({})
+        .then(function(data) {
+            assert.equal(data.access_token, authentication.getToken().access_token);
+            done();
+        })
+        .catch(console.error);
+});
 
 describe("#Bundle()", function(){
 
@@ -33,7 +43,7 @@ describe("#Bundle()", function(){
     // });
 
     it('should verify and requestMetadata', function(done){
-        this.timeout(5000);
+        this.timeout(0);
         var body = {
             schema: {
                 publicationId: publicationId

@@ -1,9 +1,14 @@
 var assert = require('assert');
 var AEMM = require("../../../lib/aemm");
-
 var publication = new AEMM.Publication();
-var authorization = AEMM.authorization;
+var authorization = new AEMM.Authorization();
 var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
+
+before(function(done){
+    AEMM.authentication.requestToken()
+        .then(function(){done()})
+        .catch(console.error);
+});
 
 describe('Publication', function() {
     
@@ -12,16 +17,12 @@ describe('Publication', function() {
     });
 
     it("should requestStatus", function(done){
-        var body = {
-            schema: {
-                entityName: publicationId,
-                entityType: AEMM.Publication.TYPE,
-                publicationId: publicationId
-            },
+        var data = {
+            schema: {entityName: publicationId, entityType: AEMM.Publication.TYPE, publicationId: publicationId},
             permissions: ["publication_admin"]
         };
 
-        authorization.verify(body)
+        authorization.verify(data)
             .then(publication.requestStatus)
             .then(function(result){
                 assert.ok(result.status);

@@ -47,8 +47,8 @@ Article
     Both article (status[2].eventType) and publication level (status[0].eventType statuses are checked for success
 
 
-Status of Article Upload
-========================
+Article Status
+=================================
 
 
 1. PreCheck - Status call on article before upload
@@ -59,9 +59,9 @@ Status of Article Upload
    Status ->
     aspect:     ingestion
     eventType:  progress                                                    success
-    subAspect:  Started     Received    Extracted   Validated   Uploaded    Sealed
-    numerator:  1           2               3           4           5           6
-    denominator:6           6               6           6           6           6
+    subAspect:  Error       Started     Received    Extracted   Validated   Uploaded    Sealed
+    numerator:  0           1           2               3           4           5           6
+    denominator:6           6           6               6           6           6           6
 
     Started:    (1/6) Started the process to accept the zip file
     Received:   (2/6) Received article zip file
@@ -96,7 +96,7 @@ P.S. publication status is checked as well (new entry unshift - beginning of arr
     numerator:  null
     denominator:null
 
-    [ingestion, preview, publish]
+    [ingestion, preview, publishing]
 
 
 Extra Attempts:
@@ -147,7 +147,7 @@ F. Preflight
 
    aspect: preview went from progress to success
 
-   [preivew, publishing]
+   [preview, publishing]
 
 G. Publish
 
@@ -162,25 +162,38 @@ Point:
     if call was article.unpublish, then set the aspect to unpublish and then check in status if aspect was unpublish,
     then loop through entries and ensure the publish aspect is not there and then notify observer, otherwise do nothing.
 
-    if aspect is not defined, eject.
+    if aspect is not defined, reject.
 
-
-Regex
-
-url: /publication/b5bacc1e-7b55-4263-97a5-ca7015e367e0/article/sharpsophisticated;version=1466021484411
-
-reg: /    \/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version     /
-
-/([article|collection]*)/([a-zA-Z0-9\_\-\.]*) \;version
-
-returns: [/article/sharpsophisticated;version, article, sharpsophisticated]
-
-1 - entityType
-2 - entityName
 
 Upload Limit: 978 files or above throws this message
 message: 'Unable to complete upload request; msgText=There are too many files in the article=ArticleUploadInfo [publicationId=192a7f47-84c1-445e-a615-ff82d92e2eaa, articleName=demo_0, articleVersion=1469821651498, articleId=demo_0;version=1469821651498, folioOrRendition=folio, workflowId=42c03afb-7b5e-41aa-830a-5824f67966f0, isPDF=false, horizontalSwipe=false, md5=null, length=19185861, jobConversionJobId=n',
 code: 'IN031',
 extraData: '42c03afb-7b5e-41aa-830a-5824f67966f0'
+
+
+
+Article Status
+/status/{publicationId}/article/{entityName}
+
+•	After article upload, It returns an array having a an item with aspect=ingestion.
+•	The subAspect varies from Error, Started, Received, Extracted, Validated, Uploaded and Sealed, each having eventType with possible values of progress, success or failure.
+•	The status array retains any additional operations after ingestion. For instance preview, publishing gets added to existing array. Unpublishing an article removes the aspect=publishing from the array.
+
+
+Publication Status
+/status/{publicationId}/publication/??????
+
+•	From the attached image, it’s confusing whether the trailing 0’s refer to publicationId or workflowId. I assume it’s {publicationId}, and I get two items with subAspect=preview and subAspect=publishing.
+•	subAspect=preview status shows different values on preflight.
+•	documentation refers to some extraData but I couldn’t see anything like that, irrespective of ongoing collection or article publishing in the background.
+•	Also mentioning about workflowId in #1 confuses with substituting the URL with workflowId and publication unlocked status. Thanks to support email that clarified to use workflow status mentioned below and it could use documentation updates if it’s not updated already.
+
+
+Workflow Status
+/status/{publicationId}/workflow/{workflowId}
+
+•	Used with publishing of fonts, collections, articles, publications
+•	Returns an item with status with variable values from RUNNING, COMPLETED and NOT_FOUND.
+
 
 

@@ -1,93 +1,102 @@
 var AEMM = require("../../../lib/aemm");
 var collection = new AEMM.Collection();
+var authentication = new AEMM.Authentication();
+var assert = require('assert');
 var path = require("path");
 var publicationId = "192a7f47-84c1-445e-a615-ff82d92e2eaa";
+
 var datums = [0,1,2,3,4,5,6,7,8,9].map(function(item, index){
     return {
-        schema: { entityName: "demo_" + index, entityType: AEMM.Collection.TYPE, publicationId: publicationId, title: "demo_" + index, productIds: ["ag.casa.demo"]},
+        schema: { entityName: "collection_" + index, entityType: AEMM.Collection.TYPE, publicationId: publicationId, title: "collection_" + index, productIds: ["ag.casa.demo"]},
         images: [ {file: path.join(__dirname, "articles/thumbnail_" + index + ".jpg"), path: "images/thumbnail"}, {file: path.join(__dirname, "articles/thumbnail_" + index + ".jpg"), path: "images/background"} ]
     };
 });
 
+before(function(done) {
+    authentication.requestToken()
+        .then(function(data) {
+            assert.equal(data.access_token, authentication.getToken().access_token);
+            done();
+        })
+        .catch(console.error);
+});
+
 describe("Collections", function(){
 
-    it("should create collections and publish in multiple job requests", function(done){
+    it("should create collections and publish via enqueue", function(done){
         this.timeout(0);
         Promise.all(datums.map(function(data){
             return collection.create(data)
                 .then(collection.uploadImages)
                 .then(collection.update)
                 .then(collection.seal)
-                .then(collection.execute)
-        })).then(function(result){done()})
-            .catch(console.error);
-    });
-
-    it("should create collections and publish in a single job request", function(done){
-        this.timeout(0);
-        Promise.all(datums.map(function(data){
-            return collection.create(data)
-                .then(collection.uploadImages)
-                .then(collection.update)
-                .then(collection.seal)
+                .then(collection.enqueue) // publish enqueue
+                .catch(console.error);
         })).then(function(result){
-            var temp = {entities: []};
-            result.forEach(function(data){
-                temp.entities.push({href: "/publication/" + data.schema.publicationId + "/" + data.schema.entityType + "/" + data.schema.entityName + ";version=" + data.schema.version})
-            });
-            return collection.execute(temp);
-        }).then(function(result){
-            console.log(result);
             done();
-        }).catch(console.error);
+        })
     });
 
-    it("should unpublish collections in a single job request", function(done){
+    it("should create collections with existing articles", function(done){
         this.timeout(0);
-        Promise.all(datums.map(function(data){
-            return collection.requestMetadata(data);
-        })).then(function(result){
-            var temp = {entities: []};
-            result.forEach(function(data){
-                temp.entities.push({href: "/publication" + data.schema.publicationId + "/" + data.schema.entityType + "/" + data.schema.entityName + ";version=" + data.schema.version})
-            });
-            return collection.unpublish(temp)
-        }).then(function(){
-            done();
-        }).catch(console.error);
+        var article = new AEMM.Article();
+        var index = 0;
+        article.requestList({schema: {entityType: AEMM.Article.TYPE, publicationId: publicationId}})
+            .then(function(result){
+                return Promise.all(datums.splice(0, 5).map(function(data){
+                    data.contentElements = result.entities.splice(0, 2);
+                    return collection.create(data)
+                        .then(collection.updateContentElements)
+                        .then(collection.uploadImages)
+                        .then(collection.update)
+                        .then(collection.seal)
+                        .then(collection.enqueue)
+                        .catch(console.error);
+                }));
+            })
+            .then(function(){done()})
     });
 
-    it("should unpublish collections in multiple job requests", function(done){
+    it("should publish all", function(done){
         this.timeout(0);
-        Promise.all(datums.map(function(data){
-            return collection.requestMetadata(data)
-                .then(collection.unpublish);
-        })).then(function(){
-            done();
-        }).catch(console.error);
-    });
-
-    it("should delete collections using requestList", function(done){
-        var datum = { schema: { entityType: AEMM.Collection.TYPE, publicationId: publicationId}};
+        var datum = {schema:{entityType: AEMM.Collection.TYPE, publicationId: publicationId}};
         collection.requestList(datum)
             .then(function(result){
                 return Promise.all(result.entities.map(function(data){
                     return collection.requestMetadata(data)
-                        .then(collection.delete);
-                }))
+                        .then(collection.enqueue)
+                        .catch(function(){})
+                }));
             })
             .then(function(){done()})
             .catch(console.error);
     });
 
-    it("should delete all collections using local data", function(done){
-        Promise.all(datums.map(function(data){
-            return collection.requestMetadata(data)
-                .then(collection.delete);
-        })).then(function(){done()})
+    it("should delete collections using requestList", function(done){
+        this.timeout(0);
+        var datum = {schema:{entityType: AEMM.Collection.TYPE, publicationId: publicationId}};
+        collection.requestList(datum)
+            .then(function(result){
+                return Promise.all(result.entities.map(function(data){
+                    return collection.requestMetadata(data)
+                        .then(collection.dequeue)
+                        .then(collection.delete)
+                        .catch(console.error);
+                }));
+            })
+            .then(function(){done()})
             .catch(console.error);
-
     });
+
+    // it("should delete all collections using local data", function(done){
+    //     this.timeout(0);
+    //     Promise.all(datums.map(function(data){
+    //         return collection.requestMetadata(data)
+    //             .then(collection.dequeue) // unpublish
+    //             .then(collection.delete);
+    //     })).then(function(){done()})
+    //         .catch(console.error);
+    // });
 
 });
 

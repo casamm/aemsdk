@@ -1,37 +1,45 @@
 var assert = require('assert');
 var AEMM = require("../../../lib/aemm");
 var article = new AEMM.Article();
+var authentication = new AEMM.Authentication();
 
 var fs = require("fs");
 var path = require("path");
-var datum;
+data = {
+    schema: {
+        entityName: "nodejs",
+        entityType: AEMM.Article.TYPE,
+        title: "article from nodejs",
+        publicationId: "192a7f47-84c1-445e-a615-ff82d92e2eaa"
+    },
+    article: {
+        src: path.join(__dirname, "../resources/html/article"),
+        rendition: 'folio', // default is folio
+        targetViewer: "33.0.0", // default is 33.0.0
+        viewerVersion: "3.0.0", // default is 3.0.0
+        generateManifest: true, // default is true
+        deleteSourceDir: false // default is false
+    },
+    images: [
+        {file: path.join(__dirname, '../resources/image/thumbnail.png'), path: "images/thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'},
+        {file: path.join(__dirname, '../resources/image/socialSharing.png'), path: "images/socialSharing"}
+    ],
+    notify: function(status) {
+        //console.log(status.numerator, status.subAspect);
+    }
+};
 
 describe('#Article()', function () {
 
-    before(function() {
-        datum = {
-            schema: {
-                entityName: "nodejs",
-                entityType: AEMM.Article.TYPE,
-                title: "article from nodejs",
-                publicationId: "b5bacc1e-7b55-4263-97a5-ca7015e367e0"
-            },
-            article: {
-                src: path.join(__dirname, "../resources/html/article"),
-                rendition: 'folio', // default is folio
-                targetViewer: "33.0.0", // default is 33.0.0
-                viewerVersion: "3.0.0", // default is 3.0.0
-                generateManifest: true, // default is true
-                deleteSourceDir: false // default is false
-            },
-            images: [
-                {file: path.join(__dirname, '../resources/image/thumbnail.png'), path: "images/thumbnail", sizes: '2048, 1020, 1536, 1080, 768, 640, 540, 320'},
-                {file: path.join(__dirname, '../resources/image/socialSharing.png'), path: "images/socialSharing"}
-            ],
-            notify: function(status) {
-                //console.log(status.numerator, status.subAspect);
-            }
-        };
+    before(function(done) {
+        authentication.requestToken({})
+            .then(function(data) {
+                assert.ok(data.authentication.access_token);
+                assert.ok(authentication.getToken());
+                assert.ok(authentication.getToken().access_token);
+                done();
+            })
+            .catch(console.error);
     });
 
     it('should be instantiated', function () {
@@ -62,7 +70,7 @@ describe('#Article()', function () {
                     assert.ok(item.contentUrl);
                 });
                 done();
-            })
+            }).catch(console.error);
     });
 
     it('should requestManifest', function(done){
@@ -240,8 +248,7 @@ describe('#Article()', function () {
                     data.forEach(function(item){
                         assert.ok(item.status);
                     });
-                    done();
-                }).catch(console.error);
+                }).then(function(){done()}).catch(console.error);
             })
             .catch(console.error);
     });

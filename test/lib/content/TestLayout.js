@@ -2,7 +2,13 @@ var assert = require('assert');
 var AEMM = require("../../../lib/aemm");
 
 var layout = new AEMM.Layout();
-var publicationId = "b5bacc1e-7b55-4263-97a5-ca7015e367e0";
+var publicationId = "192a7f47-84c1-445e-a615-ff82d92e2eaa";
+
+before(function(done){
+    AEMM.authentication.requestToken()
+        .then(function(){done()})
+        .catch(console.error);
+});
 
 describe('Layout', function() {
 
@@ -11,16 +17,8 @@ describe('Layout', function() {
     });
 
     it('should create and delete', function(done){
-        var body = {
-            schema: {
-                entityType: "layout",
-                entityName: "mylayout",
-                title: "layout title",
-                publicationId: publicationId
-            }
-        };
-
-        layout.create(body)
+        var data = {schema: {entityType: "layout", entityName: "mylayout", title: "layout title", publicationId: publicationId}};
+        layout.create(data)
             .then(function(result){
                 assert.ok(result.schema.entityName == "mylayout");
                 assert.ok(result.schema.entityType == "layout");
@@ -32,75 +30,44 @@ describe('Layout', function() {
     });
 
     it('should requestList', function(done){
-        var body = {
-            schema: {
-                entityType: AEMM.Layout.TYPE,
-                publicationId: publicationId
-            }
-        };
-        layout.requestList(body)
+        var data = {schema: {entityType: AEMM.Layout.TYPE, publicationId: publicationId}};
+        layout.requestList(data)
             .then(function(result){
                 assert.ok(result);
-                assert.ok(result.layouts);
-                assert.ok(result.layouts.length);
+                assert.ok(result.entities);
+                assert.ok(result.entities.length);
                 done();
             })
             .catch(console.error);
     });
 
     it('should requestList with metadata', function(done){
-        var body = {
-            schema: {
-                entityType: AEMM.Layout.TYPE,
-                publicationId: publicationId
-            }
-        };
-        layout.requestList(body)
+        this.timeout(0);
+        var data = {schema: {entityType: AEMM.Layout.TYPE, publicationId: publicationId}};
+        layout.requestList(data)
             .then(function(result){
-                var promises = [];
-                result.layouts.forEach(function(item){
-                    var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
-                    var body = {
-                        schema: {
-                            entityType: matches[1],
-                            entityName: matches[2],
-                            publicationId: publicationId
-                        }
-                    };
-                    promises.push(layout.requestMetadata(body))
-                });
-
-                Promise.all(promises).then(function(result){
-                    done();
-                });
+                return Promise.all(result.entities.map(function(item){
+                    var matches = AEMM.matchUrl(item.href);
+                    return layout.requestMetadata({schema: {entityType: matches[3], entityName: matches[4], publicationId: publicationId}});
+                }));
+            })
+            .then(function(result){
+                done();
             })
             .catch(console.error);
     });
 
     it('should requestList with status', function(done){
-        var body = {
-            schema: {
-                entityType: AEMM.Layout.TYPE,
-                publicationId: publicationId
-            }
-        };
-
-        layout.requestList(body)
+        this.timeout(0);
+        var data = {schema: {entityType: AEMM.Layout.TYPE, publicationId: publicationId}};
+        layout.requestList(data)
             .then(function(result){
-                var promises = [];
-                result.layouts.forEach(function(item){
-                    var matches = item.href.match(/\/([article|banner|cardTemplate|collection|font|layout|publication]*)\/([a-zA-Z0-9\_\-\.]*)\;version/);
-                    var body = {
-                        schema: {
-                            entityType: matches[1],
-                            entityName: matches[2],
-                            publicationId: publicationId
-                        }
-                    };
-                    promises.push(layout.requestStatus(body));
-                });
-                Promise.all(promises).then(function(result){
-                    result.forEach(function(item){
+                return Promise.all(result.entities.map(function(item){
+                    var matches = AEMM.matchUrl(item.href);
+                    var body = {schema: { entityType: matches[3], entityName: matches[4], publicationId: publicationId}};
+                    return layout.requestStatus(body);
+                })).then(function(result){
+                    result.forEach(function(item, index){
                         assert.ok(item.status);
                         assert.ok(item.status.length);
                     });

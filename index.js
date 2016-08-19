@@ -16,4 +16,7 @@ Deployment
  http://serverfault.com/questions/147902/windows-command-line-built-in-compression-extraction-tool?rq=1
  */
 
-/* upload Article rendition */
+/* upload Article rendition
+* •	The documentation refers to an entry aspect=audit, I’ve not come across any, please advise.
+*/
+
