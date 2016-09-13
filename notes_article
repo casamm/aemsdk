@@ -196,4 +196,9 @@ Workflow Status
 •	Returns an item with status with variable values from RUNNING, COMPLETED and NOT_FOUND.
 
 
+/* upload Article rendition
+* •	The documentation refers to an entry aspect=audit, I’ve not come across any, please advise.
+*/
+
+
 

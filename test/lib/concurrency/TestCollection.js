@@ -8,7 +8,7 @@ var publicationId = "192a7f47-84c1-445e-a615-ff82d92e2eaa";
 var datums = [0,1,2,3,4,5,6,7,8,9].map(function(item, index){
     return {
         schema: { entityName: "collection_" + index, entityType: AEMM.Collection.TYPE, publicationId: publicationId, title: "collection_" + index, productIds: ["ag.casa.demo"]},
-        images: [ {file: path.join(__dirname, "articles/thumbnail_" + index + ".jpg"), path: "images/thumbnail"}, {file: path.join(__dirname, "articles/thumbnail_" + index + ".jpg"), path: "images/background"} ]
+        images: [ {file: path.join(__dirname, "../../resources/articles/thumbnail_" + index + ".jpg"), path: "images/thumbnail"}, {file: path.join(__dirname, "../../resources/articles/thumbnail_" + index + ".jpg"), path: "images/background"} ]
     };
 });
 
@@ -87,6 +87,8 @@ describe("Collections", function(){
             .then(function(){done()})
             .catch(console.error);
     });
+
+
 
     // it("should delete all collections using local data", function(done){
     //     this.timeout(0);

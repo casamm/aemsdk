@@ -22,7 +22,7 @@ it('should requestList', function(done){
         }).catch(console.error);
 });
 
-it('should delete', function(done){
+xit('should delete', function(done){
     var data = {schema: {tenantId: tenantId}};
     notification.requestList(data)
         .then(function(result){
@@ -34,18 +34,38 @@ it('should delete', function(done){
         })
 });
 
-// it('should post', function(done){
-//     var data = {
-//         schema: {push: {message: 'hello world'}, tenantId: tenantId}
-//     };
-//     notification.create(data)
-//         .then(function(result){
-//             console.log(result);
-//             done();
-//         }).catch(console.error);
-// });
+it('should post', function(done){
+    this.timeout(0);
+    var data = {
+        schema: {
+            message: 'hello lorenzo your event is scheduled for 9:00 am at room 400',
+            schedule: new Date().getTime(),
+            timezoneId: null,
+            operatingSystemSpecifier: 'ios',
+            iosData: {
+                bundleId: 'com.mirumagency.aemmsdk',
+                isProduction: false
+            },
+            customData: {
+                deepLink: {
+                    collection: 'deepLinkHome',
+                    article: ''
+                }
+            },
+            omnitureData: {
+                reportSuiteId: 'ap.or.04.aemmsdk',
+                publicationTitle: 'aemmsdk',
+                applicationId: tenantId
+            }
+        }
+    };
+    notification.create(data)
+        .then(function(result){
+            done();
+        }).catch(console.error);
+});
 
-it('should check health', function(done){
+xit('should check health', function(done){
     var data = {schema: {tenantId: tenantId}};
     notification.healthCheck(data)
         .then(function(result){
@@ -53,11 +73,10 @@ it('should check health', function(done){
         }).catch(console.error);
 });
 
-it('should count device', function(done){
-    var data = {schema: {os: 'ios', appId: 'com.mirumagency.aemmsdk', query: '?iOSIsProduction=true', tenantId: tenantId}};
+xit('should count device', function(done){
+    var data = {schema: {os: 'ios', appId: 'com.mirumagency.aemmsdk', query: '?iOSIsProduction=false', tenantId: tenantId}};
     notification.deviceCount(data)
         .then(function(result){
-            console.log(result);
             done();
         }).catch(console.error);
 });

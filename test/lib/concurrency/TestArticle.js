@@ -10,8 +10,8 @@ var path = require("path");
 var datums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function(item, index){
     return {
         schema: { entityName: "article_" + index, entityType: AEMM.Article.TYPE, publicationId: publicationId, title: "article_" + index},
-        article: {src: path.join(__dirname, "articles/" + index)},
-        images: [ {file: path.join(__dirname, "articles/thumbnail_" + index + ".jpg"), path: "images/thumbnail"}],
+        article: {src: path.join(__dirname, "../../resources/articles/" + index)},
+        images: [ {file: path.join(__dirname, "../../resources/articles/thumbnail_" + index + ".jpg"), path: "images/thumbnail"}],
         notify: function(status) {
             // console.log(status.numerator, status.subAspect);
         }
@@ -40,7 +40,7 @@ describe("article", function(){
             .catch(console.error);
     });
 
-    it('should build articles', function(done){
+    xit('should build articles', function(done){
         this.timeout(0);
         Promise.all(datums.map(function(data){
             return article.buildArticle(data)
@@ -50,12 +50,12 @@ describe("article", function(){
         }).catch(console.error);
     });
 
-    it('should build an existing article', function(done){
+    xit('should build an existing article', function(done){
         this.timeout(0);
         var datum = {
             schema: { entityName: "existing", entityType: AEMM.Article.TYPE, publicationId: publicationId, title: "existing"},
-            article: {src: path.join(__dirname, "articles/existing")},
-            images: [{file: path.join(__dirname, "articles/existing.jpg"), path: "images/thumbnail"}]
+            article: {src: path.join(__dirname, "../../resources/articles/existing")},
+            images: [{file: path.join(__dirname, "../../resources/articles/existing.jpg"), path: "images/thumbnail"}]
         };
         article.create(datum)
             .then(article.uploadImages)
@@ -93,7 +93,7 @@ describe("article", function(){
         });
     });
 
-    xit('should delete all using requestList', function(done){
+    it('should delete all using requestList', function(done){
         this.timeout(0);
         var datum = {schema: {entityType: AEMM.Article.TYPE, publicationId: publicationId}};
 
@@ -111,7 +111,7 @@ describe("article", function(){
             .catch(console.error);
     });
 
-    it('should delete all using local data', function(done){
+    xit('should delete all using local data', function(done){
         this.timeout(0);
         Promise.all(datums.map(function(data){
                 return article.requestMetadata(data)
